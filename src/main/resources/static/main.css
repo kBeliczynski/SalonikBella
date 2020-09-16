@@ -1,0 +1,36 @@
+body {
+	background-color: #2F3336;
+	color: #efefef;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: 400;
+	color: #C0D06F;
+	margin: 20px;
+}
+
+.navbar {
+	min-height: 57px;
+}
+
+.logo1 {
+	max-height: 70px;
+	max-width: 60px;
+}
+
+.logo2 {
+	max-height: 35px;
+	max-width: 145px;
+}
+
+.bg-navigator {
+	background-color: rgba(207, 146, 248, 0.76) !important;
+}
+
+ul > li {
+	padding-left: 20px;
+}
+
