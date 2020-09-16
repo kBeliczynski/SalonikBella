@@ -1,0 +1,23 @@
+{
+  "name": "Salonik Bella",
+  "homepage": "https://github.com/kBeliczynski/SalonikBella",
+  "authors": [
+    "kBeliczynski <kamcio1975@gmail.com>"
+  ],
+  "description": "Salonik Bella",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.8.0",
+    "angular-route": "^1.8.0",
+    "angular-resource": "^1.8.0"
+  }
+}
