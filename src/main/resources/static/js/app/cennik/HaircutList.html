@@ -1,7 +1,22 @@
-<h1 class="">lista wszystkich usług</h1>
-<ol>
-    <li ng-repeat='hair in Ctrl.haircuts'>
-        nazwa : {{hair.name}}
-    </li>
-</ol>
+<section class="services">
+
+    <div class="container">
+
+        <header>
+
+            <h1>Lista wszystkich usług:</h1>
+
+        </header>
+
+        <div class="row justify-content-center">
+            <div class="rounded col-sm-10 col-md-5 col-lg-3 service m-4 p-4 text-body " ng-repeat="hair in Ctrl.haircuts">
+                <h3 class="service-name">{{hair.name}}</h3>
+                <p class="service-price">Cena : {{hair.price}} zł</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 

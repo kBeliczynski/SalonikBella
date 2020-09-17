@@ -47,3 +47,19 @@ header{
 	text-align: center;
 }
 
+.service{
+	background: lavenderblush;
+	box-shadow:0 0 15px black;
+	text-align: center;
+}
+
+.service-name{
+	font-family: 'Playfair Display', serif;
+	text-align: center;
+	font-size: 28px;
+}
+.service-price{
+	font-family: 'Architects Daughter', cursive;
+	text-align: center;
+	font-size: 20px;
+}

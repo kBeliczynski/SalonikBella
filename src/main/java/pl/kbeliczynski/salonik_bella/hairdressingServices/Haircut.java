@@ -16,15 +16,17 @@ public class Haircut implements Serializable {
     private String description;
     private int price;
     private String gender;
+    private int maxPrice;
 
     public Haircut() {}
 
     @Autowired
-    public Haircut(String name, String description, int price, String gender) {
+    public Haircut(String name, String description, int price, String gender, int maxPrice) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.gender = gender;
+        this.maxPrice = maxPrice;
     }
 
     public Long getId() {
@@ -65,6 +67,14 @@ public class Haircut implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public int getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(int maxPrice) {
+        this.maxPrice = maxPrice;
     }
 
     @Override
