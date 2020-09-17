@@ -11,6 +11,11 @@ angular.module('app')
            // controller: 'UserListController',
            // controllerAs: 'ctrl'
         })
+        .when('/cennik', {
+            templateUrl: 'js/app/cennik/HaircutList.html',
+            controller: 'HaircutListController',
+            controllerAs: 'Ctrl'
+        })
         .otherwise({
             redirectTo: '/start'
         });
