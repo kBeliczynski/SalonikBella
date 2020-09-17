@@ -1,5 +1,6 @@
 angular.module('app')
-.controller('HaircutListController', function(Haircuts){
+.controller('HaircutListController', ['Haircuts', function(Haircuts){
     var vm = this;
     vm.haircuts = Haircuts.getAll();
-})
+}]);
+

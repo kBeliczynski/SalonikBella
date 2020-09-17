@@ -10,4 +10,4 @@ angular.module('app')
     this.get = function (index) {
         return Haircut.get({id: index});
     }
-})
+});
