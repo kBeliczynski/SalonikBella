@@ -2,26 +2,53 @@
 
     <div class="container">
 
-        <header>
+        <header clas="row container-fluid">
 
-            <h1>Lista perfum: </h1>
+                <div class="col-sm-12">
+
+                    <h1>Lista perfum: </h1>
+
+                    <div class="col-md-6">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary mx-1" ng-click="Ctrl.search(perfumeName)">Szukaj</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button class="btn btn-primary mx-1" ng-click="Ctrl.search(perfumeName)">Szukaj</button>
+                        </div>
+                    </div>
+
+                    <div class="form col-md-6">
+
+                        <div class="input-group mb-2 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" id="searchInput" placeholder="nazwa" ng-model="perfumeName">
+                        <button class="btn btn-primary mx-1" ng-click="Ctrl.search(perfumeName)">Szukaj</button>
+                        </div>
+
+                    </div>
+                </div>
 
         </header>
 
         <div class="row mainContainer justify-content-center align-items-center">
 
-            <div class="perfume-tile rounded col-lg-5 ">
+            <div class="perfume-tile rounded col-lg-5" ng-repeat="perfume in Ctrl.perfumes">
 
-                <div class="perfume-name main-font col-sm-12 text-uppercase"> <h3>ACQUA PER UOMO 15ml</h3></div>
+                <div class="perfume-name main-font col-sm-12 text-uppercase"> <h3>{{perfume.name}} {{perfume.volume}}ml</h3></div>
 
                 <div>
                     <div class="perfume-description float-left col-sm-6 ">
                         <h5>Opis:</h5>
-                        <p class="architect-font ">Fuzja nut hesperydowych z cyklamenem i nutami drzewnymi pozwoliła na stworzenie ekspresywnego zapachu pachnącego wolnością.</p>
+                        <p class="architect-font ">{{perfume.description}}</p>
                         <button type="button" class="btn btn-dark">Sprawdz</button>
                     </div>
 
-                    <div class="perfume-picture float-right col-sm-6 "> <img src="img/perfumy/acqua-per-uomo/acqua-per-uomo15.jpg"/> </div>
+                    <div class="perfume-picture float-right col-sm-6 "> <img src='{{perfume.photo}}'/> </div>
                 </div>
             </div>
 

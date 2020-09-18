@@ -8,3 +8,5 @@ INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`,
 INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Keratynowe prostowanie włosów',1,350,'Keratynowe prostowanie włosów',250);
 INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Nawilżanie włosów ',1,0,'Nawilżanie włosów ',60);
 
+INSERT INTO `SalonikBella`.`perfume` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`smell`,`volume`) VALUES ('Eksplozja nut cytrusowych tworzy bardzo pociągający zapach. Delikatne akordy piżma napawają  pogodnym nastawieniem.','BRAK','both','beach','img/perfumy/beach/beach15.jpg',25,'Aromatyczno - Drzewna, Beach to zrównoważony, czysty zapach. Idealny dla kobiet i mężczyzn.Nuty głowy : Pomarańcza, Nuty serca : Konwalia, Nuty bazy : Piżmo.',15);
+

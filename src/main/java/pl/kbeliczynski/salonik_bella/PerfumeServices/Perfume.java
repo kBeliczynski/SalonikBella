@@ -14,6 +14,7 @@ public class Perfume implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private String gender;
     private int volume;
     private int price;
@@ -24,7 +25,8 @@ public class Perfume implements Serializable {
 
     public Perfume(){};
 
-    public Perfume(String gender, int volume, int price, String description, String smell, String photo, String extraInfo) {
+    public Perfume(String name, String gender, int volume, int price, String description, String smell, String photo, String extraInfo) {
+        this.name = name;
         this.gender = gender;
         this.volume = volume;
         this.price = price;
@@ -40,6 +42,14 @@ public class Perfume implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getGender() {
@@ -102,12 +112,14 @@ public class Perfume implements Serializable {
     public String toString() {
         return "Perfume{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", volume=" + volume +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", smell='" + smell + '\'' +
                 ", photo='" + photo + '\'' +
+                ", extraInfo='" + extraInfo + '\'' +
                 '}';
     }
 }

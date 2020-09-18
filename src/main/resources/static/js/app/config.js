@@ -18,8 +18,8 @@ angular.module('app')
         })
         .when('/perfumy', {
             templateUrl: 'js/app/perfumy/Perfume.html',
-         //   controller: 'HaircutListController',
-         //   controllerAs: 'Ctrl'
+            controller: 'PerfumeListController',
+            controllerAs: 'Ctrl'
         })
         .otherwise({
             redirectTo: '/start'
