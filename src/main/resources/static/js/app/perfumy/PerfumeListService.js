@@ -4,10 +4,7 @@ angular.module('app')
         return $resource(PERFUME_ENDPOINT);
 })
 .service('Perfumes', function (Perfume) {
-    this.getAll = function () {
-        return Perfume.query();
-    }
-    this.get = function (index) {
-        return Perfume.get({id: index});
-    }
+    this.getAll = params => Perfume.query(params);
+    this.get = index => Perfume.get({id: index});
+
 });

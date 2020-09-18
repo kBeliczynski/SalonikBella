@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.kbeliczynski.salonik_bella.hairdressingServices.Haircut;
 
@@ -20,7 +21,14 @@ public class PerfumeEndpoint {
     }
 
     @GetMapping("/api/perfumes")
-    public List<Perfume> getAll(){return perfumeRepository.findAll();}
+    public List<Perfume> getAll(@RequestParam(required = false) String name,@RequestParam(required = false) String gender) {
+        if(gender != null)
+            return perfumeRepository.findByGenderContaining(gender);
+        else if(name != null)
+            return perfumeRepository.findByNameContainingIgnoreCase(name);
+        else
+            return perfumeRepository.findAll();
+    }
 
     @GetMapping("/api/perfumes/{id}")
     public ResponseEntity<Perfume> getById(@PathVariable Long id) {

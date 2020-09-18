@@ -100,14 +100,13 @@ footer{
 .perfume-picture{
 	overflow: hidden;
 	height: 250px;
+	margin-top: 10px;
 	padding: 10px;
 }
 
 .perfume-picture img{
-	width: 70%;
-	valign:middle;
-	height: auto;
-	transform: scale(3) translateY(10%);
+	max-width: 180px;
+	transform: scale(2.4) translateY(5%);
 }
 
 .perfume-tile{
@@ -125,6 +124,7 @@ footer{
 	background: #2F3336;
 }
 
-.perfume-title{
-	height: 5%;
+.perfume-action{
+	margin-top: 40px;
+	margin-bottom: 20px;
 }
