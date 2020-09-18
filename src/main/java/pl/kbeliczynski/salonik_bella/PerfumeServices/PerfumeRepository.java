@@ -9,4 +9,5 @@ import java.util.List;
 public interface PerfumeRepository extends JpaRepository<Perfume,Long> {
     List<Perfume> findByNameContainingIgnoreCase(String name);
     List<Perfume> findByGenderContaining(String gender);
+    List<Perfume> findByVolume(String volume);
 }

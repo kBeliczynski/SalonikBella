@@ -16,7 +16,7 @@ public class Perfume implements Serializable {
     private Long id;
     private String name;
     private String gender;
-    private int volume;
+    private String volume;
     private int price;
     private String description;
     private String smell;
@@ -25,7 +25,7 @@ public class Perfume implements Serializable {
 
     public Perfume(){};
 
-    public Perfume(String name, String gender, int volume, int price, String description, String smell, String photo, String extraInfo) {
+    public Perfume(String name, String gender, String volume, int price, String description, String smell, String photo, String extraInfo) {
         this.name = name;
         this.gender = gender;
         this.volume = volume;
@@ -60,11 +60,11 @@ public class Perfume implements Serializable {
         this.gender = gender;
     }
 
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 

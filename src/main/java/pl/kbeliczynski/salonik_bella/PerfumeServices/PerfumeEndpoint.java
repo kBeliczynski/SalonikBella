@@ -21,8 +21,13 @@ public class PerfumeEndpoint {
     }
 
     @GetMapping("/api/perfumes")
-    public List<Perfume> getAll(@RequestParam(required = false) String name,@RequestParam(required = false) String gender) {
-        if(gender != null)
+    public List<Perfume> getAll(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String gender,
+            @RequestParam(required = false) String volume) {
+        if(volume != null)
+            return perfumeRepository.findByVolume(volume);
+        else if(gender != null)
             return perfumeRepository.findByGenderContaining(gender);
         else if(name != null)
             return perfumeRepository.findByNameContainingIgnoreCase(name);

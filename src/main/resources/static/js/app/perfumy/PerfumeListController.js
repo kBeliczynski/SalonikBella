@@ -7,7 +7,11 @@ angular.module('app')
         vm.perfumes = Perfumes.getAll({name});
     }
 
-    vm.searchGender = gender => {
+    vm.searchByGender = gender => {
         vm.perfumes = Perfumes.getAll({gender});
+    }
+
+    vm.searchByVolume = volume => {
+        vm.perfumes = Perfumes.getAll({volume});
     }
 }]);

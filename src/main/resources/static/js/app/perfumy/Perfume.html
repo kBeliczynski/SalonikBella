@@ -6,8 +6,16 @@
             <div class="perfume-action row justify-content-center align-items-center">
 
                 <div class="col-sm-6 align-left">
-                    <button class="architect-font btn btn-warning mx-1" ng-model="gender" ng-click="Ctrl.searchGender('m')">Męskie</button>
-                    <button class="architect-font btn btn-warning mx-1" ng-model="gender" ng-click="Ctrl.searchGender('k')">Damskie</button>
+                    <p>
+                        <button class="architect-font btn btn-warning mx-1" ng-model="gender" ng-click="Ctrl.searchByGender('m')">Męskie</button>
+                        <button class="architect-font btn btn-warning mx-1" ng-model="gender" ng-click="Ctrl.searchByGender('k')">Damskie</button>
+                    </p>
+                    <hr size="50px" color="yellow">
+                    <p>
+                        <button class="architect-font btn btn-warning mx-1" ng-model="volume" ng-click="Ctrl.searchByVolume('15')">15ml</button>
+                        <button class="architect-font btn btn-warning mx-1" ng-model="volume" ng-click="Ctrl.searchByVolume('50')">50ml</button>
+                        <button class="architect-font btn btn-warning mx-1" ng-model="volume" ng-click="Ctrl.searchByVolume('100')">100ml</button>
+                    </p>
                 </div>
 
                 <div class="col-sm-6 align-right">
