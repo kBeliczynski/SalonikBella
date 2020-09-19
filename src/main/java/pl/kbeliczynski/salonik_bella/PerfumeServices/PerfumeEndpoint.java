@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.kbeliczynski.salonik_bella.hairdressingServices.Haircut;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class PerfumeEndpoint {
@@ -37,12 +38,8 @@ public class PerfumeEndpoint {
 
     @GetMapping("/api/perfumes/{id}")
     public ResponseEntity<Perfume> getById(@PathVariable Long id) {
-        Perfume perfume = perfumeRepository.getOne(id);
-        if(perfume != null) {
-            return ResponseEntity.ok(perfume);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return perfumeRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
-
 }

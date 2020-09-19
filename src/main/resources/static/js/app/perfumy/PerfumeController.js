@@ -14,4 +14,9 @@ angular.module('app')
     vm.searchByVolume = volume => {
         vm.perfumes = Perfumes.getAll({volume});
     }
+}])
+.controller('PerfumeDetailsController', ['Perfumes', function ($routeParams, Perfumes ) {
+    var vm = this;
+    var perfumeIndex = $routeParams.id;
+    vm.perfume = Perfumes.get(perfumeIndex);
 }]);

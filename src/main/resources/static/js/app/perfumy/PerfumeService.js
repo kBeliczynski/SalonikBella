@@ -6,5 +6,4 @@ angular.module('app')
 .service('Perfumes', function (Perfume) {
     this.getAll = params => Perfume.query(params);
     this.get = index => Perfume.get({id: index});
-
 });
