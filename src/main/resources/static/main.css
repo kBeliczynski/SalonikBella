@@ -1,6 +1,6 @@
 body {
-	background-color: #2F3336;
-	color: #efefef;
+	background-color: rgb(53, 59, 62);
+	color: #ffffff;
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
 }
@@ -23,6 +23,7 @@ a:hover{
 
 .navbar {
 	min-height: 57px;
+	margin-bottom: 30px;
 }
 
 .logo1 {
@@ -133,5 +134,35 @@ footer{
 	margin-top: 7px;
 }
 
+/* perfum details */
 
+.perfume-details-picture{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	overflow: hidden;
+	box-shadow:0 0 15px black;
+}
 
+.perfume-details-picture img {
+	max-width: 550px;
+	height: auto;
+	transform: scale(1.5);
+}
+
+.perfume-details .collapse .architect-font{
+	color: black;
+}
+.perfume-details h2 button{
+	width: 100%;
+	margin-top: 20px;
+}
+.perfume-details-price{
+	font-size: 35px;
+}
+.perfume-details-info{
+	margin-top: 20px;
+}
+
+.fa-angle-down{
+	float:right;
+}
