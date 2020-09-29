@@ -2,9 +2,9 @@ angular.module('app')
 .config(function ($routeProvider) {
     $routeProvider
         .when('/start', {
-            templateUrl: 'js/app/start/start.html'
-           // controller: 'UserListController',
-           // controllerAs: 'ctrl'
+            templateUrl: 'js/app/start/start.html',
+            controller: 'StartController',
+            controllerAs: 'Ctrl'
         })
         .when('/kontakt', {
             templateUrl: 'js/app/kontakt/kontakt.html'
