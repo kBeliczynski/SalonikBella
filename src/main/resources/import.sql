@@ -34,3 +34,9 @@ INSERT INTO `SalonikBella`.`perfume` (`description`,`extra_info`,`gender`,`name`
 INSERT INTO `SalonikBella`.`perfume` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`smell`,`volume`) VALUES ('Kwiatowa etuida wraz z nutami wanilii tworzy niezapomniany zapach pudrowy. Delikatny a zarazem silny i wyjątkowy aromat rozbudza niezliczone doznania.','BRAK','k','berlue','img/perfumy/berlue/berlue15.jpg',25,'Kwiatowo - Aldehydowa. Berlue to  ponadczasowy zapach. Dla kobiety uwielbiającej klasyczny i elegancki styl. Nuty głowy : Kwiat pomarńczy, nuty serca : Róża, nuty bazy : Wanilia.','15');
 INSERT INTO `SalonikBella`.`perfume` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`smell`,`volume`) VALUES ('Dominujący zapach wanilii sprawia, że zapach ten jest urzekający i charyzmatyczny. ','BRAK','k','temis','img/perfumy/temis/temis15.jpg',25,'Orientalno - Kwiatowa. Temis to perfumy dla kobiety tajemniczej i prowokującej. Nuty głowy : Kwiat Imbiru, nuty serca : Jaśmin Wodny, nuty bazy : Wanilia.','15');
 
+/* pictures */
+INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/gallery/picture1.jpg','');
+INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/gallery/picture2.jpg','');
+INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/gallery/picture3.jpg','');
+INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/gallery/picture4.jpg','');
+/*INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','','');*/
