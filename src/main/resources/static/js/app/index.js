@@ -1,2 +1,2 @@
 'use strict';
-angular.module('app', ['ngRoute', 'ngResource', 'ngAnimate']);
+angular.module('app', ['ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
