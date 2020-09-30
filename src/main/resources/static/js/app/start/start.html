@@ -2,18 +2,35 @@
 
     <div class="container">
 
-<!-- zdjecia --
-        <div class="row justify-content-center">
-            <div class="rounded col-sm-10 col-lg-4 service m-4 p-4 text-body " ng-repeat="picture in Ctrl.pictures">
-                <div class="perfume-picture float-right col-sm-6 "> <img src='{{picture.path}}'/> </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <div class="services-section row justify-content-center align-items-center mt-5">
+
+            <div class="service-section col-6 col-lg-3">
+                <div class="service-section-picture mb-1" data-aos="fade-down-right"></div>
+                <div class="main-font service-section-title mb-1" data-aos="fade-up-right"><a class="nav-link" href="#!cennik">Strzyżenie męskie</a></div>
             </div>
+
+            <div class="service-section col-6 col-lg-3">
+                <div class="main-font service-section-title mb-1" data-aos="fade-down-right"><a class="nav-link" href="#!perfumy">Perfumy</a></div>
+                <div class="service-section-picture mb-1" data-aos="fade-up-right">zdjecie</div>
+            </div>
+
+            <div class="service-section col-6 col-lg-3">
+                <div class="service-section-picture mb-1" data-aos="fade-down-left">zdjecie</div>
+                <div class="main-font service-section-title mb-1" data-aos="fade-up-left"><a class="nav-link " href="#!produkty">Produkty</a></div>
+            </div>
+
+            <div class="service-section col-6 col-lg-3">
+                <div class="main-font service-section-title mb-1" data-aos="fade-down-left"><a class="nav-link" href="#!cennik">Strzyżenie damskie</a></div>
+                <div class="service-section-picture mb-1" data-aos="fade-up-left">zdjecie</div>
+            </div>
+
         </div>
--->
 
+        <div class="start-gallery row justify-content-center align-items-center " data-aos="zoom-in-up">
 
-    <div class="row justify-content-center align-items-center mt-5">
-
-            <div class="arrow col-2 "  id="left-arrow"><i class="fa fa-arrow-circle-o-left" ng-click="Ctrl.prevPicture()"></i></div>
+            <div class="arrow col-2 "  id="left-arrow"><i class="fa fa-arrow-circle-o-left float-right" ng-click="Ctrl.prevPicture()"></i></div>
 
             <div class="slider col-8">
 
@@ -39,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="arrow col-2 " id="right-arrow"><i class="fa fa-arrow-circle-o-right align-middle" ng-click="Ctrl.nextPicture()" ></i></div>
+            <div class="arrow col-2 " id="right-arrow"><i class="fa fa-arrow-circle-o-right float-left" ng-click="Ctrl.nextPicture()" ></i></div>
 
         </div>
 
