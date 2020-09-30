@@ -13,31 +13,33 @@
 
     <div class="row justify-content-center align-items-center mt-5">
 
-            <div class="arrow col-2 "  id="left-arrow"><i class="fa fa-arrow-circle-o-left"></i></div>
+            <div class="arrow col-2 "  id="left-arrow"><i class="fa fa-arrow-circle-o-left" ng-click="Ctrl.prevPicture()"></i></div>
 
-            <div class="slider col-8 ">
+            <div class="slider col-8">
+
                 <div class="row justify-content-center align-items-center">
+
                     <div class="slide d-none col-md-4 d-md-block " id="slide-left">
                         <div class="slide-holder">
-
+                            <img src='{{Ctrl.pictures[Ctrl.leftPicture].path}}'/>
                         </div>
                     </div>
 
                     <div class="slide col-8 col-md-4 " id="slide-center">
                         <div class="slide-holder">
-
+                             <img src='{{Ctrl.pictures[Ctrl.centerPicture].path}}'/>
                         </div>
                     </div>
 
                     <div class="slide d-none col-md-4 d-md-block align-items-center" id="slide-right">
                         <div class="slide-holder">
-
+                            <img src='{{Ctrl.pictures[Ctrl.rightPicture].path}}'/>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="arrow col-2 " id="right-arrow"><i class="fa fa-arrow-circle-o-right align-middle"></i></div>
+            <div class="arrow col-2 " id="right-arrow"><i class="fa fa-arrow-circle-o-right align-middle" ng-click="Ctrl.nextPicture()" ></i></div>
 
         </div>
 
@@ -45,5 +47,5 @@
 </section>
 
 
-<div data-aos="fade-right">  <h1>To proste jak {{ 2+2 }}</h1>  </div>
+<div data-aos="fade-right">  <h1>To proste jak {{Ctrl.centerPicture}}</h1>  </div>
 
