@@ -12,6 +12,7 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String producer;
     private String description;
     private String extraInfo;
     private String gender;
@@ -24,7 +25,7 @@ public class Product implements Serializable {
 
     Product() {};
 
-    public Product(String name, String description, String extraInfo, String gender, String volume, int price, String photo, Category category) {
+    public Product(String producer, String name, String description, String extraInfo, String gender, String volume, int price, String photo, Category category) {
         this.name = name;
         this.description = description;
         this.extraInfo = extraInfo;
@@ -33,6 +34,7 @@ public class Product implements Serializable {
         this.price = price;
         this.photo = photo;
         this.category = category;
+        this.producer = producer;
     }
 
     public Long getId() {
@@ -49,6 +51,14 @@ public class Product implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getProducer() {
+        return producer;
+    }
+
+    public void setProducer(String producer) {
+        this.producer = producer;
     }
 
     public String getDescription() {
@@ -112,6 +122,7 @@ public class Product implements Serializable {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", producer='" + producer + '\'' +
                 ", description='" + description + '\'' +
                 ", extraInfo='" + extraInfo + '\'' +
                 ", gender='" + gender + '\'' +

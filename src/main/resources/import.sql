@@ -40,4 +40,37 @@ INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUE
 INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/galeria/picture3.jpg','');
 INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/galeria/picture4.jpg','');
 
-/*INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','','');*/
+/* INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','','');*/
+
+/* products */
+
+/* INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`) VALUES ();
+
+/* category */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

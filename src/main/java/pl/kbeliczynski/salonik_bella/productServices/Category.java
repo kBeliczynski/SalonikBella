@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="category")
 public class Category implements Serializable {
     private static final long serialVersionUID = 8539936152170847415L;
 
