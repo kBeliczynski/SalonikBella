@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name="product")
 public class Product implements Serializable {
     private static final long serialVersionUID = 8539936152170847416L;
 
@@ -13,11 +14,13 @@ public class Product implements Serializable {
     private Long id;
     private String name;
     private String producer;
+    @Column(length = 1024)
     private String description;
+    @Column(length = 1024)
     private String extraInfo;
     private String gender;
     private String volume;
-    private int price;
+    private double price;
     private String photo;
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -25,7 +28,7 @@ public class Product implements Serializable {
 
     Product() {};
 
-    public Product(String producer, String name, String description, String extraInfo, String gender, String volume, int price, String photo, Category category) {
+    public Product(String producer, String name, String description, String extraInfo, String gender, String volume, double price, String photo, Category category) {
         this.name = name;
         this.description = description;
         this.extraInfo = extraInfo;
@@ -93,11 +96,11 @@ public class Product implements Serializable {
         this.volume = volume;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

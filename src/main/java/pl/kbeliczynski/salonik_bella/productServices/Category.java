@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name="category")
 public class Category implements Serializable {
     private static final long serialVersionUID = 8539936152170847415L;
 
@@ -13,8 +14,9 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @Column(length = 1024)
     private String description;
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Product> devices = new HashSet<>();
 
     Category() {}

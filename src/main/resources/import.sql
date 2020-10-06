@@ -44,10 +44,18 @@ INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUE
 
 /* products */
 
-/* INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`) VALUES ();
+INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('Szampon do włosów sychych i zniszczonych',' Posiada ekscytujący zapach aromatycznego kokosa.','k','Szampon kokosowy','/img/',15.99,'Joanna','1000ml',1);
+
+/* INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('','','','','',,'','',''); */
+
 
 /* category */
 
+INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('szampon','szampon');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('balsam','balsam');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('krem','krem');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('odżywka','odżywka');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('lakier','lakier');
 
 
 
