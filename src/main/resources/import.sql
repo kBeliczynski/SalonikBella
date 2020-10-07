@@ -47,13 +47,13 @@ INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`
 /* INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('','','','','',,'','',''); */
 
 /* category */
-INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Szampony do włosów','szampon','');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Kosmetyki do stylizacji włosów','stylizacja','');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Serum do włosów','serum','');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Kuracje do włosów','kuracje','');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Odżywki i maski do włosów','odzywki-maski','');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Farby do włosów','farby','');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Produkty do kreatynowego prostowania','kreatyna','');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Szampony do włosów','szampon','img/produkty/kategorie/szampony.png');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Kosmetyki do stylizacji włosów','stylizacja','img/produkty/kategorie/stylizacja.png');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Serum do włosów','serum','img/produkty/kategorie/serum.png');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Kuracje do włosów','kuracje','img/produkty/kategorie/kuracje.png');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Odżywki i maski do włosów','odzywki-maski','img/produkty/kategorie/odzywki-maski.png');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Farby do włosów','farby','img/produkty/kategorie/farby.png');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Produkty do kreatynowego prostowania','kreatyna','img/produkty/kategorie/kreatyna.png');
 
 
 
