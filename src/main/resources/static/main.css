@@ -264,3 +264,17 @@ footer{
 	box-shadow:0 0 15px black;
 	text-align: center;
 }
+.category-picture{
+	margin-top: 10px;
+}
+.category-picture img{
+	max-width: 250px;
+	padding: 10px;
+	pointer-events: none;
+}
+.category-picture p{
+	pointer-events: none;
+}
+.category-service :hover{
+	transform: scale(0.95);
+}
