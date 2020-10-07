@@ -8,6 +8,7 @@ INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`,
 INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Styling (trwała)',1,0,'Styling (trwała)',100);
 INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Keratynowe prostowanie włosów',1,350,'Keratynowe prostowanie włosów',250);
 INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Nawilżanie włosów ',1,0,'Nawilżanie włosów ',60);
+
 /* perfumy 15 ml */
 INSERT INTO `SalonikBella`.`perfume` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`smell`,`volume`) VALUES ('Eksplozja nut cytrusowych tworzy bardzo pociągający zapach. Delikatne akordy piżma napawają  pogodnym nastawieniem.','BRAK','m','beach','img/perfumy/beach/beach15.jpg',25,'Aromatyczno - Drzewna, Beach to zrównoważony, czysty zapach. Idealny dla kobiet i mężczyzn.Nuty głowy : Pomarańcza, Nuty serca : Konwalia, Nuty bazy : Piżmo.','15');
 INSERT INTO `SalonikBella`.`perfume` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`smell`,`volume`) VALUES ('Fuzja nut hesperydowych z cyklamenem i nutami drzewnymi pozwoliła na stworzenie ekspresywnego zapachu pachnącego wolnością.','BRAK','m','acqua per uomo','img/perfumy/acqua-per-uomo/acqua-per-uomo15.jpg',25,'Aromatyczno - Wodna. Acqua per uomo to świeży zapach dla naturalnego i współczesnego mężczyzny. Nuty głowy : Bergamotka, nuty serca : Cyklamen, nuty bazy : Drzewo.','15');
@@ -39,24 +40,20 @@ INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUE
 INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/galeria/picture2.jpg','');
 INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/galeria/picture3.jpg','');
 INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','img/galeria/picture4.jpg','');
-
 /* INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','','');*/
 
 /* products */
-
 INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('Szampon do włosów sychych i zniszczonych',' Posiada ekscytujący zapach aromatycznego kokosa.','k','Szampon kokosowy','/img/',15.99,'Joanna','1000ml',1);
-
 /* INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('','','','','',,'','',''); */
 
-
 /* category */
-
-INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('szampon','szampon');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('balsam','balsam');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('krem','krem');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('odżywka','odżywka');
-INSERT INTO `SalonikBella`.`category` (`description`,`name`) VALUE ('lakier','lakier');
-
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Szampony do włosów','szampon','');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Kosmetyki do stylizacji włosów','stylizacja','');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Serum do włosów','serum','');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Kuracje do włosów','kuracje','');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Odżywki i maski do włosów','odzywki-maski','');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Farby do włosów','farby','');
+INSERT INTO `SalonikBella`.`category` (`description`,`name`,`photo`) VALUE ('Produkty do kreatynowego prostowania','kreatyna','');
 
 
 

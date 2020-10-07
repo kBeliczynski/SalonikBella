@@ -256,3 +256,11 @@ footer{
 		height: 300px;
 		background: rgba(250, 219, 174, 0.53);
 	}
+
+/* Produkty */
+
+.product-service{
+	background: lavenderblush;
+	box-shadow:0 0 15px black;
+	text-align: center;
+}

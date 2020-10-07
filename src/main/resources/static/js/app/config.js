@@ -26,6 +26,16 @@ angular.module('app')
             controller: 'PerfumeDetailsController',
             controllerAs: 'Ctrl'
         })
+        .when('/produkty', {
+            templateUrl: 'js/app/produkty/Product.html',
+            controller: 'ProductController',
+            controllerAs: 'Ctrl'
+        })
+        .when('/produkty', {
+            templateUrl: 'js/app/produkty/CategoryList.html',
+            controller: 'CategoryListController',
+            controllerAs: 'Ctrl'
+        })
         .otherwise({
             redirectTo: '/start'
         });

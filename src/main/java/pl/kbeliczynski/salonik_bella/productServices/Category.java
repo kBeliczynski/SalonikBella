@@ -1,5 +1,7 @@
 package pl.kbeliczynski.salonik_bella.productServices;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -16,14 +18,17 @@ public class Category implements Serializable {
     private String name;
     @Column(length = 1024)
     private String description;
+    private String photo;
+    @JsonBackReference // adnotacja która sprawia że JSON nie wyswietla rekurencji podczas wyswietlania produktu i jego kategorii
     @OneToMany(mappedBy = "category",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Product> devices = new HashSet<>();
 
     Category() {}
 
-    public Category(String name, String description, Set<Product> devices) {
+    public Category(String name, String description, String photo, Set<Product> devices) {
         this.name = name;
         this.description = description;
+        this.photo = photo;
         this.devices = devices;
     }
 
@@ -51,6 +56,14 @@ public class Category implements Serializable {
         this.description = description;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public Set<Product> getDevices() {
         return devices;
     }
@@ -65,7 +78,7 @@ public class Category implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", devices=" + devices +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }
