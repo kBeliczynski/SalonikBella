@@ -163,13 +163,13 @@ footer{
 }
 .perfume-details h2 button{
 	width: 100%;
-	margin-top: 20px;
+	margin-top: 5px;
 }
 .perfume-details-price{
 	font-size: 35px;
 }
 .perfume-details-info{
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
 .fa-angle-down{
@@ -259,22 +259,51 @@ footer{
 
 /* Produkty */
 
-.product-service{
-	background: lavenderblush;
-	box-shadow:0 0 15px black;
-	text-align: center;
-}
-.category-picture{
-	margin-top: 10px;
-}
-.category-picture img{
-	max-width: 250px;
+	.product-service{
+		background: lavenderblush;
+		box-shadow:0 0 15px black;
+		text-align: center;
+	}
+	.category-picture{
+		margin-top: 10px;
+	}
+	.category-picture img{
+		max-width: 250px;
 	padding: 10px;
-	pointer-events: none;
-}
-.category-picture p{
-	pointer-events: none;
-}
-.category-service :hover{
-	transform: scale(0.95);
-}
+		pointer-events: none;
+	}
+	.category-picture p{
+		pointer-events: none;
+	}
+	.category-service :hover{
+		transform: scale(0.95);
+	}
+
+	/* product details */
+
+	.product-details-picture{
+		background: #eeece5;
+		margin-top: 30px;
+		margin-bottom: 30px;
+		overflow: hidden;
+		box-shadow:0 0 15px black;
+	}
+
+	.product-details-picture img {
+		max-width: 450px;
+		height: auto;
+		transform: scale(0.9);
+	}
+
+	.product-details .collapse .architect-font{
+		color: black;
+	}
+	.product-details h2 button{
+		width: 100%;
+		margin-top: 5px;
+	}
+	.product-details-price{
+		font-size: 35px;
+	}
+	.product-details-info{	margin-top: 5px;
+	}

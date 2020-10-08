@@ -1,6 +1,6 @@
 angular.module('app')
 .constant('CATEGORY_ENDPOINT','/api/categories/:id')
-.constant('PRODUCT_ENDPOINT','api/products/:id')
+.constant('PRODUCT_ENDPOINT','api/products/:category/:id')
 .factory('Category', function ($resource, CATEGORY_ENDPOINT) {
     return $resource(CATEGORY_ENDPOINT);
 })
@@ -18,5 +18,5 @@ angular.module('app')
 .service('Products', function (Product) {
     this.getAll = params => Product.query(params);
     this.getAll = params => Product.query({category: params});
-
+    this.get = index => Product.get({id: index});
 });

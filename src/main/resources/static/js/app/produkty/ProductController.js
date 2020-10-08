@@ -6,12 +6,12 @@ angular.module('app')
 }])
 .controller('ProductController', function ($routeParams, $resource, Products) {
     var vm = this;
-    var productCategory = $routeParams.category;
-    var Product = $resource('api/products/'+productCategory);
+    vm.productCategory = $routeParams.category;
+    var Product = $resource('api/products/'+vm.productCategory);
 
     vm.products = Product.query(
         function success(data, headers) {
-            console.log('Pobrano dane: ' + data + ' z api pod adresem :' + 'api/products/'+productCategory);
+            console.log('Pobrano dane: ' + data + ' z api pod adresem :' + 'api/products/'+vm.productCategory);
  			console.log(headers('Content-Type'));
  			},
  		function error(response) {
@@ -19,8 +19,18 @@ angular.module('app')
      });
 
 })
-.controller('ProducDetailsController', function ($routeParams, Perfumes ) {
+.controller('ProductDetailsController', function ($resource, $routeParams, Products ) {
     var vm = this;
-    var productIndex = $routeParams.id;
-    vm.perfume = Perfumes.get(perfumeIndex);
+    vm.productIndex = $routeParams.id;
+    vm.productCategory = $routeParams.category;
+    var Product = $resource('api/products/'+vm.productCategory+'/'+vm.productIndex);
+
+    vm.product = Product.get(vm.productIndex,
+        function success(data, headers) {
+            console.log('Pobrano dane: ' + data + ' z api pod adresem :' + 'api/products/' + vm.productCategory);
+ 			console.log(headers('Content-Type'));
+ 			},
+ 		function error(response) {
+ 			console.log(response.status); //np. 404
+     });
 });

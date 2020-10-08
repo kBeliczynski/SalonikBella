@@ -7,6 +7,8 @@
             <div  class="category-picture rounded col-sm-10 col-md-5 col-xl-3 product-service m-2 text-body" ng-repeat="p in Ctrl.products">
                 <img src='{{p.photo}}'>
                 <p class="architect-font">{{p.description}}</p>
+                <a ng-href="#!produkty/{{Ctrl.productCategory}}/{{p.id}}"><button type="button" class="btn btn-dark m-3">Sprawdz</button></a>
+
             </div>
 
         </div>
