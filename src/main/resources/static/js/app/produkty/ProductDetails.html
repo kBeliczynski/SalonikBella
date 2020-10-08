@@ -1,0 +1,53 @@
+<section class="services">
+
+    <div class="container">
+
+        <header>
+
+            <div class="perfume-action-details row justify-content-center align-items-center">
+
+                <div data-aos="fade-right" class="rounded float-left perfume-details-picture col-sm-6">
+
+                    <img src='{{Ctrl.perfume.photo}}'/>
+
+                </div>
+
+                <div data-aos="fade-left" class="perfume-details col-sm-6">
+
+                    <div class="perfume-details-price main-font" >CENA : {{Ctrl.perfume.price}} ZŁ</div>
+
+                    <h2>
+                        <button class="main-font btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample1">
+                            <i class =" fa fa-angle-down "onClick =" ($ (this) [0] .className == 'fa fa-angle-up')? $ (this) [0] .className = 'fa fa-angle-down': $ (this) [0] .className = 'fa fa-angle-up' "style = "float: left; width:100%! important;"> OPIS   </i>
+                        </button>
+                    </h2>
+                    <div class="collapse" id="collapseExample1" >
+                        <div class="card card-body architect-font">
+                            {{Ctrl.perfume.description}}
+                        </div>
+                    </div>
+
+
+                    <h2>
+                        <button class="main-font btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample2">
+                            <i class =" fa fa-angle-down "onClick =" ($ (this) [0] .className == 'fa fa-angle-up')? $ (this) [0] .className = 'fa fa-angle-down': $ (this) [0] .className = 'fa fa-angle-up' "style = "float: left; width:100%! important;"> NUTY ZAPACHOWE </i>
+                        </button>
+                    </h2>
+                    <div class="collapse" id="collapseExample2">
+                        <div class="card card-body architect-font">
+                            {{Ctrl.perfume.smell}}
+                        </div>
+                    </div>
+
+                    <div class="perfume-details-info architect-font">
+                        Zapraszam do salonu w celu sprawdzenia próbek i wybrania najlepszych perfum !
+                    </div>
+
+                </div>
+
+
+        </header>
+
+    </div>
+
+</section>

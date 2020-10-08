@@ -3,12 +3,13 @@
     <div class="container">
 
         <div class="row justify-content-center category-service">
-            <div class="category-picture rounded col-sm-10 col-md-5 col-xl-3 product-service m-2 text-body " ng-repeat="category in Ctrl.categories">
-                <img src='{{category.photo}}'>
-                <p class="architect-font">{{category.description}}</p>
-            </div>
-        </div>
 
+                <a ng-href="#!produkty/{{category.name}}"  class="category-picture rounded col-sm-10 col-md-5 col-xl-3 product-service m-2 text-body " ng-repeat="category in Ctrl.categories">
+                    <img src='{{category.photo}}'>
+                    <p class="architect-font">{{category.description}}</p>
+                </a>
+
+        </div>
 
     </div>
 

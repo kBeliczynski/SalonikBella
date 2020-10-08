@@ -43,7 +43,9 @@ INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUE
 /* INSERT INTO `SalonikBella`.`picture` (`description`,`name`,`path`,`title`) VALUES ('','','','');*/
 
 /* products */
-INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('Szampon do włosów sychych i zniszczonych',' Posiada ekscytujący zapach aromatycznego kokosa.','k','Szampon kokosowy','/img/',15.99,'Joanna','1000ml',1);
+INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('Szampon do włosów sychych i zniszczonych',' Posiada ekscytujący zapach aromatycznego kokosa.','k','Szampon kokosowy','img/produkty/category/kreatyna.png',15.99,'Joanna','1000ml',1);
+INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('Szampon do włosów sychych i zniszczonych',' Posiada ekscytujący zapach aromatycznego kokosa.','k','Szampon kokosowy','img/produkty/category/kreatyna.png',15.99,'Joanna','1000ml',1);
+INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('Szampon do włosów sychych i zniszczonych',' Posiada ekscytujący zapach aromatycznego kokosa.','k','Szampon kokosowy','img/produkty/category/kreatyna.png',15.99,'Joanna','1000ml',1);
 /* INSERT INTO `SalonikBella`.`product` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`producer`,`volume`,`category_id`) VALUES ('','','','','',,'','',''); */
 
 /* category */

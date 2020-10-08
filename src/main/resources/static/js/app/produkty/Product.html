@@ -1,10 +1,15 @@
-<section class="services">
+<section class="categories">
 
     <div class="container">
 
+        <div class="row justify-content-center">
 
-    tutaj będa produkty wzgledem kategorii
+            <div  class="category-picture rounded col-sm-10 col-md-5 col-xl-3 product-service m-2 text-body" ng-repeat="p in Ctrl.products">
+                <img src='{{p.photo}}'>
+                <p class="architect-font">{{p.description}}</p>
+            </div>
 
+        </div>
 
     </div>
 

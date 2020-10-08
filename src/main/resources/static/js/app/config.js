@@ -26,9 +26,14 @@ angular.module('app')
             controller: 'PerfumeDetailsController',
             controllerAs: 'Ctrl'
         })
-        .when('/produkty', {
+        .when('/produkty/:category', {
             templateUrl: 'js/app/produkty/Product.html',
             controller: 'ProductController',
+            controllerAs: 'Ctrl'
+        })
+        .when('/produkty/:category/:id', {
+            templateUrl: 'js/app/produkty/ProductDetails.html',
+            controller: 'ProductDetailsController',
             controllerAs: 'Ctrl'
         })
         .when('/produkty', {
