@@ -6,13 +6,13 @@
 
             <div class="product-action-details row justify-content-center align-items-center">
 
-                <div data-aos="fade-right" class="rounded float-left product-details-picture col-sm-6">
+                <div data-aos="fade-right" class="img-fluid rounded float-left product-details-picture col-md-6">
 
-                    <img src='{{Ctrl.product.photo}}'/>
+                    <img class="img-fluid" src='{{Ctrl.product.photo}}'/>
 
                 </div>
 
-                <div data-aos="fade-left" class="product-details col-sm-6">
+                <div data-aos="fade-left" class="product-details col-md-6">
 
                     <div class="product-details-price main-font" >CENA : {{Ctrl.product.price}} ZŁ</div>
 
@@ -30,12 +30,12 @@
 
                     <h2>
                         <button class="main-font btn btn-light" type="button" data-toggle="collapse" data-target="#collapseExample2">
-                            <i class =" fa fa-angle-down "onClick =" ($ (this) [0] .className == 'fa fa-angle-up')? $ (this) [0] .className = 'fa fa-angle-down': $ (this) [0] .className = 'fa fa-angle-up' "style = "float: left; width:100%! important;"> NUTY ZAPACHOWE </i>
+                            <i class =" fa fa-angle-down "onClick =" ($ (this) [0] .className == 'fa fa-angle-up')? $ (this) [0] .className = 'fa fa-angle-down': $ (this) [0] .className = 'fa fa-angle-up' "style = "float: left; width:100%! important;"> INFORMACJE DODATKOWE </i>
                         </button>
                     </h2>
                     <div class="collapse" id="collapseExample2">
                         <div class="card card-body architect-font">
-                            nic
+                            {{Ctrl.product.extraInfo}}
                         </div>
                     </div>
 
