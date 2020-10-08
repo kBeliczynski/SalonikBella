@@ -18,10 +18,10 @@ public class ProductEndpoint {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("api/products")
+    @GetMapping("/api/products")
     public List<Product> getAll(){return productRepository.findAll();}
 
-    @GetMapping("api/products/{name}")
+    @GetMapping("/api/products/{name}")
     public List<Product> getAllByCategory(@PathVariable String name){
         return productRepository.findAllByCategoryName(name);
     }
@@ -32,5 +32,4 @@ public class ProductEndpoint {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
 }
