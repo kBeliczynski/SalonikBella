@@ -300,7 +300,7 @@ footer{
 	}
 	.category-picture img{
 		max-width: 250px;
-	padding: 10px;
+		padding: 10px;
 		pointer-events: none;
 	}
 	.category-picture p{
