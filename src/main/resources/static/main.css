@@ -116,16 +116,26 @@ footer{
 	font-size: 15px;
 }
 
-.perfume-picture{
+.perfume-picture-15, .perfume-picture-50, .perfume-picture-100{
 	overflow: hidden;
 	height: 250px;
 	margin-top: 10px;
 	padding: 10px;
 }
 
-.perfume-picture img{
+.perfume-picture-15 img{
 	max-width: 180px;
 	transform: scale(2.4) translateY(5%);
+}
+
+.perfume-picture-50 img{
+	max-width: 180px;
+	transform: scale(1.5) translateY(5%);
+}
+
+.perfume-picture-100 img{
+	max-width: 180px;
+	transform: scale(1.5) translateY(5%);
 }
 
 .perfume-tile{
@@ -159,15 +169,24 @@ footer{
 
 /* perfum details */
 
-.perfume-details-picture{
+.perfume-details-picture-15, .perfume-details-picture-50, .perfume-details-picture-100{
 	margin-top: 30px;
 	margin-bottom: 30px;
 	overflow: hidden;
 	box-shadow:0 0 15px black;
+	background: white;
 }
 
-.perfume-details-picture img {
+.perfume-details-picture-15 img {
 	transform: scale(1.5);
+}
+
+.perfume-details-picture-50 img {
+	transform: scale(1);
+}
+
+.perfume-details-picture-100 img {
+	transform: scale(1);
 }
 
 .perfume-details .collapse .architect-font{
