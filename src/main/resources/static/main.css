@@ -27,7 +27,6 @@ a:hover{
 	background: navajowhite;
 }
 
-
 .navbar {
 	min-height: 57px;
 	margin-bottom: 30px	;
@@ -208,6 +207,16 @@ footer{
 }
 
 /* Start */
+
+	/* glowne informacje */
+
+	.main-home-element{
+		background: antiquewhite;
+		color: black;
+		height: 200px;
+		width: auto;
+		margin-bottom: 30px;
+	}
 
 	/* GALERIA */
 
