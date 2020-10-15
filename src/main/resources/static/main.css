@@ -196,7 +196,9 @@ footer{
 	margin-top: 5px;
 }
 .perfume-details-price{
-	font-size: 35px;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	font-size: 40px;
 }
 .perfume-details-info{
 	margin-top: 5px;
@@ -340,7 +342,9 @@ footer{
 		margin-top: 5px;
 	}
 	.product-details-price{
-		font-size: 35px;
+		margin-top: 20px;
+		margin-bottom: 15px;
+		font-size: 40px;
 	}
 	.product-details-info{	margin-top: 5px;
 	}
