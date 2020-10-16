@@ -146,6 +146,15 @@ footer{
 	box-shadow:0 0 7px black;
 }
 
+.perfume-tile.ng-enter {
+	transition: 0.5s linear all;
+	opacity:0;
+}
+
+.perfume-tile.ng-enter.ng-enter-active {
+	opacity:1;
+}
+
 .perfume-button {
 	padding-top: 20px;
 	color: white;
@@ -265,15 +274,11 @@ footer{
 	/* sekcja usług */
 
 	.service-section-title{
-		margin-left: -13px;
-		margin-right: -13px;
 		background: rgba(250, 219, 174, 0.53);
 		widht:500px;
 		height: 200px;
 	}
 	.service-section-picture{
-		margin-left: -13px;
-		margin-right: -13px;
 		background: rgba(250, 219, 174, 0.53);
 		widht:500px;
 		height: 200px;
@@ -306,6 +311,16 @@ footer{
 		box-shadow:0 0 15px black;
 		text-align: center;
 	}
+
+	.product-tile.ng-enter {
+		transition: 1s linear all;
+		opacity:0;
+	}
+
+	.product-tile.ng-enter.ng-enter-active {
+		opacity:1;
+	}
+
 	.category-picture{
 		margin-top: 10px;
 	}
@@ -317,6 +332,7 @@ footer{
 	.category-picture p{
 		pointer-events: none;
 	}
+
 	.category-service :hover{
 		transform: scale(0.95);
 	}
