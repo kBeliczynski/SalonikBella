@@ -13,4 +13,11 @@ public class HomeController {
     public String home() {
         return "index.html";
     }
+
+    //naprawia problem z nieprawidłowym adresem po odświerzeniu strony (po dodaniu $locationProvider w konfiguracji)
+    @RequestMapping(value = "/**/{[path:[^\\.]*}")
+    public String redirect() {
+        // Forward to home page so that route is preserved.
+        return "forward:/";
+    }
 }
