@@ -175,6 +175,11 @@ footer{
 	transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 }
 
+.perfume-default-message{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	font-size: 65px;
+}
 
 /* perfum details */
 
@@ -332,6 +337,12 @@ footer{
 
 	.category-service :hover{
 		transform: scale(0.95);
+	}
+
+	.category-default-message{
+		margin-top: 100px;
+		margin-bottom: 100px;
+		font-size: 65px;
 	}
 
 	/* product details */
