@@ -1,5 +1,6 @@
 body {
-	background-color: rgb(53, 59, 62);
+	background-color: rgb(3, 30, 35);
+/*	background-color: rgb(53, 59, 62); */
 	color: #ffffff;
     font-family: 'Open Sans', sans-serif;
     font-size: 17px;
@@ -43,7 +44,7 @@ a:hover{
 }
 
 .bg-navigator {
-	background-color: rgba(207, 146, 248, 0.76) !important;
+	background-color: rgba(167, 60, 241, 0.76) !important;
 }
 
 ul > li {
@@ -93,13 +94,13 @@ header{
 /* footer */
 
 .footer-copyright{
-	background: #006d4d;
+	background: #4c7f1b;
 	margin-left: 0px;
 	margin-right: 0px;
 }
 
 .page-footer{
-	background: #048b60;
+	background: #5d9a23;
 	padding-top: 30px
 }
 footer{
@@ -275,18 +276,14 @@ footer{
 
 	.service-section-title{
 		background: rgba(250, 219, 174, 0.53);
-		widht:500px;
 		height: 200px;
 	}
-	.service-section-picture{
-		background: rgba(250, 219, 174, 0.53);
-		widht:500px;
+	.service-section-picture {
 		height: 200px;
 		overflow: hidden;
 	}
-
 	.service-section-picture img{
-		height: 100%;
+		height: 200px;
 	}
 
 	.service-section .main-font{
