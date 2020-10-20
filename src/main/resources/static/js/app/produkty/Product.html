@@ -3,7 +3,6 @@
     <div class="container">
 
         <div class="row justify-content-center">
-
             <div  class="category-picture rounded col-sm-10 col-md-5 col-xl-3 product-service m-2 text-body product-tile" ng-repeat="p in Ctrl.products">
                 <img ng-src='{{p.photo}}' />
                 <p class="architect-font">{{p.name}}</p>
@@ -14,6 +13,7 @@
                 <div class="default-message architect-font" ng-if="!Ctrl.anyProducts()">
                     <h2>Na tą chwilę nie posiadamy produktów z tej kategorii <i class="far fa-frown"></i> </h2>
                     <p>Zapraszamy wkrótce !</p>
+                    <a ng-href="/produkty"><button type="button" class="btn btn-block btn-outline-danger mt-4 mb-4">Powrót</button></a>
                 </div>
             </div>
         </div>

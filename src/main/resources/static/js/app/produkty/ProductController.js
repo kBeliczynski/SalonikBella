@@ -18,8 +18,8 @@ angular.module('app')
  			console.log(response.status); //np. 404
      });
 
-    vm.anyPerfumes = function(){
-        return vm.perfumes[0];
+    vm.anyProducts = function(){
+        return vm.products[0];
     }
 
 })
