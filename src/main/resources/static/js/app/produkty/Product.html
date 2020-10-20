@@ -10,12 +10,12 @@
                 <a ng-href="/produkty/{{Ctrl.productCategory}}/{{p.id}}"><button type="button" class="btn btn-dark m-3">Sprawdz</button></a>
 
             </div>
-
-            <div class="category-default-message architect-font" ng-if="!Ctrl.products[0].name">
-                <h2>Na tą chwilę nie posiadamy produktów z tej kategorii <i class="far fa-frown"></i> </h2>
-                <p>Zapraszamy wkrótce !</p>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <div class="default-message architect-font" ng-if="!Ctrl.anyProducts()">
+                    <h2>Na tą chwilę nie posiadamy produktów z tej kategorii <i class="far fa-frown"></i> </h2>
+                    <p>Zapraszamy wkrótce !</p>
+                </div>
             </div>
-
         </div>
 
     </div>

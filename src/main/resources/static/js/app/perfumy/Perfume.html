@@ -54,9 +54,9 @@
                     <div class="perfume-picture-{{perfume.volume}} float-right col-sm-6 "> <img src='{{perfume.photo}}'/> </div>
                 </div>
             </div>
-
-            <p class="perfume-default-message architect-font" ng-if="!Ctrl.perfumes[0].name">Nie posiadamy perfum których szukasz <i class="far fa-frown"></i> </p>
-
+            <div data-aos="fade-up" data-aos-delay="300">
+                <p class="default-message architect-font" ng-if="!Ctrl.anyPerfumes()">Nie posiadamy perfum których szukasz <i class="far fa-frown"></i> </p>
+            </div>
         </div>
 
 

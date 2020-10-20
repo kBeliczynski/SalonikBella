@@ -18,6 +18,10 @@ angular.module('app')
  			console.log(response.status); //np. 404
      });
 
+    vm.anyPerfumes = function(){
+        return vm.perfumes[0];
+    }
+
 })
 .controller('ProductDetailsController', function ($resource, $routeParams, Products ) {
     var vm = this;
