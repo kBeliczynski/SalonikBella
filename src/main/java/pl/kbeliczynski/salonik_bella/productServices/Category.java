@@ -14,22 +14,27 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_category")
     private Long id;
     private String name;
     @Column(length = 1024)
     private String description;
     private String photo;
     @JsonBackReference // adnotacja która sprawia że JSON nie wyswietla rekurencji podczas wyswietlania produktu i jego kategorii
-    @OneToMany(mappedBy = "category",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Product> devices = new HashSet<>();
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "category_products",
+            joinColumns = {@JoinColumn(name="category_id", referencedColumnName="id_category")},
+            inverseJoinColumns = {@JoinColumn(name="product_id", referencedColumnName="id_product")}
+    )
+    private Set<Product> products = new HashSet<>();
 
     Category() {}
 
-    public Category(String name, String description, String photo, Set<Product> devices) {
+    public Category(String name, String description, String photo, Set<Product> products) {
         this.name = name;
         this.description = description;
         this.photo = photo;
-        this.devices = devices;
+        this.products = products;
     }
 
     public Long getId() {
@@ -64,13 +69,6 @@ public class Category implements Serializable {
         this.photo = photo;
     }
 
-    public Set<Product> getDevices() {
-        return devices;
-    }
-
-    public void setDevices(Set<Product> devices) {
-        this.devices = devices;
-    }
 
     @Override
     public String toString() {

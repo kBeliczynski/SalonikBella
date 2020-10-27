@@ -23,7 +23,7 @@ public class ProductEndpoint {
 
     @GetMapping("/api/products/{name}")
     public List<Product> getAllByCategory(@PathVariable String name){
-        return productRepository.findAllByCategoryName(name);
+        return productRepository.findAllByCategoriesName(name);
     }
 
     @GetMapping("/api/products/{name}/{id}")

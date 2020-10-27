@@ -1,8 +1,12 @@
 package pl.kbeliczynski.salonik_bella.productServices;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="product")
@@ -11,6 +15,7 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_product")
     private Long id;
     private String name;
     private String producer;
@@ -22,22 +27,24 @@ public class Product implements Serializable {
     private String volume;
     private double price;
     private String photo;
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JsonBackReference// adnotacja która sprawia że JSON nie wyswietla rekurencji podczas wyswietlania produktu i jego kategorii
+    @ManyToMany(mappedBy = "products", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Category> categories = new HashSet<>();
 
-    Product() {};
 
-    public Product(String producer, String name, String description, String extraInfo, String gender, String volume, double price, String photo, Category category) {
+    Product() {
+    }
+
+    public Product(String name, String producer, String description, String extraInfo, String gender, String volume, double price, String photo, Set<Category>iescategories) {
         this.name = name;
+        this.producer = producer;
         this.description = description;
         this.extraInfo = extraInfo;
         this.gender = gender;
         this.volume = volume;
         this.price = price;
         this.photo = photo;
-        this.category = category;
-        this.producer = producer;
+        this.categories = categories;
     }
 
     public Long getId() {
@@ -112,12 +119,12 @@ public class Product implements Serializable {
         this.photo = photo;
     }
 
-    public Category getCategory() {
-        return category;
+    public Set<Category> getCategory() {
+        return categories;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(Set<Category> categories) {
+        this.categories = categories;
     }
 
     @Override
@@ -132,7 +139,6 @@ public class Product implements Serializable {
                 ", volume='" + volume + '\'' +
                 ", price=" + price +
                 ", photo='" + photo + '\'' +
-                ", category=" + category +
                 '}';
     }
 }
