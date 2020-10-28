@@ -30,6 +30,5 @@ angular.module('app')
             vm.rightPicture++;
         }
     }
-
-
+    
 }]);

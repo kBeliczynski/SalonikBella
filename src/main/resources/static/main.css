@@ -251,12 +251,26 @@ footer{
 
 	/* glowne informacje */
 
-	.main-home-element{
-		background: antiquewhite;
+	.main-home-photo img{
+		border-radius: 5px;
+	}
+
+	.main-home-description{
+		width: 60%;
+		margin: auto;
+		vertical-align: center;
+		border-radius: 10px;
+		box-shadow: 0 0 7px black;
+		background: rgba(255, 241, 230, 0.8);
+		text-align: center;
 		color: black;
-		height: 200px;
-		width: auto;
-		margin-bottom: 30px;
+		padding: 10px;
+		position: relative;
+		top: -100px;
+	}
+
+	.main-home-description .architect-font{
+		font-size: 3vmin;
 	}
 
 	/* GALERIA */
@@ -306,10 +320,12 @@ footer{
 	.service-section-title{
 		background: rgba(250, 219, 174, 0.53);
 		height: 200px;
+		border-radius: 5px;
 	}
 	.service-section-picture {
 		height: 200px;
 		overflow: hidden;
+		border-radius: 5px;
 	}
 	.service-section-picture img{
 		height: 200px;
