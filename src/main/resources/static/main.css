@@ -80,9 +80,15 @@ ul > li {
 header{
 	text-align: center;
 }
-.info{
+.info {
 	font-size: 18px;
 	text-align: center;
+}
+
+@media only screen and (max-width: 380px){
+	.info .architect-font{
+	font-size: 18px;
+	}
 }
 
 .service{
@@ -207,8 +213,16 @@ footer{
 
 .default-message{
 	margin-top: 100px;
+	margin-left: 5px;
+	margin-right: 5px;
 	margin-bottom: 100px;
-	font-size: 65px;
+	font-size: 50px;
+}
+
+@media only screen and (max-width: 475px){
+.default-message {
+	font-size: 37px;
+	}
 }
 
 /* perfum details */
