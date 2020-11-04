@@ -11,7 +11,7 @@
 	<groupId>pl.kbeliczynski</groupId>
 	<artifactId>salonik_bella</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>salonik_bella</name>
 	<description>Projekt strony dla firmy fryzjerskiej Salonik Bella</description>
 
@@ -62,6 +62,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>SalonikBella</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

@@ -32,6 +32,12 @@ a:hover{
 	background: navajowhite;
 }
 
+@media only screen and (max-width: 767px) {
+  .nav-item {
+	  border-top: 2px groove rgba(161, 69, 226, 0.76);
+  }
+}
+
 .navbar {
 	min-height: 57px;
 	margin-bottom: 30px	;
@@ -266,7 +272,7 @@ footer{
 		color: black;
 		padding: 10px;
 		position: relative;
-		top: -105px;
+		top: -110px;
 	}
 
 	.main-home-description .architect-font{
@@ -322,13 +328,34 @@ footer{
 		height: 200px;
 		border-radius: 5px;
 	}
+
+	@media only screen and (max-width: 500px) {
+  	.service-section-title{
+		  height: 140px;
+  		}
+	}
+
 	.service-section-picture {
+		color: white;
 		height: 200px;
-		overflow: hidden;
+	    overflow: hidden;
 		border-radius: 5px;
 	}
+
+	@media only screen and (max-width: 500px) {
+  	.service-section-picture{
+		  height: 140px;
+  		}
+	}
+
 	.service-section-picture img{
-		height: 200px;
+		height: 225px;
+	}
+
+	@media only screen and (max-width: 500px) {
+  	.service-section-picture img{
+		  height: 140px;
+  		}
 	}
 
 	.service-section .main-font{
