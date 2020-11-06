@@ -11,7 +11,7 @@ angular.module('app')
 
     vm.products = Product.query(
         function success(data, headers) {
-            console.log('Pobrano dane: ' + data + ' z api pod adresem :' + 'api/products/'+vm.productCategory);
+            // console.log('Pobrano dane: ' + data + ' z api pod adresem :' + 'api/products/'+vm.productCategory);
  			console.log(headers('Content-Type'));
  			},
  		function error(response) {
@@ -31,7 +31,7 @@ angular.module('app')
 
     vm.product = Product.get(vm.productIndex,
         function success(data, headers) {
-            console.log('Pobrano dane: ' + data + ' z api pod adresem :' + 'api/products/' + vm.productCategory);
+            // console.log('Pobrano dane: ' + data + ' z api pod adresem :' + 'api/products/' + vm.productCategory);
  			console.log(headers('Content-Type'));
  			},
  		function error(response) {
