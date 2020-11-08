@@ -123,6 +123,28 @@ footer{
 	margin-top: 50px;
 }
 
+@media only screen and (max-width: 770px) {
+	.price-list .main-font {
+		font-size: 18px;
+	}
+}
+@media only screen and (max-width: 431px) {
+	.price-list .main-font {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 770px) {
+	.price-list .architect-font {
+		font-size: 15px;
+	}
+}
+
+@media only screen and (max-width: 431px) {
+	.price-list .architect-font {
+		font-size: 11px;
+	}
+}
 /* perfum */
 
 .perfume-name{
@@ -198,6 +220,12 @@ footer{
 	background: #2F3336;
 }
 
+@media only screen and (max-width: 580px) {
+	.perfume-details .main-font, .product-details .main-font{
+		font-size: 20px;
+	}
+}
+
 .perfume-action{
 	margin-top: 40px;
 	margin-bottom: 20px;
@@ -225,10 +253,10 @@ footer{
 	}
 }
 
-/* perfum details */
+/* perfum detaiperfume-picture-ls */
 
 .perfume-details-picture-15, .perfume-details-picture-50, .perfume-details-picture-100{
-	margin-top: 30px;
+	margin-top: 15px;
 	margin-bottom: 30px;
 	overflow: hidden;
 	box-shadow:0 0 15px black;
@@ -254,11 +282,13 @@ footer{
 	width: 100%;
 	margin-top: 5px;
 }
+
 .perfume-details-price{
 	margin-top: 20px;
 	margin-bottom: 15px;
 	font-size: 40px;
 }
+
 .perfume-details-info{
 	margin-top: 5px;
 }
@@ -411,8 +441,14 @@ footer{
 	.category-picture{
 		margin-top: 10px;
 	}
+
+	@media only screen and (max-width: 530px) {
+		.category-picture .architect-font{
+			font-size: 15px;
+		}
+	}
+
 	.category-picture img{
-		max-width: 250px;
 		padding: 10px;
 		pointer-events: none;
 	}

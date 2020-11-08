@@ -43,13 +43,15 @@
                 <div class="perfume-name main-font col-sm-12 text-uppercase"> <h3>{{perfume.name}} {{perfume.volume}}ml</h3></div>
 
                 <div>
+
+                    <div class="perfume-picture-{{perfume.volume}} float-right col-sm-6 "> <img ng-src='{{perfume.photo}}'/> </div>
+
                     <div class="perfume-description float-left col-sm-6 ">
                         <h5>Opis:</h5>
                         <p class="architect-font ">{{perfume.description}}</p>
                         <a ng-href="/perfumy/{{perfume.id}}"><button type="button" class="btn btn-dark">Sprawdz</button></a>
                     </div>
 
-                    <div class="perfume-picture-{{perfume.volume}} float-right col-sm-6 "> <img ng-src='{{perfume.photo}}'/> </div>
                 </div>
             </div>
             <div data-aos="fade-up" data-aos-delay="300">
