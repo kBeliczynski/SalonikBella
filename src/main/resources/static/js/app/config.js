@@ -1,10 +1,12 @@
 angular.module('app')
-.config(['$routeProvider', '$locationProvider', function ($routeProvider,  $locationProvider) {
+.config(function ($routeProvider,  $locationProvider, $httpProvider) {
 
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
+
+    $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
     $routeProvider
         .when('/start', {
@@ -47,8 +49,17 @@ angular.module('app')
             controller: 'CategoryListController',
             controllerAs: 'Ctrl'
         })
+        .when('/wizyty', {
+            templateUrl: 'js/app/wizyty/Visits.html',
+            controller: 'VisitsController',
+            controllerAs: 'Ctrl'
+        })
+        .when('/login', {
+ 	        templateUrl: 'js/app/logowanie/login.html',
+ 	        controller: 'LoginController',
+ 	        controllerAs: 'Ctrl'
+        })
         .otherwise({
             redirectTo: '/start'
         });
-
-}]);
+});

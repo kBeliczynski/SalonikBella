@@ -493,3 +493,14 @@ footer{
 	}
 	.product-details-info{	margin-top: 5px;
 	}
+
+/* logowanie */
+
+	.form-group input{
+		width: 100%;
+	}
+
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
