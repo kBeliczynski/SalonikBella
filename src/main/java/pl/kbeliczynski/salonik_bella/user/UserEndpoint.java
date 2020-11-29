@@ -2,6 +2,7 @@ package pl.kbeliczynski.salonik_bella.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -41,7 +42,7 @@ public class UserEndpoint {
          }
      }
 
-    @PostMapping("/api/users")
+    @PostMapping(value = "/api/users", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> save(@RequestBody User user) {
         if(user.getId() == null) {
             user.setRole(userRoleRepository.findByRole("USER"));
