@@ -1,0 +1,34 @@
+<section class="services">
+
+	<div class="container row d-flex justify-content-center align-items-center my-5">
+
+    	<div class="col-4">
+ 	    	<h1 class="text-center">Rejestracja</h1>
+ 	    	<form>
+				<div class="form-group d-flex justify-content-center">
+ 		 	    	<input type="text" placeholder="Imie" required="required" ng-model="Ctrl.user.firstName"><br>
+				</div>
+
+				<div class="form-group d-flex justify-content-center">
+					<input type="text" placeholder="Nazwisko" required="required" ng-model="Ctrl.user.lastName"><br>
+				</div>
+
+                <div class="form-group d-flex justify-content-center">
+ 		 	    	<input type="email" placeholder="Email" required="required"  ng-model="Ctrl.user.email"><br>
+				</div>
+
+				<div class="form-group d-flex justify-content-center">
+					<input type="password"  placeholder="Hasło" required="required" ng-model="Ctrl.user.password"><br>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block" ng-click="Ctrl.register()" ng-href="/zarejestrowano">Zarejestruj</button>
+				</div>
+
+ 	    	</form>
+
+    	</div>
+
+	</div>
+
+</section>

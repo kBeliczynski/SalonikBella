@@ -134,8 +134,8 @@ INSERT INTO `SalonikBella`.`category_products` (`category_id`,`product_id`) VALU
 INSERT INTO `SalonikBella`.`category_products` (`category_id`,`product_id`) VALUE (1,27);
     /* INSERT INTO `SalonikBella`.`category_products` (`category_id`,`product_id`) VALUE (1,2); */
 
-
-
+/* UserRole */
+INSERT INTO `SalonikBella`.`user_role` (`role`, `description`) VALUES ('USER', 'default role for user');
 
 
 

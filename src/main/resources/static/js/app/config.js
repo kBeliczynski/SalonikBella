@@ -59,6 +59,14 @@ angular.module('app')
  	        controller: 'LoginController',
  	        controllerAs: 'Ctrl'
         })
+        .when('/rejestracja', {
+ 	        templateUrl: 'js/app/rejestracja/Registration.html',
+ 	        controller: 'RegistrationController',
+ 	        controllerAs: 'Ctrl'
+        })
+        .when('/zarejestrowano', {
+ 	        templateUrl: 'js/app/rejestracja/RegistrationSuccess.html'
+        })
         .otherwise({
             redirectTo: '/start'
         });

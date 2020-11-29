@@ -32,10 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .httpBasic().and()
         .csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and() //withHttpOnlyFalse sprawia  że ciasteczko nie może być odczytywane z poziomu kodu JavaScript
-        .authorizeRequests()
-                .antMatchers(HttpMethod.POST).authenticated().and()                       // w przypadku zapytań POST wymagane jest uwierzytelnienie
         .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.NEVER);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
 }
