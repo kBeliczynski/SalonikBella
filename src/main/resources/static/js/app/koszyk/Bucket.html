@@ -14,23 +14,32 @@
 
                 <div ng-show="Ctrl.anyInBucket()" class="row justify-content-center align-items-center">
 
-                    <h1 class="col-12 row justify-content-center align-items-center">KOSZYK ZAKUPOWY</h1>
+                    <div class="col-12 row justify-content-center align-items-center my-5 display-3">Twój koszyk</div>
 
-                    <div class="shopping-cart col-6">
+                        <div class="shopping-cart row d-flex justify-content-center align-items-center my-2" ng-repeat="product in Ctrl.products">
 
-                        <div class="shopping-cart-product">
-
-                            produkty : {{Ctrl.products}}
-
-                        </div>
-
-                        <div class="shopping-cart-perfume">
-
-                            perfumy : {{Ctrl.perfumes}}
+                            <img class="col-2" ng-src='{{product.photo}}'/>
+                            <div class="col-4 architect-font">{{product.name}}</div>
+                            <div class="col-1 architect-font">{{product.price}} zł</div>
+                            <div class="col-1 architect-font">cena ł</div>
+                            <div class="col-2 architect-font">ilosc</div>
+                            <div class="col-1"><i class="fas fa-sync-alt fa-2x" style="color:slategrey"></i></div>
+                            <div class="col-1"><i class="fas fa-times fa-2x" style="color:darkred"></i></div>
 
                         </div>
 
-                    </div>
+                        <div class="shopping-cart row d-flex justify-content-center align-items-center my-2" ng-repeat="perfume in Ctrl.perfumes">
+
+                            <img class="col-2" ng-src='{{perfume.photo}}'/>
+                            <div class="col-4 architect-font">{{perfume.name}}</div>
+                            <div class="col-1 architect-font">{{perfume.price}} zł</div>
+                            <div class="col-1 architect-font">cena ł</div>
+                            <div class="col-2 architect-font">ilosc</div>
+                            <div class="col-1"><i class="fas fa-sync-alt fa-2x" style="color:slategrey"></i></div>
+                            <div class="col-1"><i class="fas fa-times fa-2x" style="color:darkred"></i></div>
+
+                        </div>
+
 
                     <div class="shopping-summary col-6">
 

@@ -510,3 +510,13 @@ footer{
 	.bucket .empty-bucket h2{
 		font-size: 54px;
 	}
+
+	.shopping-cart{
+		background: white;
+		border-radius: 10px;
+	}
+
+	.shopping-cart .architect-font{
+		font-size: 1.5vmax;
+		color: black;
+	}
