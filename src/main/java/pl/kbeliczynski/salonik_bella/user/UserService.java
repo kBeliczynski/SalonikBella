@@ -13,6 +13,7 @@ public class UserService {
 
 	@Autowired
 	public UserService(PasswordEncoder passwordEncoder) {
+		super();
 		this.passwordEncoder = passwordEncoder;
 	}
 
@@ -27,11 +28,9 @@ public class UserService {
 	}
 
 	public void addWithDefaultRole(User user) {
-		UserRole defaultRole = roleRepository.findByRole(DEFAULT_ROLE);
-		user.setRole(defaultRole);
+		user.setRole(roleRepository.findByRole(DEFAULT_ROLE));
 		String passwordHash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(passwordHash);
-		userRepository.save(user);
 	}
 
 }

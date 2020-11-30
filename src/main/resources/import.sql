@@ -137,9 +137,18 @@ INSERT INTO `SalonikBella`.`category_products` (`category_id`,`product_id`) VALU
 /* UserRole */
 INSERT INTO `SalonikBella`.`user_role` (`role`, `description`) VALUES ('USER', 'default role for user');
 
+/* User */
+INSERT INTO `SalonikBella`.`user` (`email`,`first_name`,`last_name`,`password`,`role_id`) VALUES ('kamil@gmail.com','Kamil','B','{bcrypt}$2y$12$F69c5ffmSm/7NUmvR86ZS.uIUKIFloqA9tNdalKJWoWwarY6eO.fi',1);
+INSERT INTO `SalonikBella`.`user` (`email`,`first_name`,`last_name`,`password`,`role_id`) VALUES ('michal@gmail.com','Michał','G','{bcrypt}$2y$12$ujUlLqKAnBtjBYzybGdNW.Dp70G1ftwJ5C/sjT/HK45GYQCNGtGQC',1);
 
 
+/* Koszyk Perfum */
+INSERT INTO `SalonikBella`.`user_perfume_list` (`user_id`,`perfume_list_id`) VALUES (1,2);
+INSERT INTO `SalonikBella`.`user_perfume_list` (`user_id`,`perfume_list_id`) VALUES (1,3);
+INSERT INTO `SalonikBella`.`user_perfume_list` (`user_id`,`perfume_list_id`) VALUES (1,4);
 
+/* Koszyk Produktow */
+INSERT INTO `SalonikBella`.`user_product_list` (`user_id`,`product_list_id_product`) VALUES (1,1);
 
 
 

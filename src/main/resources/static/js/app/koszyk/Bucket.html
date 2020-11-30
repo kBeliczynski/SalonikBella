@@ -1,0 +1,60 @@
+<section class="services">
+
+    <div class="container">
+
+        <header>
+
+            <div ng-show="!authenticated" class="row d-flex justify-content-center align-items-center my-5">
+ 			    <h1 class="col-8 d-flex justify-content-center align-items-center my-5">Zaloguj się lub zarejestruj aby zobaczyć swój koszyk !</h1>
+                <a class="col-6 btn btn-success btn-block m-3" ng-href="/login">Logowanie</a>
+                <a class="col-6 btn btn-primary btn-block m-3" ng-href="/rejestracja">Rejestracja</a>
+ 		    </div>
+
+            <div ng-show="authenticated" class="bucket">
+
+                <div ng-show="Ctrl.anyInBucket()" class="row justify-content-center align-items-center">
+
+                    <h1 class="col-12 row justify-content-center align-items-center">KOSZYK ZAKUPOWY</h1>
+
+                    <div class="shopping-cart col-6">
+
+                        <div class="shopping-cart-product">
+
+                            produkty : {{Ctrl.products}}
+
+                        </div>
+
+                        <div class="shopping-cart-perfume">
+
+                            perfumy : {{Ctrl.perfumes}}
+
+                        </div>
+
+                    </div>
+
+                    <div class="shopping-summary col-6">
+
+
+                    </div>
+
+                </div>
+
+                <div ng-show="!Ctrl.anyInBucket()" class="empty-bucket row d-flex justify-content-center align-items-center my-5">
+
+                    <i class="fas fa-cart-arrow-down fa-7x my-5 col-10 d-flex justify-content-center"></i>
+                    <h2 class="architect-font my-4 col-10 d-flex justify-content-center">Twój koszyk jest pusty.</h2>
+                    <p class="architect-font my-4 col-10 d-flex justify-content-center">Dodaj do niego produkty, aby móc rozpocząć składanie zamówienia.</p>
+                    <a class="btn btn-primary col-5 mx-1" ng-href="/perfumy">Perfumy</a>
+                    <a class="btn btn-primary col-5 mx-1"  ng-href="/produkty">Produkty</a>
+
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+    </div>
+
+</section>

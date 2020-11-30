@@ -2,10 +2,10 @@ angular.module('app')
 	.controller('LoginController', function($rootScope, $location, LoginService) {
 		var vm = this;
 		vm.credentials = {};
-		$rootScope.user = "nieznajomy";
-		var loginSuccess = function() {
+		$rootScope.loggedUser = {};
+		var loginSuccess = function(user) {
 			$rootScope.authenticated = true;
-			$rootScope.user = vm.credentials.username;
+			$rootScope.loggedUser = user;
 			$location.path('/start');
 		}
 		vm.login = function() {
@@ -13,7 +13,7 @@ angular.module('app')
 		}
 		var logoutSuccess = function() {
 			$rootScope.authenticated = false;
-			$rootScope.user = "nieznajomy";
+			$rootScope.loggedUser = {};
 			$location.path('/start');
 		}
 		vm.logout = function() {

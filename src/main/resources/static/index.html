@@ -73,6 +73,12 @@
 		<!-- Rejestracja -->
 		<script src="js/app/rejestracja/RegistrationController.js"></script>
 
+		<!-- Przypomnij hasło -->
+		<script src="js/app/przypomnienieHasla/PasswordReminderController.js"></script>
+
+		<!-- Koszyk zakupowy -->
+		<script src="js/app/koszyk/BucketController.js"></script>
+		<script src="js/app/koszyk/BucketService.js"></script>
 
 		<base ng-href="/" />
 
@@ -101,27 +107,27 @@
 				<ul class="navbar-nav ml-auto mr-auto">
 
 					<li class="nav-item active">
-						<a class="nav-link" href="/start"> Start </a>
+						<a class="nav-link" ng-href="/start"> Start </a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="/cennik"> Cennik </a>
+						<a class="nav-link" ng-href="/cennik"> Cennik </a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link " href="/produkty"> Produkty </a>
+						<a class="nav-link " ng-href="/produkty"> Produkty </a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="/perfumy"> Perfumy </a>
+						<a class="nav-link" ng-href="/perfumy"> Perfumy </a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="/wizyty"> Wizyty </a>
+						<a class="nav-link" ng-href="/wizyty"> Wizyty </a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="/kontakt"> Kontakt </a>
+						<a class="nav-link" ng-href="/kontakt"> Kontakt </a>
 					</li>
 
 					<li class="nav-item dropdown">
@@ -130,10 +136,10 @@
 						</a>
 
 						<div class="dropdown-menu" aria-labelledby="submenu" ng-controller="LoginController">
-							<a class="dropdown-item d-flex justify-content-center" ng-show="authenticated"><b><i> Witaj {{user}} </i></b></a>
-							<a class="dropdown-item d-flex justify-content-center" ng-show="!authenticated" href="/login">Zaloguj <i class="fas fa-sign-in-alt ml-1"></i></a>
-							<a class="dropdown-item d-flex justify-content-center" ng-show="authenticated" ng-click="LoginController.logout()" href="/login">Wyloguj <i class="fas fa-sign-out-alt ml-1	"></i></a>
-							<a class="dropdown-item d-flex justify-content-center" href="#">Koszyk <i class="fas fa-shopping-basket ml-1"></i></a>
+							<a class="dropdown-item d-flex justify-content-center" ng-show="authenticated"><b><i> Witaj {{loggedUser.firstName}} </i></b></a>
+							<a class="dropdown-item d-flex justify-content-center" ng-show="!authenticated" ng-href="/login">Zaloguj <i class="fas fa-sign-in-alt ml-1 d-flex align-items-center"></i></a>
+							<a class="dropdown-item d-flex justify-content-center" ng-show="authenticated" ng-click="LoginController.logout()" href="/login">Wyloguj <i class="fas fa-sign-out-alt ml-1	d-flex align-items-center"></i></a>
+							<a class="dropdown-item d-flex justify-content-center" ng-href="/koszyk">Koszyk <i class="fas fa-shopping-basket ml-1 d-flex align-items-center"></i></a>
 						</div>
 					</li>
 				</ul>

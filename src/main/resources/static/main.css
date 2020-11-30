@@ -504,3 +504,9 @@ footer{
         min-height: 38px;
         border-radius: 2px;
     }
+
+/* koszyk zakupowy */
+
+	.bucket .empty-bucket h2{
+		font-size: 54px;
+	}

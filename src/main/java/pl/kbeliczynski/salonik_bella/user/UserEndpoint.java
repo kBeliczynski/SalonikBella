@@ -18,13 +18,15 @@ public class UserEndpoint {
     private ProductRepository productRepository;
     private PerfumeRepository perfumeRepository;
     private UserRoleRepository userRoleRepository;
+    private UserService userService;
 
     @Autowired
-    public UserEndpoint(UserRepository userRepository,ProductRepository productRepository,PerfumeRepository perfumeRepository, UserRoleRepository userRoleRepository) {
+    public UserEndpoint(UserRepository userRepository,ProductRepository productRepository,PerfumeRepository perfumeRepository, UserRoleRepository userRoleRepository,UserService userService) {
         this.userRepository = userRepository;
         this.perfumeRepository = perfumeRepository;
         this.productRepository = productRepository;
         this.userRoleRepository = userRoleRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/api/users")
@@ -45,7 +47,7 @@ public class UserEndpoint {
     @PostMapping(value = "/api/users", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> save(@RequestBody User user) {
         if(user.getId() == null) {
-            user.setRole(userRoleRepository.findByRole("USER"));
+            userService.addWithDefaultRole(user);
             User saved = userRepository.save(user);
             URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest()
@@ -58,5 +60,15 @@ public class UserEndpoint {
         }
     }
 
+    @PatchMapping(value = "/api/users", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> modify(@RequestBody User user) {
+        if(userRepository.findByEmail(user.getEmail()) != null) {
+            userService.addWithDefaultRole(user);
+            User saved = userRepository.save(user);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+    }
 
 }

@@ -6,9 +6,9 @@ angular.module('app')
  		var config = {headers: authHeader};
  		$http
  		.post(LOGIN_ENDPOINT, {}, config)
- 		.then(function success(value) {
+ 		.then(function success(value)	{ // otrzymuje obiekt User z endpointu /login
  			$http.defaults.headers.post.Authorization = authHeader.Authorization;
- 			successCallback();
+ 			successCallback(value.data);
  		}, function error(reason) {
  			console.log('Login error');
  			console.log(reason);

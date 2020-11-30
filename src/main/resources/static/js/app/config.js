@@ -54,6 +54,11 @@ angular.module('app')
             controller: 'VisitsController',
             controllerAs: 'Ctrl'
         })
+        .when('/koszyk', {
+            templateUrl: 'js/app/koszyk/Bucket.html',
+            controller: 'BucketController',
+ 	        controllerAs: 'Ctrl'
+        })
         .when('/login', {
  	        templateUrl: 'js/app/logowanie/login.html',
  	        controller: 'LoginController',
@@ -66,6 +71,11 @@ angular.module('app')
         })
         .when('/zarejestrowano', {
  	        templateUrl: 'js/app/rejestracja/RegistrationSuccess.html'
+        })
+        .when('/przypomnienie', {
+ 	        templateUrl: 'js/app/przypomnienieHasla/PasswordReminder.html',
+ 	        controller: 'PasswordReminderController',
+ 	        controllerAs: 'Ctrl'
         })
         .otherwise({
             redirectTo: '/start'
