@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pl.kbeliczynski.salonik_bella.PerfumeServices.PerfumeRepository;
 import pl.kbeliczynski.salonik_bella.productServices.ProductRepository;
@@ -36,12 +37,9 @@ public class UserEndpoint {
 
     @GetMapping("/api/users/{id}")
      public ResponseEntity<User> getById(@PathVariable Long id) {
-         User user = userRepository.getOne(id);
-         if(user != null) {
-             return ResponseEntity.ok(user);
-         } else {
-             return ResponseEntity.notFound().build();
-         }
+         return userRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
      }
 
     @PostMapping(value = "/api/users", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -60,15 +58,16 @@ public class UserEndpoint {
         }
     }
 
-    @PatchMapping(value = "/api/users", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> modify(@RequestBody User user) {
-        if(userRepository.findByEmail(user.getEmail()) != null) {
-            userService.addWithDefaultRole(user);
-            User saved = userRepository.save(user);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
-        }
+    @PutMapping("/api/users/{id}")
+    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
+        userRepository.deleteById(id);
+        User saved = userRepository.save(user);
+        URI location = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(saved.getId())
+                    .toUri();
+            return ResponseEntity.created(location).body(user);
     }
 
 }

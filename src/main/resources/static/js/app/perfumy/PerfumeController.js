@@ -20,28 +20,14 @@ angular.module('app')
     }
 
 }])
-.controller('PerfumeDetailsController', function ($resource, $rootScope, $routeParams, Perfumes ) {
+.controller('PerfumeDetailsController', function ($resource, $rootScope, $routeParams, Perfumes , Users) {
     var vm = this;
     var perfumeIndex = $routeParams.id;
     vm.perfume = Perfumes.get(perfumeIndex);
-    var modifyUser = $resource("api/users")
 
     vm.addPerfumeToBucket = function () {
+        vm.user = Users.get($rootScope.loggedUser.id);
         $rootScope.loggedUser.perfumeList.push(vm.perfume);
-        $rootScope.loggedUser.$save((function(data) {
- 			refreshData();
-        }));
+        Users.update(vm.user);
     }
-
-    function refreshData() {
- 		vm.products = Product.query(
- 				function success(data, headers) {
- 					console.log('Pobrano dane: ' +  data);
- 					console.log(headers('Content-Type'));
- 				},
- 				function error(reponse) {
- 					console.log(response.status); //np. 404
- 				});
- 	}
-
 });
