@@ -28,6 +28,10 @@ angular.module('app')
     vm.addPerfumeToBucket = function () {
         vm.user = Users.get($rootScope.loggedUser.id);
         $rootScope.loggedUser.perfumeList.push(vm.perfume);
+        vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
+        vm.user.productList = $rootScope.loggedUser.productList;
+        vm.user.id = $rootScope.loggedUser.id;
+        console.log(vm.user);
         Users.update(vm.user);
     }
 });

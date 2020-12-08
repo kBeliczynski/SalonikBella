@@ -12,6 +12,7 @@ import pl.kbeliczynski.salonik_bella.productServices.ProductRepository;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserEndpoint {
@@ -59,9 +60,11 @@ public class UserEndpoint {
     }
 
     @PutMapping("/api/users/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
-        userRepository.deleteById(id);
-        User saved = userRepository.save(user);
+    public ResponseEntity<User> update(@RequestBody User user, @PathVariable Long id) {
+        Optional<User> newUser = userRepository.findById(id);
+        newUser.get().setPerfumeList(user.getPerfumeList());
+        newUser.get().setProductList(user.getProductList());
+        User saved = userRepository.save(newUser.get());
         URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest()
                     .path("/{id}")

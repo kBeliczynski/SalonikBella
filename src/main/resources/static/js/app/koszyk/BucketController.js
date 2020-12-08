@@ -5,7 +5,10 @@ angular.module('app')
         vm.perfumes = $rootScope.loggedUser.perfumeList;
 
         vm.anyInBucket = function(){
-            return vm.products[0] && vm.perfumes[0];
+            if(vm.products[0] === undefined && vm.perfumes[0] === undefined)
+                return false;
+            else
+                return true;
         }
 
     });
