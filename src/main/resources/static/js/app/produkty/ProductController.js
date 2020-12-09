@@ -44,7 +44,6 @@ angular.module('app')
         vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
         vm.user.productList = $rootScope.loggedUser.productList;
         vm.user.id = $rootScope.loggedUser.id;
-        console.log(vm.user);
         Users.update(vm.user);
     }
 });

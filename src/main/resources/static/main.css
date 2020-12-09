@@ -520,3 +520,7 @@ footer{
 		font-size: 1.5vmax;
 		color: black;
 	}
+
+	.refresh:hover, .delete:hover {
+		cursor: pointer;
+	}

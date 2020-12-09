@@ -3,8 +3,10 @@ angular.module('app')
     var vm = this;
 	var User = $resource('api/users');
     vm.user = new User();
+	vm.userSearched = new User();
 
-	vm.change = function(user) {
+	vm.checkValid = function(user) {
+		vm.userSearched.
 		vm.user.$save(function(data) {
 			$location.path('/login');
 			vm.user = new User();
