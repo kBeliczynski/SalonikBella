@@ -77,6 +77,11 @@ angular.module('app')
  	        controller: 'PasswordReminderController',
  	        controllerAs: 'Ctrl'
         })
+        .when('/zmien-haslo', {
+ 	        templateUrl: 'js/app/przypomnienieHasla/ChangePassword.html',
+ 	        controller: 'PasswordReminderController',
+ 	        controllerAs: 'Ctrl'
+        })
         .otherwise({
             redirectTo: '/start'
         });

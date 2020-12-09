@@ -8,5 +8,6 @@ angular.module('app')
 })
 .service('Users', function ($http, User) {
     this.get = index => User.get({id: index});
+    this.getAll = users => User.query(users);
     this.update = user => user.$update({id : user.id});
 });
