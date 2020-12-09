@@ -19,7 +19,7 @@ a{
 }
 a:hover{
 	text-decoration: none;
-	color: rgba(50, 50, 50, 0.75);
+	color: rgb(139, 136, 136);
 }
 
 .home-page{
@@ -523,4 +523,14 @@ footer{
 
 	.refresh:hover, .delete:hover {
 		cursor: pointer;
+	}
+
+	.shopping-cart.ng-leave {
+		transition: 0.3s;
+		opacity:1;
+	}
+
+	.shopping-cart.ng-leave.ng-leave-active {
+		transform: translateX(-100%);
+		opacity:0;
 	}
