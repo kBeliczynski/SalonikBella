@@ -26,6 +26,7 @@ angular.module('app')
     var vm = this;
     vm.productIndex = $routeParams.id;
     vm.productCategory = $routeParams.category;
+    vm.duplicate = false;
     var Product = $resource('api/products/'+vm.productCategory+'/'+vm.productIndex);
 
 
@@ -40,10 +41,20 @@ angular.module('app')
 
     vm.addProductToBucket = function () {
         vm.user = Users.get($rootScope.loggedUser.id);
-        $rootScope.loggedUser.productList.push(vm.product);
-        vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
-        vm.user.productList = $rootScope.loggedUser.productList;
-        vm.user.id = $rootScope.loggedUser.id;
-        Users.update(vm.user);
+        if(!vm.checkDuplicateProductInBucket(vm.product)) {
+            $rootScope.loggedUser.productList.push(vm.product);
+            vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
+            vm.user.productList = $rootScope.loggedUser.productList;
+            vm.user.id = $rootScope.loggedUser.id;
+            Users.update(vm.user);
+        }
     }
+
+    vm.checkDuplicateProductInBucket = function ( product ) {
+        ($rootScope.loggedUser.productList.forEach( (element) => {
+            if(element.name === product.name) vm.duplicate = true;
+        }));
+        return vm.duplicate;
+    }
+
 });
