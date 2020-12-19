@@ -505,6 +505,16 @@ footer{
         border-radius: 2px;
     }
 
+	.login-error-message{
+		color: #5c0b0b;
+		font-size: 16px;
+	}
+
+	.login-error-background{
+		height: 80px;
+		background: #de6565;
+	}
+
 /* koszyk zakupowy */
 
 	.bucket .empty-bucket h2{

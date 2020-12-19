@@ -3,6 +3,7 @@ angular.module('app')
 		var vm = this;
 		vm.credentials = {};
 		$rootScope.loggedUser = {};
+		$rootScope.loginError = false;
 		var loginSuccess = function(user) {
 			$rootScope.authenticated = true;
 			$rootScope.loggedUser = user;
