@@ -529,6 +529,10 @@ footer{
 		font-size: 18px;
 	}
 
+	.summary-content{
+		font-size: 2vmax;
+	}
+
 	.bucket .empty-bucket h2{
 		font-size: 54px;
 	}

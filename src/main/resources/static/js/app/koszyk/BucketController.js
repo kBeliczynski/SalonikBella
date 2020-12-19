@@ -4,6 +4,17 @@ angular.module('app')
         vm.products = $rootScope.loggedUser.productList;
         vm.perfumes = $rootScope.loggedUser.perfumeList;
 
+        vm.checkSummary = function() {
+            var sum = 0;
+            vm.perfumes.forEach( (element) => {
+                sum += element.amount*element.price;
+            })
+            vm.products.forEach( (element) => {
+                sum += element.amount*element.price;
+            })
+            return sum;
+        }
+
         vm.anyInBucket = function(){
             if(undefined == vm.products[0] && undefined == vm.perfumes[0])
                 return false;
