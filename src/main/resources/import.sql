@@ -134,11 +134,12 @@ INSERT INTO `SalonikBella`.`category_products` (`category_id`,`product_id`) VALU
 INSERT INTO `SalonikBella`.`category_products` (`category_id`,`product_id`) VALUE (1,27);
     /* INSERT INTO `SalonikBella`.`category_products` (`category_id`,`product_id`) VALUE (1,2); */
 
-/* UserRole */
-INSERT INTO `SalonikBella`.`user_role` (`role`, `description`) VALUES ('USER', 'default role for user');
+    /* UserRole */
+    INSERT INTO `SalonikBella`.`user_role` (`role`, `description`) VALUES ('USER', 'default role for user');
+INSERT INTO `SalonikBella`.`user_role` (`role`, `description`) VALUES ('ADMIN', 'role for the administrator');
 
 /* User */
-INSERT INTO `SalonikBella`.`user` (`email`,`first_name`,`last_name`,`password`,`role_id`) VALUES ('kamil@gmail.com','Kamil','B','{bcrypt}$2y$12$F69c5ffmSm/7NUmvR86ZS.uIUKIFloqA9tNdalKJWoWwarY6eO.fi',1);
+INSERT INTO `SalonikBella`.`user` (`email`,`first_name`,`last_name`,`password`,`role_id`) VALUES ('kamil@gmail.com','Kamil','B','{bcrypt}$2y$12$F69c5ffmSm/7NUmvR86ZS.uIUKIFloqA9tNdalKJWoWwarY6eO.fi',2);
 INSERT INTO `SalonikBella`.`user` (`email`,`first_name`,`last_name`,`password`,`role_id`) VALUES ('michal@gmail.com','Michał','G','{bcrypt}$2y$12$ujUlLqKAnBtjBYzybGdNW.Dp70G1ftwJ5C/sjT/HK45GYQCNGtGQC',1);
 
 
