@@ -2,6 +2,7 @@ package pl.kbeliczynski.salonik_bella.visitService;
 
 import org.springframework.format.annotation.NumberFormat;
 import pl.kbeliczynski.salonik_bella.hairdressingServices.Haircut;
+import pl.kbeliczynski.salonik_bella.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -19,6 +20,8 @@ public class Visit implements Serializable {
     private Date VisitBegin;
     @NotEmpty
     private Date VisitEnd;
+    @OneToOne
+    private User user;
     @NotEmpty
     @OneToOne
     private Haircut haircutType;
@@ -26,19 +29,28 @@ public class Visit implements Serializable {
     private String AdminInfo;
     @NotEmpty
     @NumberFormat
-    private int number;
+    private int phone;
     private VisitStatus status;
 
     public Visit(){}
 
-    public Visit(@NotEmpty Date visitBegin, @NotEmpty Date visitEnd, @NotEmpty Haircut haircutType, String userInfo, String adminInfo, @NotEmpty int number, VisitStatus status) {
+    public Visit(@NotEmpty Date visitBegin, @NotEmpty Date visitEnd, @NotEmpty Haircut haircutType, String userInfo, String adminInfo, @NotEmpty int phone, VisitStatus status, User user) {
         VisitBegin = visitBegin;
         VisitEnd = visitEnd;
         this.haircutType = haircutType;
         this.userInfo = userInfo;
         AdminInfo = adminInfo;
-        this.number = number;
+        this.phone = phone;
         this.status = status;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {
@@ -89,12 +101,12 @@ public class Visit implements Serializable {
         AdminInfo = adminInfo;
     }
 
-    public int getNumber() {
-        return number;
+    public int getPhone() {
+        return phone;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
     public VisitStatus getStatus() {
@@ -114,7 +126,7 @@ public class Visit implements Serializable {
                 ", haircutType=" + haircutType +
                 ", userInfo='" + userInfo + '\'' +
                 ", AdminInfo='" + AdminInfo + '\'' +
-                ", number=" + number +
+                ", phone=" + phone +
                 ", status=" + status +
                 '}';
     }

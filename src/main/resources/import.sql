@@ -151,9 +151,12 @@ INSERT INTO `SalonikBella`.`user_perfume_list` (`user_id`,`perfume_list_id`) VAL
 /* Koszyk Produktow */
 INSERT INTO `SalonikBella`.`user_product_list` (`user_id`,`product_list_id_product`) VALUES (1,1);
 
-
-
-
+/* Visits */
+INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-1 15:00:00','2021-01-1 15:20:00',123123123,0,'strzyzenie meskie',1,1);
+INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-10 15:00:00','2021-01-10 15:20:00',123123123,0,'strzyzenie meskie',1,1);
+INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-15 15:00:00','2021-01-15 15:20:00',123123123,0,'strzyzenie meskie',1,1);
+INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-1 16:00:00','2021-01-1 16:20:00',987987987,0,'strzyzenie meskie',1,2);
+INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-10 16:00:00','2021-01-10 16:20:00',987987987,0,'strzyzenie meskie',1,2);
 
 
 
