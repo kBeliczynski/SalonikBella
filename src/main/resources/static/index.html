@@ -122,10 +122,17 @@
 						<a class="nav-link" ng-href="/perfumy"> Perfumy </a>
 					</li>
 
-					<li class="nav-item">
-						<a class="nav-link" ng-href="/wizyty">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" ng-href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu1" aria-haspopup="true">
 							Wizyty <i class="far fa-calendar-alt"></i>
 						</a>
+
+						<div class="dropdown-menu" aria-labelledby="submenu1" ng-controller="VisitsController">
+							<a class="dropdown-item d-flex justify-content-center" ng-href="/wizyty/harmonogram"> Harmonogram </a>
+							<a class="dropdown-item d-flex justify-content-center" ng-href="/wizyty/moje-wizyty"> Moje wizyty </a>
+							<a class="dropdown-item d-flex justify-content-center" ng-href="/wizyty/zapisz-sie"> Zapisz się </a>
+							<a class="dropdown-item d-flex justify-content-center" ng-show="loggedUser.role.role === 'ADMIN'" ng-href="/wizyty/zarzadzaj"> Zarządzaj </a>
+						</div>
 					</li>
 
 					<li class="nav-item">
@@ -135,11 +142,11 @@
 					</li>
 
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspopup="true">
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu2" aria-haspopup="true">
 							Profil <i class="fas fa-user-circle"></i>
 						</a>
 
-						<div class="dropdown-menu" aria-labelledby="submenu" ng-controller="LoginController">
+						<div class="dropdown-menu" aria-labelledby="submenu2" ng-controller="LoginController">
 							<a class="dropdown-item d-flex justify-content-center" ng-show="authenticated"><b><i> Witaj {{loggedUser.firstName}} </i></b></a>
 							<a class="dropdown-item d-flex justify-content-center" ng-show="!authenticated" ng-href="/login">Zaloguj <i class="fas fa-sign-in-alt ml-1 d-flex align-items-center"></i></a>
 							<a class="dropdown-item d-flex justify-content-center" ng-show="authenticated" ng-click="LoginController.logout()" href="/login">Wyloguj <i class="fas fa-sign-out-alt ml-1	d-flex align-items-center"></i></a>

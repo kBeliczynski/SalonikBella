@@ -49,8 +49,23 @@ angular.module('app')
             controller: 'CategoryListController',
             controllerAs: 'Ctrl'
         })
-        .when('/wizyty', {
+        .when('/wizyty/harmonogram', {
+            templateUrl: 'js/app/wizyty/Timetable.html',
+            controller: 'VisitsController',
+            controllerAs: 'Ctrl'
+        })
+        .when('/wizyty/moje-wizyty', {
             templateUrl: 'js/app/wizyty/Visits.html',
+            controller: 'VisitsController',
+            controllerAs: 'Ctrl'
+        })
+        .when('/wizyty/zapisz-sie', {
+            templateUrl: 'js/app/wizyty/AddVisits.html',
+            controller: 'VisitsController',
+            controllerAs: 'Ctrl'
+        })
+        .when('/wizyty/zarzadzaj', {
+            templateUrl: 'js/app/wizyty/ManageVisits.html',
             controller: 'VisitsController',
             controllerAs: 'Ctrl'
         })
