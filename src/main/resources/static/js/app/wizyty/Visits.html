@@ -7,8 +7,31 @@
         <a class="col-6 btn btn-primary btn-block m-3" ng-href="/rejestracja">Rejestracja</a>
     </div>
 
-    <div ng-show="authenticated" class="row d-flex justify-content-center align-items-center my-5">
+    <div ng-show="authenticated" class="my-5">
+        <div ng-show="Ctrl.anyVisits()" class="row d-flex justify-content-center align-items-center my-5">
 
+            <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Twóje wizyty</div>
+
+            <div class="col-12 row d-flex justify-content-center align-items-center py-4">
+                <div class="col-2  my-visit-tile architect-font"><b> Dzień </b></div>
+                <div class="col-1  my-visit-tile architect-font"><b> Godzina </b></div>
+                <div class="col-1  my-visit-tile architect-font"><b> Czas trwania </b></div>
+                <div class="col-2  my-visit-tile architect-font"><b> Usługa </b></div>
+                <div class="col-5  my-visit-tile architect-font"><b> Informacje dodatkowe </b></div>
+                <div class="col-1  my-visit-tile architect-font"><b> Status </b></div>
+            </div>
+
+            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in loggedUser.visitList">
+                <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
+                <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
+                <div class="col-1 my-visit-tile architect-font"> Czas trwania </div>
+                <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
+                <div class="col-5 my-visit-tile architect-font" ng-if="visit.adminInfo !== ''"> {{visit.adminInfo}} </div>
+                <div class="col-5 my-visit-tile architect-font" ng-if="visit.adminInfo === ''"> BRAK </div>
+                <div class="col-1 my-visit-tile architect-font" ng-if="visit.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"> {{visit.status}} </div>
+            </div>
+
+        </div>
 
     </div>
 

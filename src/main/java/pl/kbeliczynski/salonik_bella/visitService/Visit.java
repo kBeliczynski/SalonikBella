@@ -1,5 +1,6 @@
 package pl.kbeliczynski.salonik_bella.visitService;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.NumberFormat;
 import pl.kbeliczynski.salonik_bella.hairdressingServices.Haircut;
 import pl.kbeliczynski.salonik_bella.user.User;
@@ -7,7 +8,7 @@ import pl.kbeliczynski.salonik_bella.user.User;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Visit implements Serializable {
@@ -17,11 +18,11 @@ public class Visit implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    private Date VisitBegin;
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm")
+    private LocalDateTime VisitBegin;
     @NotEmpty
-    private Date VisitEnd;
-    @OneToOne
-    private User user;
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm")
+    private LocalDateTime VisitEnd;
     @NotEmpty
     @OneToOne
     private Haircut haircutType;
@@ -34,7 +35,7 @@ public class Visit implements Serializable {
 
     public Visit(){}
 
-    public Visit(@NotEmpty Date visitBegin, @NotEmpty Date visitEnd, @NotEmpty Haircut haircutType, String userInfo, String adminInfo, @NotEmpty int phone, VisitStatus status, User user) {
+    public Visit(@NotEmpty LocalDateTime visitBegin, @NotEmpty LocalDateTime visitEnd, @NotEmpty Haircut haircutType, String userInfo, String adminInfo, @NotEmpty int phone, VisitStatus status) {
         VisitBegin = visitBegin;
         VisitEnd = visitEnd;
         this.haircutType = haircutType;
@@ -42,15 +43,6 @@ public class Visit implements Serializable {
         AdminInfo = adminInfo;
         this.phone = phone;
         this.status = status;
-        this.user = user;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Long getId() {
@@ -61,19 +53,19 @@ public class Visit implements Serializable {
         this.id = id;
     }
 
-    public Date getVisitBegin() {
+    public LocalDateTime getVisitBegin() {
         return VisitBegin;
     }
 
-    public void setVisitBegin(Date visitBegin) {
+    public void setVisitBegin(LocalDateTime visitBegin) {
         VisitBegin = visitBegin;
     }
 
-    public Date getVisitEnd() {
+    public LocalDateTime getVisitEnd() {
         return VisitEnd;
     }
 
-    public void setVisitEnd(Date visitEnd) {
+    public void setVisitEnd(LocalDateTime visitEnd) {
         VisitEnd = visitEnd;
     }
 

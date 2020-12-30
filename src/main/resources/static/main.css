@@ -560,3 +560,30 @@ footer{
 		transform: translateX(-100%);
 		opacity:0;
 	}
+/* Wizyty */
+
+	/* Moje wizyty */
+
+	.my-visit-tile{
+		font-size: 0.7vmax;
+	}
+	@media only screen and (max-width: 2200px) {
+	.my-visit-tile{
+		font-size: 0.9vmax;
+	}
+	@media only screen and (max-width: 1640px) {
+	.my-visit-tile{
+		font-size: 1.2vmax;
+	}
+}
+
+	.my-visits{
+		border-top: 2px groove rgba(255, 255, 255, 0.76);
+	}
+
+	.my-visits .waiting{
+		color: darkorange;
+	}
+	.my-visits .accept{
+		color: green;
+	}
