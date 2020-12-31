@@ -62,6 +62,9 @@ public class UserEndpoint {
     @PutMapping("/api/users/{id}")
     public ResponseEntity<User> update(@RequestBody User user, @PathVariable Long id) {
         Optional<User> newUser = userRepository.findById(id);
+        if(user.getVisitList() != null){
+            newUser.get().setVisitList(user.getVisitList());
+        }
         if(user.getPassword() != null){
             userService.addWithDefaultRole(user);
             newUser.get().setPassword(user.getPassword());

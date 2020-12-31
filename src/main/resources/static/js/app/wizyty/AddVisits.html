@@ -8,6 +8,14 @@
     </div>
 
     <div ng-show="authenticated" class="row d-flex justify-content-center align-items-center my-5">
+        <form action="">
+
+            <select id="service">
+                <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts">{{haircut.name}}</option>
+            </select>
+
+
+        </form>
 
 
     </div>

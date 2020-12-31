@@ -8,7 +8,34 @@
     </div>
 
     <div ng-show="authenticated" class="row d-flex justify-content-center align-items-center my-5">
-    rola : {{loggedUser.role.role}}
+
+        <div ng-show="Ctrl.anyVisits()" class="row d-flex justify-content-center align-items-center my-5">
+
+            <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Zarządzaj wizytami</div>
+
+            <div class="col-12 row d-flex justify-content-center align-items-center py-4">
+                <div class="col-2  my-visit-tile architect-font"><b> Dzień </b></div>
+                <div class="col-1  my-visit-tile architect-font"><b> Godzina </b></div>
+                <div class="col-1  my-visit-tile architect-font"><b> Czas trwania </b></div>
+                <div class="col-2  my-visit-tile architect-font"><b> Usługa </b></div>
+                <div class="col-4  my-visit-tile architect-font"><b> Wiadomość do użytkownika </b></div>
+                <div class="col-1  my-visit-tile architect-font"><b> Usuń </b></div>
+                <div class="col-1  my-visit-tile architect-font"><b> Dodaj </b></div>
+            </div>
+
+            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in visits | filter: {status: 'WAITING'} ">
+                <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
+                <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
+                <div class="col-1 my-visit-tile architect-font"> Czas trwania </div>
+                <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
+                <div class="col-4 my-visit-tile architect-font"> <input type="text"> </div>
+                <div class="col-1 my-visit-tile architect-font delete" ng-click="Ctrl.deleteVisit(visit.id)"> <i class="far fa-calendar-minus fa-3x"></i> </div>
+                <div class="col-1 my-visit-tile architect-font add"> <i class="far fa-calendar-plus fa-3x"></i> </div>
+            </div>
+
+            wszystkir wizyty : "{{visits}}"
+
+        </div>
 
     </div>
 

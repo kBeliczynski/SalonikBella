@@ -547,7 +547,7 @@ footer{
 		color: black;
 	}
 
-	.refresh:hover, .delete:hover {
+	.refresh:hover, .delete:hover .add:hover{
 		cursor: pointer;
 	}
 
@@ -568,8 +568,9 @@ footer{
 		font-size: 0.7vmax;
 	}
 	@media only screen and (max-width: 2200px) {
-	.my-visit-tile{
-		font-size: 0.9vmax;
+		.my-visit-tile {
+			font-size: 0.9vmax;
+		}
 	}
 	@media only screen and (max-width: 1640px) {
 	.my-visit-tile{

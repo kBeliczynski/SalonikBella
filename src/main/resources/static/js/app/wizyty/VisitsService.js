@@ -3,7 +3,7 @@ angular.module('app')
     .factory('Visit', function ($resource, VISIT_ENDPOINT) {
         return $resource(VISIT_ENDPOINT);
     })
-    .service('VisitService', function ($http, Visit) {
-        this.getAll = params => Visit.query(params);
+    .service('VisitService', function (Visit) {
+        this.getAll = params => {Visit.query(params); console.log(params);};
         this.get = index => Visit.get({id: index});
     });
