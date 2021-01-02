@@ -1,13 +1,13 @@
 /* uslugi fryzjerskie */
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('strzyżenie męskie',0,0,'strzyżenie męskie',25);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('strzyżenie dzieci',2,30,'strzyżenie dzieci',25);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Strzyżenie damskie z modelowaniem',1,50,'Strzyżenie damskie z modelowaniem',40);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Koloryzacja odrostów',1,0,'Koloryzacja odrostów',100);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Pasemka, ombre',1,160,'Pasemka, ombre',110);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Fryzury okolicznościowe',1,130,'Fryzury okolicznościowe',40);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Styling (trwała)',1,0,'Styling (trwała)',100);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Keratynowe prostowanie włosów',1,350,'Keratynowe prostowanie włosów',250);
-INSERT INTO `SalonikBella`.`haircut` (`description`,`gender`,`max_price`,`name`, `price`) VALUES ('Nawilżanie włosów',1,0,'Nawilżanie włosów',60);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('strzyżenie męskie',20,0,0,'strzyżenie męskie',25);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('strzyżenie dzieci',20,2,30,'strzyżenie dzieci',25);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('Strzyżenie damskie z modelowaniem',45,1,50,'Strzyżenie damskie z modelowaniem',40);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('Koloryzacja odrostów',90,1,0,'Koloryzacja odrostów',100);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('Pasemka, ombre',180,1,160,'Pasemka, ombre',110);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('Fryzury okolicznościowe',60,1,130,'Fryzury okolicznościowe',40);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('Styling (trwała)',120,1,0,'Styling (trwała)',100);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('Keratynowe prostowanie włosów',180,1,350,'Keratynowe prostowanie włosów',250);
+INSERT INTO `SalonikBella`.`haircut` (`description`,`duration`,`gender`,`max_price`,`name`, `price`) VALUES ('Nawilżanie włosów',45,1,0,'Nawilżanie włosów',60);
 
 /* perfumy 15 ml */
 INSERT INTO `SalonikBella`.`perfume` (`description`,`extra_info`,`gender`,`name`,`photo`,`price`,`smell`,`volume`) VALUES ('Eksplozja nut cytrusowych tworzy bardzo pociągający zapach. Delikatne akordy piżma napawają  pogodnym nastawieniem.','BRAK','m','beach','img/perfumy/beach/beach15.jpg',25,'Aromatyczno - Drzewna, Beach to zrównoważony, czysty zapach. Idealny dla kobiet i mężczyzn. Nuty głowy: Pomarańcza, nuty serca: Konwalia, nuty bazy: Piżmo.','15');
@@ -156,7 +156,7 @@ INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phon
 INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-10 15:00:00','2021-01-10 15:20:00',123123123,1,'strzyzenie meskie',1,1);
 INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent condimentum at nulla a tincidunt. Aliquam metus urna, porttitor nec ligula nec, varius ultricies arcu. Mauris imperdiet ullamcorper magna, ac lacinia odio luctus porttitor. ','2021-01-15 15:00:00','2021-01-15 15:20:00',123123123,0,'strzyzenie meskie',1,1);
 INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-1 16:00:00','2021-01-1 16:20:00',987987987,0,'strzyzenie meskie',1,2);
-INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-10 16:00:00','2021-01-10 16:20:00',987987987,0,'strzyzenie meskie',1,2);
+INSERT INTO `SalonikBella`.`visit` (`admin_info`,`visit_begin`,`visit_end`,`phone`,`status`,`user_info`,`haircut_type_id`,`user_id`) VALUES ('','2021-01-10 16:00:00','2021-01-10 16:20:00',987987987,0,'strzyzenie meskie strzyzenie meskie strzyzenie meskie ',1,2);
 
 /* List wizyt klientow */
 INSERT INTO `SalonikBella`.`user_visit_list` (`user_id`,`visit_list_id`) VALUES (1,1);

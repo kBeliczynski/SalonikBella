@@ -1,5 +1,6 @@
 package pl.kbeliczynski.salonik_bella.visitService;
 
+import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +22,7 @@ public class VisitEndpoint {
     }
 
     @GetMapping("/api/visits")
-    public List<Visit> getAll(){
-        return visitRepository.findAll();
-    }
+    public List<Visit> getAll(){ return visitRepository.findAll(); }
 
     @GetMapping("/api/visits/{id}")
     public ResponseEntity<Visit> getById(@PathVariable Long id) {

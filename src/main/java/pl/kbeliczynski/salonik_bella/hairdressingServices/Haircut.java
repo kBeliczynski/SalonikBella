@@ -17,16 +17,17 @@ public class Haircut implements Serializable {
     private int price;
     private String gender;
     private int maxPrice;
+    private int duration;
 
     public Haircut() {}
 
-    @Autowired
-    public Haircut(String name, String description, int price, String gender, int maxPrice) {
+    public Haircut(String name, String description, int price, String gender, int maxPrice, int duration) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.gender = gender;
         this.maxPrice = maxPrice;
+        this.duration = duration;
     }
 
     public Long getId() {
@@ -77,6 +78,14 @@ public class Haircut implements Serializable {
         this.maxPrice = maxPrice;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
     @Override
     public String toString() {
         return "Haircut{" +
@@ -85,6 +94,8 @@ public class Haircut implements Serializable {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", gender='" + gender + '\'' +
+                ", maxPrice=" + maxPrice +
+                ", duration=" + duration +
                 '}';
     }
 }

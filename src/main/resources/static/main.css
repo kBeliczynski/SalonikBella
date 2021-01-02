@@ -547,7 +547,7 @@ footer{
 		color: black;
 	}
 
-	.refresh:hover, .delete:hover .add:hover{
+	.refresh:hover, .delete:hover, .add:hover{
 		cursor: pointer;
 	}
 
@@ -588,3 +588,17 @@ footer{
 	.my-visits .accept{
 		color: green;
 	}
+
+	.my-visits.ng-enter {
+		transition: 0.7s linear all;
+		opacity:0;
+	}
+
+	.my-visits.ng-enter.ng-enter-active {
+		opacity:1;
+	}
+
+	.empty-visits h2{
+		font-size: 54px;
+	}
+
