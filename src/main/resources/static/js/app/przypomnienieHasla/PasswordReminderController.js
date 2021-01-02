@@ -14,12 +14,12 @@ angular.module('app')
 		$location.path("/zmien-haslo");
 	}
 
-	vm.changePassword = function (user) {
-		vm.user = Users.get($rootScope.userId);
-		vm.user.password = user.password;
-        vm.user.id = $rootScope.userId;
-		$rootScope.enterUserData = false;
-        Users.update(vm.user);
-        $location.path("/login");
+	vm.changePassword = function (value) {
+		Users.get($rootScope.userId).$promise.then( user => {
+			$rootScope.enterUserData = false;
+			user.password = value.password;
+			Users.update(user);
+			$location.path("/login");
+		}).catch( err => console.log(err))
 	}
 });

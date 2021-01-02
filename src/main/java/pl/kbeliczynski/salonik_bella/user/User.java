@@ -27,9 +27,9 @@ public class User implements Serializable {
     private String password;
     @OneToOne
     private UserRole role;
-    @OneToMany
+    @ManyToMany
     private List<Perfume> perfumeList = new ArrayList<>();
-    @OneToMany
+    @ManyToMany
     private List<Product> productList = new ArrayList<>();
     @OneToMany
     private List<Visit> visitList = new ArrayList<>();

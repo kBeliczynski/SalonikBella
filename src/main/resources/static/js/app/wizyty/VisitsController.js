@@ -11,16 +11,15 @@ angular.module('app')
                     return true;
             }
 
-            vm.deleteVisit = function(visit) {
-                Users.get(visit.userId).$promise.then(user => {
+            vm.deleteVisit = async function(visit) {
+                await Users.get(visit.userId).$promise.then(user => {
                     const found = user.visitList.findIndex(element => element.id == visit.id);
                     user.visitList.splice(found,1)
                     Users.update(user);
-                })
-                Visits.get(visit.id).$promise.then( visit => {
-                    Visits.delete(visit);
-                })
-                setTimeout(() => vm.visits = Visits.getAll(),100);
-
+                    return Visits.get(visit.id).$promise;
+                }).then(async visit => {
+                    await Visits.delete(visit);
+                }).catch(err => console.log(err))
+                vm.visits = await Visits.getAll();
             }
 });

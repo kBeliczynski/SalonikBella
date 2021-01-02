@@ -588,13 +588,3 @@ footer{
 	.my-visits .accept{
 		color: green;
 	}
-
-	/*.my-visits.ng-leave {*/
-	/*	transition: 1s;*/
-	/*	opacity:1;*/
-	/*}*/
-
-	/*.my-visits.ng-leave.ng-leave-active {*/
-	/*	transform: translateX(-100%);*/
-	/*	opacity:0;*/
-	/*}*/
