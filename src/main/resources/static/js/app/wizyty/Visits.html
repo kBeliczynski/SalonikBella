@@ -22,18 +22,19 @@
                 <div class="col-1  my-visit-tile architect-font"><b> Status </b></div>
             </div>
 
-            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in loggedUser.visitList">
+            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in Ctrl.visits | filter: { userId: loggedUser.id} ">
                 <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
                 <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
                 <div class="col-1 my-visit-tile architect-font"> Czas trwania </div>
                 <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
                 <div class="col-4 my-visit-tile architect-font" ng-if="visit.adminInfo !== ''"> {{visit.adminInfo}} </div>
                 <div class="col-4 my-visit-tile architect-font" ng-if="visit.adminInfo === ''"> BRAK </div>
-                <div class="col-1 my-visit-tile architect-font delete" > <i class="far fa-calendar-minus fa-3x delete" ng-if="visit.status ==='WAITING'" ng-click="Ctrl.cancelVisit(visit.id)"></i> </div>
+                <div class="col-1 my-visit-tile architect-font delete" > <i class="far fa-calendar-minus fa-3x delete" ng-if="visit.status ==='WAITING'" ng-click="Ctrl.deleteVisit(visit)"></i> </div>
                 <div class="col-1 my-visit-tile architect-font" ng-if="visit.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"> {{visit.status}} </div>
             </div>
 
         </div>
+
 
     </div>
 

@@ -26,6 +26,7 @@ public class Visit implements Serializable {
     @NotEmpty
     @OneToOne
     private Haircut haircutType;
+    private int userId;
     private String userInfo;
     private String AdminInfo;
     @NotEmpty
@@ -35,10 +36,11 @@ public class Visit implements Serializable {
 
     public Visit(){}
 
-    public Visit(@NotEmpty LocalDateTime visitBegin, @NotEmpty LocalDateTime visitEnd, @NotEmpty Haircut haircutType, String userInfo, String adminInfo, @NotEmpty int phone, VisitStatus status) {
+    public Visit(@NotEmpty LocalDateTime visitBegin, @NotEmpty LocalDateTime visitEnd, @NotEmpty Haircut haircutType, int userId, String userInfo, String adminInfo, @NotEmpty int phone, VisitStatus status) {
         VisitBegin = visitBegin;
         VisitEnd = visitEnd;
         this.haircutType = haircutType;
+        this.userId = userId;
         this.userInfo = userInfo;
         AdminInfo = adminInfo;
         this.phone = phone;
@@ -75,6 +77,14 @@ public class Visit implements Serializable {
 
     public void setHaircutType(Haircut haircutType) {
         this.haircutType = haircutType;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserInfo() {
@@ -116,6 +126,7 @@ public class Visit implements Serializable {
                 ", VisitBegin=" + VisitBegin +
                 ", VisitEnd=" + VisitEnd +
                 ", haircutType=" + haircutType +
+                ", userId=" + userId +
                 ", userInfo='" + userInfo + '\'' +
                 ", AdminInfo='" + AdminInfo + '\'' +
                 ", phone=" + phone +
@@ -123,3 +134,4 @@ public class Visit implements Serializable {
                 '}';
     }
 }
+

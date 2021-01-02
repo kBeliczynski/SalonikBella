@@ -23,17 +23,15 @@
                 <div class="col-1  my-visit-tile architect-font"><b> Dodaj </b></div>
             </div>
 
-            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in visits | filter: {status: 'WAITING'} ">
+            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in Ctrl.visits | filter: {status: 'WAITING'} ">
                 <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
                 <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
                 <div class="col-1 my-visit-tile architect-font"> Czas trwania </div>
                 <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
                 <div class="col-4 my-visit-tile architect-font"> <input type="text"> </div>
-                <div class="col-1 my-visit-tile architect-font delete" ng-click="Ctrl.deleteVisit(visit.id)"> <i class="far fa-calendar-minus fa-3x"></i> </div>
-                <div class="col-1 my-visit-tile architect-font add"> <i class="far fa-calendar-plus fa-3x"></i> </div>
+                <div class="col-1 my-visit-tile architect-font delete" ng-click="Ctrl.deleteVisit(visit)"> <i class="far fa-calendar-minus fa-3x delete"></i> </div>
+                <div class="col-1 my-visit-tile architect-font add"> <i class="far fa-calendar-plus fa-3x add"></i> </div>
             </div>
-
-            wszystkir wizyty : "{{visits}}"
 
         </div>
 

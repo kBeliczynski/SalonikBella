@@ -1,8 +1,8 @@
 angular.module('app')
-    .controller('VisitsController', function($rootScope, VisitService, Users, Haircuts) {
+    .controller('VisitsController', function($rootScope, Visits, Users, Haircuts) {
             var vm = this;
             vm.haircuts = Haircuts.getAll();
-            vm.visits = VisitService.getAll();
+            vm.visits = Visits.getAll();
 
             vm.anyVisits = function(){
                 if(undefined == $rootScope.loggedUser.visitList[0] && null == $rootScope.loggedUser.visitList[0])
@@ -11,13 +11,16 @@ angular.module('app')
                     return true;
             }
 
-            vm.cancelVisit = function(id) {
-                vm.user = Users.get($rootScope.loggedUser.id);
-                const found = $rootScope.loggedUser.visitList.findIndex(element => element.id == id);
-                $rootScope.loggedUser.visitList.splice(found,1);
-                vm.user.visitList = $rootScope.loggedUser.visitList;
-                vm.user.id = $rootScope.loggedUser.id;
-                Users.update(vm.user);
-            }
+            vm.deleteVisit = function(visit) {
+                Users.get(visit.userId).$promise.then(user => {
+                    const found = user.visitList.findIndex(element => element.id == visit.id);
+                    user.visitList.splice(found,1)
+                    Users.update(user);
+                })
+                Visits.get(visit.id).$promise.then( visit => {
+                    Visits.delete(visit);
+                })
+                setTimeout(() => vm.visits = Visits.getAll(),100);
 
+            }
 });

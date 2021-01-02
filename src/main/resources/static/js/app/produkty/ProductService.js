@@ -7,12 +7,6 @@ angular.module('app')
 .factory('Product',function ($resource, PRODUCT_ENDPOINT) {
     return $resource(PRODUCT_ENDPOINT);
 })
-.factory('User', function($resource, USER_ENDPOINT) {
-    return $resource(USER_ENDPOINT, { id: '@_id' }, {
-    update: {
-        method: 'PUT'
-    }});
-})
 .service('Categories', function (Category) {
     this.getAll = function () {
         return Category.query();

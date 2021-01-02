@@ -8,4 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface VisitRepository extends JpaRepository<Visit,Long> {
+    void deleteById(Long id);
 }
