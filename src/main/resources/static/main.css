@@ -617,3 +617,14 @@ footer{
 	.visit-detail .architect-font{
 		font-size: 1.2vmax;
 	}
+
+	.to-long-message{
+		color: #783a00;
+		font-size: 1.5vmax;
+	}
+
+	.to-long-message-background{
+		height: 5vmax;
+		background: #efa574;
+		border-radius: 10px;
+	}

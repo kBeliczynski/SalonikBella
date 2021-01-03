@@ -9,8 +9,6 @@
 
     <div ng-show="authenticated" class="my-5">
 
-        <div ng-show="loggedUser.role.role !== 'ADMIN'">
-
             <div class="row visit-detail d-flex justify-content-center align-items-center my-5">
 
                 <div class="col-12 architect-font my-2">Właścicielka: Paula B. Rochon</div>
@@ -23,30 +21,7 @@
                 <div class="col-12 architect-font my-2">Twoja wiadomość: {{visitInfo.userInfo}}</div>
                 <div class="col-12 architect-font my-2" ng-if="visitInfo.adminInfo !== ''">Odpowiedź: {{visitInfo.adminInfo}} </div>
                 <div class="col-12 architect-font my-2" ng-if="visitInfo.adminInfo === ''">Odpowiedź: BRAK </div>
-                <div class="col-12 architect-font my-4" ng-if="visitInfo.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"><b> {{visitInfo.status}} </b></div>
-
-            </div>
-
-        </div>
-
-
-        <div ng-show="loggedUser.role.role === 'ADMIN'">
-
-            <div class="row visit-detail d-flex justify-content-center align-items-center my-5">
-
-                <div class="col-12 architect-font my-2">Imie: {{userVisitInfo.firstName}} | Nazwisko: {{userVisitInfo.lastName}}</div>
-                <div class="col-12 architect-font my-2">Telefon: {{visitInfo.phone}} | Email: {{visitInfo.email}}</div>
-                <div class="col-12 architect-font my-2">Data wizyty: {{visitInfo.visitBegin.toString().substring(0,10)}} | Godzina wizyty: {{visitInfo.visitBegin.toString().substring(11,16)}} </div>
-                <div class="col-12 architect-font my-2">Usługa: {{visitInfo.haircutType.name}} | Średni czas trwania: {{visitInfo.haircutType.duration}}</div>
-                <div class="col-12 architect-font my-2">Opis: {{visitInfo.haircutType.description}}</div>
-                <div class="col-12 architect-font my-2">Cena : {{visitInfo.haircutType.price}}<void class="architect-font" ng-if="visitInfo.haircutType.maxPrice"> - {{visitInfo.haircutType.maxPrice}} </void> zł</div>
-                <div class="col-12 architect-font my-2">wiadomość od użytkownika: {{visitInfo.userInfo}}</div>
-                <div class="col-12 my-2">
-                    <input type="text"> <i class="far fa-comment-dots fa-3x"></i>
-                </div>
-                <div class="col-12 architect-font my-4" ng-if="visitInfo.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"><b> {{visitInfo.status}} </b></div>
-
-            </div>
+                <div class="col-12 architect-font my-4" style="font-size: 2.7vmax" ng-if="visitInfo.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"><b> {{visitInfo.status}} </b></div>
 
         </div>
 

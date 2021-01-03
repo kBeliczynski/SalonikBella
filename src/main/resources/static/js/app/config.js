@@ -74,6 +74,11 @@ angular.module('app')
             controller: 'VisitsController',
             controllerAs: 'Ctrl'
         })
+        .when('/wizyty/szczegoly-zarzadzaj', {
+            templateUrl: 'js/app/wizyty/ManageVisitInfo.html',
+            controller: 'VisitsController',
+            controllerAs: 'Ctrl'
+        })
         .when('/koszyk', {
             templateUrl: 'js/app/koszyk/Bucket.html',
             controller: 'BucketController',

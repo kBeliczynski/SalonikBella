@@ -18,27 +18,27 @@ public class Visit implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @JsonFormat(pattern="yyyy/MM/dd HH:mm")
-    private LocalDateTime VisitBegin;
+    private LocalDateTime visitBegin;
     @JsonFormat(pattern="yyyy/MM/dd HH:mm")
-    private LocalDateTime VisitEnd;
+    private LocalDateTime visitEnd;
     @OneToOne
     private Haircut haircutType;
     private int userId;
     private String userInfo;
-    private String AdminInfo;
+    private String adminInfo;
     @NumberFormat
     private int phone;
     private VisitStatus status;
 
     public Visit(){}
 
-    public Visit(@NotEmpty LocalDateTime visitBegin, @NotEmpty LocalDateTime visitEnd, @NotEmpty Haircut haircutType, int userId, String userInfo, String adminInfo, @NotEmpty int phone, VisitStatus status) {
-        VisitBegin = visitBegin;
-        VisitEnd = visitEnd;
+    public Visit(LocalDateTime visitBegin, LocalDateTime visitEnd, Haircut haircutType, int userId, String userInfo, String adminInfo, int phone, VisitStatus status) {
+        this.visitBegin = visitBegin;
+        this.visitEnd = visitEnd;
         this.haircutType = haircutType;
         this.userId = userId;
         this.userInfo = userInfo;
-        AdminInfo = adminInfo;
+        this.adminInfo = adminInfo;
         this.phone = phone;
         this.status = status;
     }
@@ -52,19 +52,19 @@ public class Visit implements Serializable {
     }
 
     public LocalDateTime getVisitBegin() {
-        return VisitBegin;
+        return visitBegin;
     }
 
     public void setVisitBegin(LocalDateTime visitBegin) {
-        VisitBegin = visitBegin;
+        this.visitBegin = visitBegin;
     }
 
     public LocalDateTime getVisitEnd() {
-        return VisitEnd;
+        return visitEnd;
     }
 
     public void setVisitEnd(LocalDateTime visitEnd) {
-        VisitEnd = visitEnd;
+        this.visitEnd = visitEnd;
     }
 
     public Haircut getHaircutType() {
@@ -92,11 +92,11 @@ public class Visit implements Serializable {
     }
 
     public String getAdminInfo() {
-        return AdminInfo;
+        return adminInfo;
     }
 
     public void setAdminInfo(String adminInfo) {
-        AdminInfo = adminInfo;
+        this.adminInfo = adminInfo;
     }
 
     public int getPhone() {
@@ -119,12 +119,12 @@ public class Visit implements Serializable {
     public String toString() {
         return "Visit{" +
                 "id=" + id +
-                ", VisitBegin=" + VisitBegin +
-                ", VisitEnd=" + VisitEnd +
+                ", visitBegin=" + visitBegin +
+                ", visitEnd=" + visitEnd +
                 ", haircutType=" + haircutType +
                 ", userId=" + userId +
                 ", userInfo='" + userInfo + '\'' +
-                ", AdminInfo='" + AdminInfo + '\'' +
+                ", adminInfo='" + adminInfo + '\'' +
                 ", phone=" + phone +
                 ", status=" + status +
                 '}';

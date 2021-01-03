@@ -39,7 +39,8 @@ public class VisitEndpoint {
     @PutMapping("/api/visits/{id}")
     public ResponseEntity<Visit> update(@RequestBody Visit visit, @PathVariable Long id) {
         Optional<Visit> newVisit = visitRepository.findById(id);
-        newVisit.get().setStatus(visit.getStatus());
+        newVisit.get().setStatus(visit.getStatus());    //ustawia status użytkownika
+        newVisit.get().setAdminInfo(visit.getAdminInfo());     // podmienia wiadomosc do użytkownika
         Visit saved = visitRepository.save(newVisit.get());
         URI location = ServletUriComponentsBuilder
                     .fromCurrentRequest()

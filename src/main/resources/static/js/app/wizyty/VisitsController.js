@@ -41,4 +41,29 @@ angular.module('app')
                 $location.path('/wizyty/szczegoly');
             }
 
+            vm.showManageVisitInfo = function (visit) {
+                Visits.get(visit.id).$promise.then(async visit => $rootScope.visitInfo = await visit);
+                Users.get(visit.userId).$promise.then(async user => $rootScope.userVisitInfo = await user);
+                $location.path('/wizyty/szczegoly-zarzadzaj');
+            }
+
+            vm.addReply = async function (visit) {
+                await Visits.get(visit.id).$promise.then(async visit => {
+                    if(vm.checkLengthMessage(visit))
+                        return true;
+                    visit.adminInfo += vm.message;
+                    await Visits.update(visit);
+                }).catch( err => console.log(err));
+                vm.message = '';
+                vm.visits = await Visits.getAll();
+            }
+
+            vm.checkLengthMessage = function (visit) {
+                    if((visit.adminInfo + vm.message).length > 255)
+                        return vm.toLongMessage = true;
+                    else
+                        return vm.toLongMessage = false;
+            }
+
+
 });

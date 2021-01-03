@@ -1,0 +1,33 @@
+<header>
+
+        <div ng-show="loggedUser.role.role !== 'ADMIN'" class="row d-flex justify-content-center align-items-center my-5">
+            <i class="far fa-calendar-alt fa-9x my-4 col-12"></i>
+            <h2 class="col-8 architect-font d-flex justify-content-center align-items-center my-5" style="font-size: 3vmax;">Zaloguj się lub zarejestruj aby zobaczyć szczegóły wizyty !</h2>
+            <a class="col-6 btn btn-success btn-block m-3" ng-href="/login">Logowanie</a>
+            <a class="col-6 btn btn-primary btn-block m-3" ng-href="/rejestracja">Rejestracja</a>
+        </div>
+
+        <div ng-show="loggedUser.role.role === 'ADMIN'">
+
+            <div class="row visit-detail d-flex justify-content-center align-items-center my-5">
+
+                <div class="col-12 architect-font my-2">Imie: {{userVisitInfo.firstName}} | Nazwisko: {{userVisitInfo.lastName}}</div>
+                <div class="col-12 architect-font my-2">Telefon: {{visitInfo.phone}} | Email: {{visitInfo.email}}</div>
+                <div class="col-12 architect-font my-2">Data wizyty: {{visitInfo.visitBegin.toString().substring(0,10)}} | Godzina wizyty: {{visitInfo.visitBegin.toString().substring(11,16)}} </div>
+                <div class="col-12 architect-font my-2">Usługa: {{visitInfo.haircutType.name}} | Średni czas trwania: {{visitInfo.haircutType.duration}}</div>
+                <div class="col-12 architect-font my-2">Opis: {{visitInfo.haircutType.description}}</div>
+                <div class="col-12 architect-font my-2">Cena : {{visitInfo.haircutType.price}}<void class="architect-font" ng-if="visitInfo.haircutType.maxPrice"> - {{visitInfo.haircutType.maxPrice}} </void> zł</div>
+                <div class="col-12 architect-font my-2">wiadomość od użytkownika: {{visitInfo.userInfo}}</div>
+                <div class="col-12 my-2">
+                    <input type="text" ng-model="Ctrl.message"> <i class="far fa-comment-dots fa-3x add" ng-click="Ctrl.addReply(visitInfo)"></i>
+                </div>
+                <div class="col-6 to-long-message-background d-flex justify-content-center align-items-center mt-2" ng-if="Ctrl.toLongMessage">
+                    <div class="to-long-message"><b> Wiadomość zbyt długa! </b></div>
+                </div>
+                <div class="col-12 architect-font my-4" style="font-size: 2.7vmax" ng-if="visitInfo.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"><b> {{visitInfo.status}} </b></div>
+
+            </div>
+
+        </div>
+
+</header>
