@@ -17,19 +17,15 @@ public class Visit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
     @JsonFormat(pattern="yyyy/MM/dd HH:mm")
     private LocalDateTime VisitBegin;
-    @NotEmpty
     @JsonFormat(pattern="yyyy/MM/dd HH:mm")
     private LocalDateTime VisitEnd;
-    @NotEmpty
     @OneToOne
     private Haircut haircutType;
     private int userId;
     private String userInfo;
     private String AdminInfo;
-    @NotEmpty
     @NumberFormat
     private int phone;
     private VisitStatus status;

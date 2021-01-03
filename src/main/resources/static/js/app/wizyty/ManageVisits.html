@@ -9,57 +9,65 @@
 
     <div ng-show="authenticated" class="row d-flex justify-content-center align-items-center my-5">
 
-        <div ng-show="Ctrl.anyVisits()" class="row d-flex justify-content-center align-items-center my-5">
+        <div ng-if="Ctrl.anyVisits()" class="row d-flex justify-content-center align-items-center my-5">
 
-            <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Zarządzaj wizytami</div>
+            <div ng-if="(Ctrl.visits | filter: {status: 'WAITING'})[0]" class="row d-flex justify-content-center align-items-center my-5">
 
-            <div class="col-12 row d-flex justify-content-center align-items-center py-4">
-                <div class="col-2  my-visit-tile architect-font"><b> Dzień </b></div>
-                <div class="col-1  my-visit-tile architect-font"><b> Godzina </b></div>
-                <div class="col-2  my-visit-tile architect-font"><b> Usługa </b></div>
-                <div class="col-2  my-visit-tile architect-font"><b> Wiadomość od użytkownika </b></div>
-                <div class="col-2  my-visit-tile architect-font"><b> Telefon </b></div>
-                <div class="col-1  my-visit-tile architect-font"><b> Szczegóły </b></div>
-                <div class="col-1  my-visit-tile architect-font"><b> Usuń </b></div>
-                <div class="col-1  my-visit-tile architect-font"><b> Dodaj </b></div>
+                <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Zarządzaj wizytami</div>
+
+                <div class="col-12 row d-flex justify-content-center align-items-center py-4">
+                    <div class="col-2  my-visit-tile architect-font"><b> Dzień </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Godzina </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Usługa </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Wiadomość od użytkownika </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Telefon </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Szczegóły </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Usuń </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Dodaj </b></div>
+                </div>
+
+                <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in Ctrl.visits | filter: {status: 'WAITING'} ">
+                    <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
+                    <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
+                    <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
+                    <div class="col-2 my-visit-tile architect-font">{{visit.userInfo}}</div>
+                    <div class="col-2 my-visit-tile architect-font"> {{visit.phone}} </div>
+                    <div class="col-1 my-visit-tile architect-font delete" > <i class="fas fa-info-circle fa-3x" ng-click=""></i> </div>
+                    <div class="col-1 my-visit-tile architect-font delete" ng-click="Ctrl.deleteVisit(visit)"> <i class="far fa-calendar-minus fa-3x delete"></i> </div>
+                    <div class="col-1 my-visit-tile architect-font add" ng-click="Ctrl.addVisit(visit)"> <i class="far fa-calendar-check fa-3x add"></i> </div>
+                </div>
+
             </div>
 
-            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in Ctrl.visits | filter: {status: 'WAITING'} ">
-                <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
-                <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
-                <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
-                <div class="col-2 my-visit-tile architect-font">{{visit.userInfo}}</div>
-                <div class="col-2 my-visit-tile architect-font"> {{visit.phone}} </div>
-                <div class="col-1 my-visit-tile architect-font delete" > <i class="fas fa-info-circle fa-3x" ng-click=""></i> </div>
-                <div class="col-1 my-visit-tile architect-font delete" ng-click="Ctrl.deleteVisit(visit)"> <i class="far fa-calendar-minus fa-3x delete"></i> </div>
-                <div class="col-1 my-visit-tile architect-font add"> <i class="far fa-calendar-check fa-3x add"></i> </div>
-            </div>
+            <div ng-if="(Ctrl.visits | filter: {status: 'ACCEPTED'})[0]" class="row d-flex justify-content-center align-items-center my-5">
 
-            <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Umówione wizyty</div>
+                <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Umówione wizyty</div>
 
-            <div class="col-12 row d-flex justify-content-center align-items-center py-4">
-                <div class="col-2  my-visit-tile architect-font"><b> Dzień </b></div>
-                <div class="col-1  my-visit-tile architect-font"><b> Godzina </b></div>
-                <div class="col-2  my-visit-tile architect-font"><b> Usługa </b></div>
-                <div class="col-3  my-visit-tile architect-font"><b> Wiadomość od użytkownika </b></div>
-                <div class="col-2  my-visit-tile architect-font"><b> Telefon </b></div>
-                <div class="col-1  my-visit-tile architect-font"><b> Szczegóły </b></div>
-                <div class="col-1  my-visit-tile architect-font"><b> Usuń </b></div>
-            </div>
+                <div class="col-12 row d-flex justify-content-center align-items-center py-4">
+                    <div class="col-2  my-visit-tile architect-font"><b> Dzień </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Godzina </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Usługa </b></div>
+                    <div class="col-3  my-visit-tile architect-font"><b> Wiadomość od użytkownika </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Telefon </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Szczegóły </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Usuń </b></div>
+                </div>
 
-            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in Ctrl.visits | filter: {status: 'ACCEPTED'} ">
-                <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
-                <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
-                <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
-                <div class="col-3 my-visit-tile architect-font">{{visit.userInfo}}</div>
-                <div class="col-2 my-visit-tile architect-font"> {{visit.phone}} </div>
-                <div class="col-1 my-visit-tile architect-font delete" > <i class="fas fa-info-circle fa-3x" ng-click=""></i> </div>
-                <div class="col-1 my-visit-tile architect-font delete" ng-click="Ctrl.deleteVisit(visit)"> <i class="far fa-calendar-minus fa-3x delete"></i> </div>
+                <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in Ctrl.visits | filter: {status: 'ACCEPTED'} ">
+                    <div class="col-2 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>
+                    <div class="col-1 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>
+                    <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>
+                    <div class="col-3 my-visit-tile architect-font">{{visit.userInfo}}</div>
+                    <div class="col-2 my-visit-tile architect-font"> {{visit.phone}} </div>
+                    <div class="col-1 my-visit-tile architect-font delete" > <i class="fas fa-info-circle fa-3x" ng-click=""></i> </div>
+                    <div class="col-1 my-visit-tile architect-font delete" ng-click="Ctrl.deleteVisit(visit)"> <i class="far fa-calendar-minus fa-3x delete"></i> </div>
+                </div>
+
             </div>
 
         </div>
 
-        <div ng-show="!Ctrl.anyVisits()" class="row empty-visits d-flex justify-content-center align-items-center my-5">
+        <div ng-if="!Ctrl.anyVisits()" class="row empty-visits d-flex justify-content-center align-items-center my-5">
 
             <i class="far fa-calendar fa-7x my-5 col-10 d-flex justify-content-center"></i>
             <h2 class="architect-font my-4 col-10 d-flex justify-content-center">Brak wizyt do zarządzania.</h2>

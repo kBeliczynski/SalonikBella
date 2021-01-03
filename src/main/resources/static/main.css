@@ -590,7 +590,7 @@ footer{
 	}
 
 	.my-visits.ng-enter {
-		transition: 0.7s linear all;
+		transition: 0.3s linear all;
 		opacity:0;
 	}
 
@@ -600,5 +600,15 @@ footer{
 
 	.empty-visits h2{
 		font-size: 54px;
+	}
+
+	.empty-visits.ng-enter {
+		transition-delay: 0.2s;
+		transition: 0.001s linear all;
+		opacity:0;
+	}
+
+	.empty-visits.ng-enter.ng-enter-active {
+		opacity:1;
 	}
 

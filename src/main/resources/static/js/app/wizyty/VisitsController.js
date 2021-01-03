@@ -28,4 +28,12 @@ angular.module('app')
                 vm.visits = await Visits.getAll();
             }
 
+            vm.addVisit = async function (visit) {
+                await Visits.get(visit.id).$promise.then( async visit => {
+                    visit.status = 'ACCEPTED';
+                    await Visits.update(visit);
+                }).catch( err => console.log(err))
+                vm.visits = await Visits.getAll();
+            }
+
 });

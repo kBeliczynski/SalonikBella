@@ -36,5 +36,17 @@ public class VisitEndpoint {
         visitRepository.deleteById(id);
     }
 
+    @PutMapping("/api/visits/{id}")
+    public ResponseEntity<Visit> update(@RequestBody Visit visit, @PathVariable Long id) {
+        Optional<Visit> newVisit = visitRepository.findById(id);
+        newVisit.get().setStatus(visit.getStatus());
+        Visit saved = visitRepository.save(newVisit.get());
+        URI location = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(saved.getId())
+                    .toUri();
+            return ResponseEntity.created(location).body(visit);
+    }
 
 }
