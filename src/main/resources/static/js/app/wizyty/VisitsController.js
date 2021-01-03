@@ -1,9 +1,8 @@
 angular.module('app')
-    .controller('VisitsController', function($rootScope,Visits, Users, Haircuts) {
+    .controller('VisitsController', function($rootScope, $location, Visits, Users, Haircuts) {
             var vm = this;
             vm.haircuts = Haircuts.getAll();
             vm.visits = Visits.getAll();
-
 
             vm.anyVisits = function(){
                 if(undefined == vm.visits[0] && null == vm.visits[0])
@@ -34,6 +33,12 @@ angular.module('app')
                     await Visits.update(visit);
                 }).catch( err => console.log(err))
                 vm.visits = await Visits.getAll();
+            }
+
+            vm.showVisitInfo = function (visit) {
+                Visits.get(visit.id).$promise.then(async visit => $rootScope.visitInfo = await visit);
+                Users.get(visit.userId).$promise.then(async user => $rootScope.userVisitInfo = await user);
+                $location.path('/wizyty/szczegoly');
             }
 
 });

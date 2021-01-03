@@ -31,7 +31,7 @@
                 <div class="col-4 my-visit-tile architect-font" ng-if="visit.adminInfo !== ''"> {{visit.adminInfo}} </div>
                 <div class="col-4 my-visit-tile architect-font" ng-if="visit.adminInfo === ''"> BRAK </div>
                 <div class="col-1 my-visit-tile architect-font delete" > <i class="far fa-calendar-minus fa-3x" ng-if="visit.status ==='WAITING'" ng-click="Ctrl.deleteVisit(visit)"></i> </div>
-                <div class="col-1 my-visit-tile architect-font delete" > <i class="fas fa-info-circle fa-3x" ng-click=""></i> </div>
+                <div class="col-1 my-visit-tile architect-font delete" > <i class="fas fa-info-circle fa-3x" ng-click="Ctrl.showVisitInfo(visit)"></i> </div>
                 <div class="col-1 my-visit-tile architect-font" ng-if="visit.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"> {{visit.status}} </div>
             </div>
 

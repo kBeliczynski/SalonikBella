@@ -582,10 +582,10 @@ footer{
 		border-top: 2px groove rgba(255, 255, 255, 0.76);
 	}
 
-	.my-visits .waiting{
+	.my-visits .waiting ,.visit-detail .waiting{
 		color: darkorange;
 	}
-	.my-visits .accept{
+	.my-visits .accept, .visit-detail .accept{
 		color: green;
 	}
 
@@ -612,3 +612,8 @@ footer{
 		opacity:1;
 	}
 
+	/*  Szczegóły wizyty */
+
+	.visit-detail .architect-font{
+		font-size: 1.2vmax;
+	}
