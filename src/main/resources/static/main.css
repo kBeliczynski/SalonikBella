@@ -628,3 +628,48 @@ footer{
 		background: #efa574;
 		border-radius: 10px;
 	}
+
+	/* dodaj wizyte */
+
+		/* Main */
+		.to-find-date.ng-enter {
+			transform: translateY(100%);
+			transition: 1s;
+			opacity:0;
+		}
+
+		.to-find-date.ng-enter.ng-enter-active {
+			transform: translateY(0);
+			opacity:1;
+		}
+
+		.to-own-date.ng-enter {
+			transform: translateY(-100%);
+			transition: 1s;
+			opacity:0;
+		}
+
+		.to-own-date.ng-enter.ng-enter-active {
+			transform: translateY(0);
+			opacity:1;
+		}
+
+		.to-find-date.ng-leave {
+			transition: 1s;
+			opacity:1;
+		}
+
+		.to-find-date.ng-leave.ng-leave-active {
+			transform: translateY(100%);
+			opacity:0;
+		}
+
+		.to-own-date.ng-leave {
+			transition: 1s;
+			opacity:1;
+		}
+
+		.to-own-date.ng-leave.ng-leave-active {
+			transform: translateY(-100%);
+			opacity:0;
+		}

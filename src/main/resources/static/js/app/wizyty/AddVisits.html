@@ -7,16 +7,97 @@
         <a class="col-6 btn btn-primary btn-block m-3" ng-href="/rejestracja">Rejestracja</a>
     </div>
 
-    <div ng-show="authenticated" class="row d-flex justify-content-center align-items-center my-5">
-        <form action="">
+    <div ng-show="authenticated">
 
-            <select id="service">
-                <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts">{{haircut.name}}</option>
-            </select>
+        <div class="row add-visit-main-page d-flex justify-content-center align-items-center my-5" ng-show="Ctrl.activePage === 'Main'">
 
+            <div class="to-find-date col-12 to-find-date row d-flex justify-content-center align-items-center my-5">
+                <h2 class="architect-font my-4 col-12 d-flex justify-content-center" style="font-size: 3vmax;">Znajdz wolny termin</h2>
+                <p class="architect-font my-4 col-12 d-flex justify-content-center">*automatycznie szuka pierwszego wolnego terminu wizyty</p>
+                <div class="btn btn-primary architect-font my-4 col-6 d-flex justify-content-center" ng-click="Ctrl.changeToFindDate()">Szukaj</div>
+            </div>
 
-        </form>
+            <div class="to-own-date col-12 row d-flex justify-content-center align-items-center my-5">
+                <h2 class="architect-font my-4 col-12 d-flex justify-content-center" style="font-size: 3vmax;">Wybierz datę wizyty</h2>
+                <p class="architect-font my-4 col-12 d-flex justify-content-center">*samodzielnie wybierz datę i godzinę wizyty która Tobie odpowiada</p>
+                <div class="btn btn-primary architect-font my-4 col-6 d-flex justify-content-center" ng-click="Ctrl.changeToOwnDate()">Wybierz</div>
+            </div>
 
+        </div>
+
+        <div class="row add-visit-find-date-page d-flex justify-content-center align-items-center my-5" ng-show="Ctrl.activePage === 'FindDate'">
+
+            <form class="row d-flex justify-content-center align-items-center my-5">
+
+                <div class="col-12">
+                    <select ng-model='Ctrl.visit.haircutType' required="required">
+                        <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts">{{haircut.name}}</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <input type="number" maxlength="9" minlength="9" placeholder="Telefon" required="required" ng-model="Ctrl.visit.phone">
+                </div>
+
+                <div class="col-12">
+                    <input type="text" maxlength="255"  placeholder="Wiadomość" ng-model="Ctrl.visit.userInfo">
+                </div>
+
+                <div class="col-10 row d-flex justify-content-center align-items-center my-5">
+                    <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div> <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.findDate()">Szukaj</div>
+                </div>
+
+            </form>
+
+            <div class="col-12">
+                TU PODSUMOWANIE
+            </div>
+
+        </div>
+
+        <div class="row add-visit-own-date-page d-flex justify-content-center align-items-center my-5" ng-show="Ctrl.activePage === 'OwnDate'">
+
+             <form class="row d-flex justify-content-center align-items-center my-5">
+
+                <div class="col-12">
+                    <select ng-model-options="Ctrl.visit.haircutType" required="required">
+                        <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts">{{haircut.name}}</option>
+                    </select>
+                </div>
+
+                 <div class="col-12">
+                    <input type="date" required="required" ng-model="Ctrl.visit.date">
+                 </div>
+
+                 <div class="col-12">
+                    <select ng-model='Ctrl.visit.hour' required="required">
+                        <option value="{{hour}}" ng-repeat="hour in Ctrl.mondayToFridayHours">{{hour}}</option>
+                    </select>
+                     :
+                     <select ng-model='Ctrl.visit.minute'>
+                        <option value="{{minute}}" ng-repeat="minute in Ctrl.minutes">{{minute}}</option>
+                    </select>
+                 </div>
+
+                <div class="col-12">
+                    <input type="number" maxlength="9" placeholder="Telefon" required="required" ng-model="Ctrl.visit.phone">
+                </div>
+
+                <div class="col-12">
+                    <input type="text" maxlength="255" placeholder="Wiadomość" ng-model="Ctrl.visit.userInfo">
+                </div>
+
+                <div class="col-10 row d-flex justify-content-center align-items-center my-5">
+                    <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div> <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.checkDateAvailability()">Sprawdź</div>
+                </div>
+
+            </form>
+
+            <div class="col-12">
+                TUTAJ BEDZIE PODSUMOWANIE LUB WIADOMOSC
+            </div>
+
+        </div>
 
     </div>
 

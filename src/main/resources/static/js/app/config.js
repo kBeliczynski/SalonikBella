@@ -61,7 +61,7 @@ angular.module('app')
         })
         .when('/wizyty/zapisz-sie', {
             templateUrl: 'js/app/wizyty/AddVisits.html',
-            controller: 'VisitsController',
+            controller: 'AddVisitsController',
             controllerAs: 'Ctrl'
         })
         .when('/wizyty/zarzadzaj', {
