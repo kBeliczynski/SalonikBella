@@ -72,11 +72,13 @@ angular.module('app')
         vm.haircuts = Haircuts.getAll();
         vm.mondayToFridayHours = [9,10,11,12,13,14,15,16];
         vm.saturdayHours = [9,10,11,12,13];
+        vm.openTimeByDate = [];
         vm.minutes = [0,10,20,30,40,50];
         vm.pageMode = {MAIN: 'Main', FIND_DATE: 'FindDate', OWN_DATE: 'OwnDate'};
         vm.activePage = vm.pageMode.MAIN;
         vm.findDateSummary = false;
         vm.ownDateSummary = false;
+        vm.incorrectData = false;
 
         vm.changeOpenHours = function () {  // zwraca tablice godzin otwarcia salonu względem dnia tygodnia
 
@@ -86,24 +88,40 @@ angular.module('app')
 
         vm.changeToOwnDate = () => vm.activePage = vm.pageMode.OWN_DATE;
 
-        vm.changeToMain = () => vm.activePage = vm.pageMode.MAIN;
+        vm.changeToMain = () => {
+            vm.activePage = vm.pageMode.MAIN;
+            vm.visit = new Visit();
+        }
 
         vm.searchNextDate = function () {   // wywoluje funkcje findDate(), szuka kolejnej dostepnej wizyty
 
         }
 
-        vm.findDate = function () {    // wywoluje funkcje checkDateAvailability(), szuka pierwszej dostepnej wizyty, ustawia zmienna findDateSummary gdy znajdzie wizyte
-            // przypisuje znaleziona date do zmiennych dateBegin itd.
-            console.log(vm.visit);
+        vm.findDate = function (visit,date) {    // wywoluje funkcje checkDateAvailability(), szuka pierwszej dostepnej wizyty, ustawia zmienna findDateSummary gdy znajdzie wizyte
+            if(visit.haircutType == undefined || visit.phoneString == undefined){
+                vm.incorrectData = true;
+                return;
+            }
+                vm.incorrectData = false;
+                visit.userInfo = 'zmieniono';
+                // edytuje zmienna openTimeByDate, wzgledem dnia wizyty
+                console.log(vm.visit);
         }
 
-        vm.checkDateAvailability = function () {    // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami, ustawia zmienna ownDateSummary gdy data nie koliduje
-            console.log(vm.visit);
+        vm.checkDateAvailability = function (visit) {    // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami, ustawia zmienna ownDateSummary gdy data nie koliduje
+            //  sprawdzy czy koniec i poczatek wizyty nie wykracza poza godzinę otwarcia i zamkniecia.
+            if(visit.visitBegin.substring(11,16) < '9:00' || visit.visitEnd.substring(11,16) > '16:50')
+                return false;
+
+            // sprawdzamy czy poczatek wizyty oraz jej długość nie kolidują z innymi wizytami
         }
 
         vm.acceptDate = function () {   // gdy data jest poprawna wysyła ją do akceptacj
 
         }
 
+        vm.setOpenTimeByDate = function () {  // sprawdza godziny otwarcia i ustawia zmienna openTimeByDate
+            //  sprawdza dzień w którym rezerwowana jest wizyta i wybiera tablice w ktorych rezerwowane mogą być wizyty
+        }
 
     });

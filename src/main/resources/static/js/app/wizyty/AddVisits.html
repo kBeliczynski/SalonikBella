@@ -29,25 +29,35 @@
 
             <form class="row d-flex justify-content-center align-items-center my-5">
 
-                <div class="col-12">
-                    <select ng-model='Ctrl.visit.haircutType' required="required">
-                        <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts">{{haircut.name}}</option>
+                <div class="col-12 my-2">
+                    <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz usługę:</h2>
+                    <select ng-model='Ctrl.visit.haircutType'>
+                        <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
                     </select>
                 </div>
 
-                <div class="col-12">
-                    <input type="number" maxlength="9" minlength="9" placeholder="Telefon" required="required" ng-model="Ctrl.visit.phone">
+                <div class="col-12 my-2">
+                    <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Podaj numer telefonu:</h2>
+                    <input type="tel" placeholder="Telefon" pattern="[0-9]{9}" maxlength="9" ng-model="Ctrl.visit.phoneString" required>
+                    <p class="architect-font my-2 col-12 d-flex justify-content-center" style="font-size: 14px;">*format : 123456789</p>
                 </div>
 
-                <div class="col-12">
+                <div class="col-12 my-2">
+                    <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wiadomość:</h2>
                     <input type="text" maxlength="255"  placeholder="Wiadomość" ng-model="Ctrl.visit.userInfo">
                 </div>
 
-                <div class="col-10 row d-flex justify-content-center align-items-center my-5">
-                    <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div> <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.findDate()">Szukaj</div>
+                <div class="col-10 row d-flex justify-content-center align-items-center my-4">
+                    <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div>
+                    <button class="col-3 btn btn-primary btn-block mx-4" ng-click="Ctrl.findDate(Ctrl.visit)">Szukaj</button>
                 </div>
 
             </form>
+
+            <div ng-show="Ctrl.incorrectData" class="col-10 error-background d-flex justify-content-center align-items-center my-3">
+			    <i class="far fa-2x fa-times-circle error-message "></i>
+			    <div class="error-message ml-5">Wprowadzono niepoprawne dane!</div>
+		    </div>
 
             <div class="col-12">
                 TU PODSUMOWANIE
