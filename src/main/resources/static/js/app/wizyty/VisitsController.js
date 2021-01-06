@@ -76,9 +76,9 @@ angular.module('app')
         vm.minutes = [0,10,20,30,40,50];
         vm.pageMode = {MAIN: 'Main', FIND_DATE: 'FindDate', OWN_DATE: 'OwnDate'};
         vm.activePage = vm.pageMode.MAIN;
-        vm.findDateSummary = false;
-        vm.ownDateSummary = false;
+        vm.dateSummary = false;
         vm.incorrectData = false;
+        vm.actualSearchDate = new Date();
 
         vm.changeOpenHours = function () {  // zwraca tablice godzin otwarcia salonu względem dnia tygodnia
 
@@ -94,34 +94,36 @@ angular.module('app')
         }
 
         vm.searchNextDate = function () {   // wywoluje funkcje findDate(), szuka kolejnej dostepnej wizyty
-
+            vm.actualSearchDate.setDate(vm.actualSearchDate.getDate()+1);
+        //.toJSON().slice(0,16).replace(/-/g,'/')
         }
 
-        vm.findDate = function (visit,date) {    // wywoluje funkcje checkDateAvailability(), szuka pierwszej dostepnej wizyty, ustawia zmienna findDateSummary gdy znajdzie wizyte
+        vm.findDate = async function (visit,date) {    // wywoluje funkcje checkDateAvailability(), szuka pierwszej dostepnej wizyty, ustawia zmienna findDateSummary gdy znajdzie wizyte
             if(visit.haircutType == undefined || visit.phoneString == undefined){
                 vm.incorrectData = true;
                 return;
             }
                 vm.incorrectData = false;
-                visit.userInfo = 'zmieniono';
                 // edytuje zmienna openTimeByDate, wzgledem dnia wizyty
                 visit.visitBegin = '2021/01/06 15:00';
                 visit.visitEnd = '2021/01/06 16:00';
-                console.log(visit);
                 vm.openTimeByDate = vm.mondayToFridayHours;
-                vm.checkDateAvailability(visit,vm.getActualDate());
+                await vm.checkDateAvailability(visit);
+                await console.log(vm.dateSummary);
+                await console.log(vm.actualSearchDate.toJSON().slice(0,16).replace(/-/g,'/'));
+                await vm.searchNextDate();
+                await console.log(vm.actualSearchDate.toJSON().slice(0,16).replace(/-/g,'/'));
         }
 
-        vm.checkDateAvailability = function (visit,date) {    // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami, ustawia zmienna ownDateSummary gdy data nie koliduje
-            //  sprawdzy czy koniec i poczatek wizyty nie wykracza poza godzinę otwarcia i zamkniecia.
-            if(visit.visitBegin.substring(11,16) < '09:00' || visit.visitEnd.substring(11,16) > (vm.openTimeByDate[vm.openTimeByDate.length-1]+':50'))
-                return false;
-
-            vm.searchByDate(visit.visitBegin.substring(0,10)).then( visits => {
-                console.log(visits);    // TUTAJ BEDZIE PETLA SPRAWDZAJACA CZY WARUNEK JEST SPELNIONY
-                console.log(visits[0].visitBegin);
+        vm.checkDateAvailability = async function (visit) {    // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami
+            if(visit.visitBegin.substring(11,16) < '09:00' || visit.visitEnd.substring(11,16) > (vm.openTimeByDate[vm.openTimeByDate.length-1]+':50')) //  sprawdzy czy koniec i poczatek wizyty nie wykracza poza godzinę otwarcia i zamkniecia.
+                vm.dateSummary = false;
+           await vm.searchByDate(visit.visitBegin.substring(0,10)).$promise.then( async visits => {
+                for await(var element of visits)
+                    if(!((visit.visitEnd <= element.visitBegin && visit.visitBegin <= element.visitBegin) || (visit.visitEnd >= element.visitEnd && visit.visitBegin >= element.visitEnd)))    // TUTAJ BEDZIE PETLA SPRAWDZAJACA CZY WARUNEK JEST SPELNIONY
+                        vm.dateSummary = false;
+                vm.dateSummary = true;
             })
-            // sprawdzamy czy poczatek wizyty oraz jej długość nie kolidują z innymi wizytami
         }
 
         vm.acceptDate = function () {   // gdy data jest poprawna wysyła ją do akceptacj
@@ -132,14 +134,8 @@ angular.module('app')
             //  sprawdza dzień w którym rezerwowana jest wizyta i wybiera tablice w ktorych rezerwowane mogą być wizyty
         }
 
-        vm.getActualDate = function () {
-            var utc = new Date();
-            utc.setHours(utc.getHours()+1);
-            return utc.toJSON().slice(0,16).replace(/-/g,'/'); // dodaje +1 ponieważ mamy czas zimowy;
-        }
-
         vm.searchByDate = date => {
-            return Visits.getAll({date}).$promise;
+            return Visits.getAll({date});
      }
 
     });
