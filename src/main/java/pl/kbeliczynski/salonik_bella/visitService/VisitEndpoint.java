@@ -22,7 +22,13 @@ public class VisitEndpoint {
     }
 
     @GetMapping("/api/visits")
-    public List<Visit> getAll(){ return visitRepository.findAll(); }
+    public List<Visit> getAll(@RequestParam(required = false) String date) {
+        if(date != null)
+            return visitRepository.findByVisitBeginContaining(date);
+        else
+            return visitRepository.findAll();
+    }
+
 
     @GetMapping("/api/visits/{id}")
     public ResponseEntity<Visit> getById(@PathVariable Long id) {

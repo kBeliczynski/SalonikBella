@@ -4,6 +4,7 @@ angular.module('app')
 		vm.credentials = {};
 		$rootScope.loggedUser = {};
 		$rootScope.loginError = false;
+		$rootScope.authenticated = false;
 		var loginSuccess = function(user) {
 			$rootScope.authenticated = true;
 			$rootScope.loggedUser = user;
@@ -18,6 +19,7 @@ angular.module('app')
 			$location.path('/start');
 		}
 		vm.logout = function() {
+			console.log('wylogowano');
 			LoginService.logout(logoutSuccess);
 
 		}

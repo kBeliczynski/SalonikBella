@@ -8,7 +8,6 @@ import pl.kbeliczynski.salonik_bella.user.User;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Entity
 public class Visit implements Serializable {
@@ -17,10 +16,8 @@ public class Visit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JsonFormat(pattern="yyyy/MM/dd HH:mm")
-    private LocalDateTime visitBegin;
-    @JsonFormat(pattern="yyyy/MM/dd HH:mm")
-    private LocalDateTime visitEnd;
+    private String visitBegin;
+    private String visitEnd;
     @OneToOne
     private Haircut haircutType;
     private int userId;
@@ -32,7 +29,7 @@ public class Visit implements Serializable {
 
     public Visit(){}
 
-    public Visit(LocalDateTime visitBegin, LocalDateTime visitEnd, Haircut haircutType, int userId, String userInfo, String adminInfo, int phone, VisitStatus status) {
+    public Visit(String visitBegin, String visitEnd, Haircut haircutType, int userId, String userInfo, String adminInfo, int phone, VisitStatus status) {
         this.visitBegin = visitBegin;
         this.visitEnd = visitEnd;
         this.haircutType = haircutType;
@@ -51,19 +48,19 @@ public class Visit implements Serializable {
         this.id = id;
     }
 
-    public LocalDateTime getVisitBegin() {
+    public String getVisitBegin() {
         return visitBegin;
     }
 
-    public void setVisitBegin(LocalDateTime visitBegin) {
+    public void setVisitBegin(String visitBegin) {
         this.visitBegin = visitBegin;
     }
 
-    public LocalDateTime getVisitEnd() {
+    public String getVisitEnd() {
         return visitEnd;
     }
 
-    public void setVisitEnd(LocalDateTime visitEnd) {
+    public void setVisitEnd(String visitEnd) {
         this.visitEnd = visitEnd;
     }
 

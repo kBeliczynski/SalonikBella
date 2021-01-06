@@ -105,14 +105,22 @@ angular.module('app')
                 vm.incorrectData = false;
                 visit.userInfo = 'zmieniono';
                 // edytuje zmienna openTimeByDate, wzgledem dnia wizyty
-                console.log(vm.visit);
+                visit.visitBegin = '2021/01/06 15:00';
+                visit.visitEnd = '2021/01/06 16:00';
+                console.log(visit);
+                vm.openTimeByDate = vm.mondayToFridayHours;
+                vm.checkDateAvailability(visit,vm.getActualDate());
         }
 
-        vm.checkDateAvailability = function (visit) {    // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami, ustawia zmienna ownDateSummary gdy data nie koliduje
+        vm.checkDateAvailability = function (visit,date) {    // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami, ustawia zmienna ownDateSummary gdy data nie koliduje
             //  sprawdzy czy koniec i poczatek wizyty nie wykracza poza godzinę otwarcia i zamkniecia.
-            if(visit.visitBegin.substring(11,16) < '9:00' || visit.visitEnd.substring(11,16) > '16:50')
+            if(visit.visitBegin.substring(11,16) < '09:00' || visit.visitEnd.substring(11,16) > (vm.openTimeByDate[vm.openTimeByDate.length-1]+':50'))
                 return false;
 
+            vm.searchByDate(visit.visitBegin.substring(0,10)).then( visits => {
+                console.log(visits);    // TUTAJ BEDZIE PETLA SPRAWDZAJACA CZY WARUNEK JEST SPELNIONY
+                console.log(visits[0].visitBegin);
+            })
             // sprawdzamy czy poczatek wizyty oraz jej długość nie kolidują z innymi wizytami
         }
 
@@ -123,5 +131,15 @@ angular.module('app')
         vm.setOpenTimeByDate = function () {  // sprawdza godziny otwarcia i ustawia zmienna openTimeByDate
             //  sprawdza dzień w którym rezerwowana jest wizyta i wybiera tablice w ktorych rezerwowane mogą być wizyty
         }
+
+        vm.getActualDate = function () {
+            var utc = new Date();
+            utc.setHours(utc.getHours()+1);
+            return utc.toJSON().slice(0,16).replace(/-/g,'/'); // dodaje +1 ponieważ mamy czas zimowy;
+        }
+
+        vm.searchByDate = date => {
+            return Visits.getAll({date}).$promise;
+     }
 
     });
