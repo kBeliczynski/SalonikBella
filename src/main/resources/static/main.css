@@ -505,29 +505,7 @@ footer{
         border-radius: 2px;
     }
 
-	.error-message{
-		color: #5c0b0b;
-		font-size: 16px;
-	}
-
-	.error-background{
-		height: 80px;
-		background: #de6565;
-		border-radius: 10px;
-	}
-
 /* koszyk zakupowy */
-
-	.duplicate-product-message{
-		height: 80px;
-		background: #ecaf63;
-		border-radius: 10px;
-	}
-
-	.duplicate-product-message-content{
-		color: #8d5a09;
-		font-size: 18px;
-	}
 
 	.summary-content{
 		font-size: 2vmax;

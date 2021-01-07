@@ -72,7 +72,7 @@
                 <div class="col-12">
                      <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz usługę:</h2>
                     <select ng-model="Ctrl.visit.haircutType">
-                        <option value="{{haircut.duration}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
+                        <option value="{{haircut.id}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
                     </select>
                 </div>
 
@@ -83,7 +83,7 @@
 
                  <div class="col-12">
                      <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz godzinę wizyty:</h2>
-                    <select ng-model='Ctrl.tmpVisit.hour' ng-disabled="Ctrl.openTimeByDate.length === 0" required>
+                    <select ng-model='Ctrl.visit.hour' ng-disabled="Ctrl.openTimeByDate.length === 0" required>
                         <option value="{{hour}}" ng-repeat="hour in Ctrl.openTimeByDate">{{hour}}</option>
                     </select>
                      :
@@ -110,13 +110,19 @@
 
             </form>
 
-            <div ng-show="Ctrl.incorrectData" class="col-10 error-background d-flex justify-content-center align-items-center">
-			    <i class="far fa-2x fa-times-circle error-message "></i>
-			    <div class="error-message ml-5">Wprowadzono niepoprawne dane!</div>
+            <div ng-show="Ctrl.incorrectData" class="col-10 alert alert-danger d-flex justify-content-center align-items-center">
+			    <i class="far fa-2x fa-times-circle"></i>
+			    <div class="ml-5">Wprowadzono niepoprawne dane!</div>
 		    </div>
 
-            <div ng-show="Ctrl.dateSummary" class="col-12">
-                TUTAJ BEDZIE PODSUMOWANIE LUB WIADOMOSC
+            <div ng-show="Ctrl.dateSummary === 1" class="col-10 alert alert-success d-flex justify-content-center align-items-center">
+                <i class="far fa-2x fa-times-circle"></i>
+			    <div class="ml-5">Wizyta została umówiona!</div>
+            </div>
+
+            <div ng-show="Ctrl.dateSummary === -1" class="col-10 alert alert-secondary d-flex justify-content-center align-items-center">
+                <i class="far fa-2x fa-times-circle"></i>
+			    <div class="ml-5">Podany termin jest zajęty!</div>
             </div>
 
         </div>

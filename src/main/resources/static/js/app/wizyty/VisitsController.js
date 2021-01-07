@@ -97,62 +97,80 @@ angular.module('app')
             vm.actualSearchDate.setDate(vm.actualSearchDate.getDate()+1);
         }
 
-        vm.findDate = async function (visit,date) {    // wywoluje funkcje checkDateAvailability(), szuka pierwszej dostepnej wizyty, ustawia zmienna findDateSummary gdy znajdzie wizyte
+        vm.findDate = async function (visit) {    // wywoluje funkcje checkDateAvailability(), szuka pierwszej dostepnej wizyty, ustawia zmienna findDateSummary gdy znajdzie wizyte
             if(visit.haircutType == undefined || visit.phoneString == undefined){
                 vm.incorrectData = true;
                 return;
             }
-                vm.incorrectData = false;
-                while(1) {
+            vm.incorrectData = false;
+            vm.setOpenTimeByDate(vm.actualSearchDate);
 
+                //while(1) {
                     for (var hour of vm.openTimeByDate)
-                        for (var minute of vm.minutes)
-                            ;
+                        for (var minute of vm.minutes){
+                            console.log('sprawdzana data:  '+vm.actualSearchDate.toJSON().slice(0,10).replace(/-/g,'/')+'  sprawdzana godzina : '+hour+':'+minute);
+                        }
+               // vm.searchNextDate();
+               // }
 
-                }
-
-                await vm.checkDateAvailability(visit);
-                await console.log(vm.dateSummary);
-                await console.log(vm.actualSearchDate.toJSON().slice(0,16).replace(/-/g,'/'));
-                await vm.searchNextDate();
-                await console.log(vm.actualSearchDate.toJSON().slice(0,16).replace(/-/g,'/'));
+                // await vm.checkDateAvailability(visit);
+                // await console.log(vm.dateSummary);
+                // await console.log(vm.actualSearchDate.toJSON().slice(0,16).replace(/-/g,'/'));
+                // await console.log(vm.actualSearchDate.toJSON().slice(0,16).replace(/-/g,'/'));
         }
 
         vm.findOwnDate = async function (visit) {
-            if(visit.haircutType == undefined || visit.phoneString == undefined || visit.minute == undefined || visit.hour == undefined || visit.date == undefined){
+            if(visit.haircutType == undefined || visit.phoneString == undefined || visit.date == undefined || visit.hour == undefined || visit.minute == undefined){
                 vm.incorrectData = true;
                 return;
             }
-             vm.incorrectData = false;
+            vm.incorrectData = false;
+
+             await vm.setEmptyValueInVisit(visit);
+             console.log('ustawiam inne wartosci visit: '+visit);
              await vm.setVisitBeginAndVisitEnd(visit,visit.date);
+              console.log('ustawiam visitbegin i end: '+visit);
              await vm.checkDateAvailability(visit);
-             if(vm.dateSummary) {
-                 visit.$save();
-             }
+              console.log('sprawdzilem czy moge zarezerwowac');
+             if(vm.dateSummary === 1) {
+                 await console.log('visit przed zapisaniem: '+visit);
+                 await vm.visit.$save();
+                 vm.visit = await new Visit();
+             }else
+                 vm.dateSummary = -1;
 
         }
 
         // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami
         vm.checkDateAvailability = async function (visit) {
             if(visit.visitBegin.substring(11,16) < '09:00' || visit.visitEnd.substring(11,16) > (vm.openTimeByDate[vm.openTimeByDate.length-1]+':50')) { //  sprawdzy czy koniec i poczatek wizyty nie wykracza poza godzinę otwarcia i zamkniecia.
-                vm.dateSummary = false;
+                vm.dateSummary = -1;
                 return;
             }
-            var anyValue = vm.searchByDate(visit.visitBegin.substring(0,10));
+            var anyValue = await vm.searchByDate(visit.visitBegin.substring(0,10));
             await vm.searchByDate(visit.visitBegin.substring(0,10)).$promise.then( async visits => {
                 for await(var element of visits)
                     if(!((visit.visitEnd <= element.visitBegin && visit.visitBegin < element.visitBegin) || (visit.visitEnd > element.visitEnd && visit.visitBegin >= element.visitEnd))) {
-                        vm.dateSummary = false;
+                        vm.dateSummary = -1;
                         break;
                     }else
-                        vm.dateSummary = true;
+                        vm.dateSummary = 1;
             })
-            if(anyValue === 0) // gdy nie ma wizyt w tym dniu, a wizyta mieści się między godzinami gdy salon jest otwarty, dodajemy ją
-                vm.dateSummary = true;
+            console.log('ilosc wizyt: '+anyValue.length);
+            if(anyValue.length === 0) // gdy nie ma wizyt w tym dniu, a wizyta mieści się między godzinami gdy salon jest otwarty, dodajemy ją
+                vm.dateSummary = 1;
+            await console.log('vm.dateSummary: '+vm.dateSummary);
         }
 
-        vm.acceptDate = function () {   // gdy data jest poprawna wysyła ją do akceptacj
-
+        //Ustawia resztę zmiennych, przed zapisaniem do bazy danych
+        vm.setEmptyValueInVisit = function( visit ) {
+            visit.haircutType = vm.haircuts[parseInt(visit.haircutType)];
+            if(visit.userInfo == null) visit.userInfo = '';
+            visit.adminInfo = '';
+            visit.phone = parseInt(visit.phoneString);
+            visit.status = 'WAITING';
+            visit.userId = $rootScope.loggedUser.id;
+            console.log('visit po ustawieniu zmiennych:'+visit);
         }
 
         // ustawia prawidlowa datę wizyty, później według niej liczy początek wizyty, oraz koniec dodając czas usługi
@@ -161,8 +179,11 @@ angular.module('app')
             await date.setHours(date.getHours()+1);   // dodaje 1 ponieważ mamy czas zimowy
             await date.setMinutes(visit.minute);
             visit.visitBegin = await date.toJSON().slice(0,16).replace(/-/g,'/');
-            var hour = await visit.haircutType/60;
-            var minute = await visit.haircutType%60;
+            console.log('visit.haircutType.duration:'+visit.haircutType.duration);
+            var hour = await visit.haircutType.duration/60;
+            console.log('hour:'+hour);
+            var minute = await visit.haircutType.duration%60;
+            console.log('minute:'+minute);
             await date.setHours(date.getHours()+hour);
             await date.setMinutes(date.getMinutes()+minute);
             visit.visitEnd = await date.toJSON().slice(0,16).replace(/-/g,'/');
