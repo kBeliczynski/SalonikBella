@@ -76,7 +76,7 @@ angular.module('app')
         vm.minutes = ['00','10','20','30','40','50'];
         vm.pageMode = {MAIN: 'Main', FIND_DATE: 'FindDate', OWN_DATE: 'OwnDate'};
         vm.activePage = vm.pageMode.MAIN;
-        vm.dateSummary = false;
+        vm.dateSummary = 0;
         vm.incorrectData = false;
         vm.actualSearchDate = new Date();
 
@@ -90,6 +90,7 @@ angular.module('app')
 
         vm.changeToMain = () => {
             vm.activePage = vm.pageMode.MAIN;
+            vm.dateSummary = 0;
             vm.visit = new Visit();
         }
 
@@ -98,20 +99,28 @@ angular.module('app')
         }
 
         vm.findDate = async function (visit) {    // wywoluje funkcje checkDateAvailability(), szuka pierwszej dostepnej wizyty, ustawia zmienna findDateSummary gdy znajdzie wizyte
-            if(visit.haircutType == undefined || visit.phoneString == undefined){
+            if(visit.haircut == undefined || visit.phoneString == undefined){
                 vm.incorrectData = true;
                 return;
             }
             vm.incorrectData = false;
-            vm.setOpenTimeByDate(vm.actualSearchDate);
 
-                //while(1) {
-                    for (var hour of vm.openTimeByDate)
-                        for (var minute of vm.minutes){
-                            console.log('sprawdzana data:  '+vm.actualSearchDate.toJSON().slice(0,10).replace(/-/g,'/')+'  sprawdzana godzina : '+hour+':'+minute);
-                        }
-               // vm.searchNextDate();
-               // }
+            while(1) {
+                await vm.setOpenTimeByDate(vm.actualSearchDate);
+                for (var hour of vm.openTimeByDate)
+                    for (var minute of vm.minutes){
+                        visit.hour = hour;
+                        visit.minute = minute;
+                        await vm.setVisitBeginAndVisitEnd(visit);
+                        if(visit.visitEnd.substring(11,16) > vm.openTimeByDate[vm.openTimeByDate.length-1]+':50')
+                            break;
+                        vm.checkDateAvailability(visit);
+                        if(vm.dateSummary === 1)
+
+                        console.log('sprawdzana data:  '+vm.actualSearchDate.toJSON().slice(0,10).replace(/-/g,'/')+'  sprawdzana godzina : '+hour+':'+minute);
+                     }
+                vm.searchNextDate();
+            }
 
                 // await vm.checkDateAvailability(visit);
                 // await console.log(vm.dateSummary);
@@ -120,7 +129,7 @@ angular.module('app')
         }
 
         vm.findOwnDate = async function (visit) {
-            if(visit.haircutType == undefined || visit.phoneString == undefined || visit.date == undefined || visit.hour == undefined || visit.minute == undefined){
+            if(visit.haircut == undefined || visit.phoneString == undefined || visit.date == undefined || visit.hour == undefined || visit.minute == undefined){
                 vm.incorrectData = true;
                 return;
             }
@@ -131,14 +140,15 @@ angular.module('app')
              await vm.setVisitBeginAndVisitEnd(visit,visit.date);
               console.log('ustawiam visitbegin i end: '+visit);
              await vm.checkDateAvailability(visit);
+             console.log('vm.dataSummary: '+vm.dateSummary);
               console.log('sprawdzilem czy moge zarezerwowac');
-             if(vm.dateSummary === 1) {
-                 await console.log('visit przed zapisaniem: '+visit);
-                 await vm.visit.$save();
-                 vm.visit = await new Visit();
-             }else
-                 vm.dateSummary = -1;
+        }
 
+        vm.saveVisit = async function ( visit ){
+            vm.dateSummary = 0;
+            await console.log('visit przed zapisaniem: '+visit);
+            await vm.visit.$save();
+            vm.visit = await new Visit();
         }
 
         // sprawdza czy znaleziona wizyta nie koliduje z innymi wizytami
@@ -164,7 +174,7 @@ angular.module('app')
 
         //Ustawia resztę zmiennych, przed zapisaniem do bazy danych
         vm.setEmptyValueInVisit = function( visit ) {
-            visit.haircutType = vm.haircuts[parseInt(visit.haircutType)];
+            visit.haircutType = vm.haircuts[parseInt(visit.haircut)];
             if(visit.userInfo == null) visit.userInfo = '';
             visit.adminInfo = '';
             visit.phone = parseInt(visit.phoneString);
