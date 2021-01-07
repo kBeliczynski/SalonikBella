@@ -32,7 +32,7 @@
                 <div class="col-12 my-2">
                     <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz usługę:</h2>
                     <select ng-model='Ctrl.visit.haircutType'>
-                        <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
+                        <option value="{{haircut.duration}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
                     </select>
                 </div>
 
@@ -70,40 +70,52 @@
              <form class="row d-flex justify-content-center align-items-center my-5">
 
                 <div class="col-12">
-                    <select ng-model-options="Ctrl.visit.haircutType" required="required">
-                        <option value="{{haircut.name}}" ng-repeat="haircut in Ctrl.haircuts">{{haircut.name}}</option>
+                     <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz usługę:</h2>
+                    <select ng-model="Ctrl.visit.haircutType">
+                        <option value="{{haircut.duration}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
                     </select>
                 </div>
 
                  <div class="col-12">
-                    <input type="date" required="required" ng-model="Ctrl.visit.date">
+                     <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz datę wizyty:</h2>
+                    <input type="date" required="required" ng-model="Ctrl.visit.date" ng-mouseleave="Ctrl.setOpenTimeByDate(Ctrl.visit.date)" ng->
                  </div>
 
                  <div class="col-12">
-                    <select ng-model='Ctrl.visit.hour' required="required">
-                        <option value="{{hour}}" ng-repeat="hour in Ctrl.mondayToFridayHours">{{hour}}</option>
+                     <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz godzinę wizyty:</h2>
+                    <select ng-model='Ctrl.tmpVisit.hour' ng-disabled="Ctrl.openTimeByDate.length === 0" required>
+                        <option value="{{hour}}" ng-repeat="hour in Ctrl.openTimeByDate">{{hour}}</option>
                     </select>
                      :
-                     <select ng-model='Ctrl.visit.minute'>
+                     <select ng-model='Ctrl.visit.minute' ng-disabled="Ctrl.openTimeByDate.length === 0" require >
                         <option value="{{minute}}" ng-repeat="minute in Ctrl.minutes">{{minute}}</option>
                     </select>
                  </div>
 
                 <div class="col-12">
-                    <input type="number" maxlength="9" placeholder="Telefon" required="required" ng-model="Ctrl.visit.phone">
+                    <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Podaj numer telefonu:</h2>
+                    <input type="tel" placeholder="Telefon" pattern="[0-9]{9}" maxlength="9" ng-model="Ctrl.visit.phoneString" required>
+                    <p class="architect-font my-2 col-12 d-flex justify-content-center" style="font-size: 14px;">*format : 123456789</p>
                 </div>
 
                 <div class="col-12">
+                    <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wiadomość:</h2>
                     <input type="text" maxlength="255" placeholder="Wiadomość" ng-model="Ctrl.visit.userInfo">
                 </div>
 
-                <div class="col-10 row d-flex justify-content-center align-items-center my-5">
-                    <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div> <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.checkDateAvailability()">Sprawdź</div>
+                <div class="col-10 row d-flex justify-content-center align-items-center mt-5">
+                    <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div>
+                    <button class="col-3 btn btn-primary btn-block mx-4" ng-click="Ctrl.findOwnDate(Ctrl.visit)">Sprawdź</button>
                 </div>
 
             </form>
 
-            <div class="col-12">
+            <div ng-show="Ctrl.incorrectData" class="col-10 error-background d-flex justify-content-center align-items-center">
+			    <i class="far fa-2x fa-times-circle error-message "></i>
+			    <div class="error-message ml-5">Wprowadzono niepoprawne dane!</div>
+		    </div>
+
+            <div ng-show="Ctrl.dateSummary" class="col-12">
                 TUTAJ BEDZIE PODSUMOWANIE LUB WIADOMOSC
             </div>
 
