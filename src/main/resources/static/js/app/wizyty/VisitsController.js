@@ -107,19 +107,21 @@ angular.module('app')
 
             while(1) {
                 await vm.setOpenTimeByDate(vm.actualSearchDate);
-                for (var hour of vm.openTimeByDate)
-                    for (var minute of vm.minutes){
+                for await (var hour of vm.openTimeByDate)
+                    for await(var minute of vm.minutes){
                         visit.hour = hour;
                         visit.minute = minute;
-                        await vm.setVisitBeginAndVisitEnd(visit);
+                        await vm.setEmptyValueInVisit(visit);
+                        await vm.setVisitBeginAndVisitEnd(visit, vm.actualSearchDate);
                         if(visit.visitEnd.substring(11,16) > vm.openTimeByDate[vm.openTimeByDate.length-1]+':50')
                             break;
-                        vm.checkDateAvailability(visit);
+                        vm.dateSummary = 1;
+                        await vm.checkDateAvailability(visit);
                         if(vm.dateSummary === 1)
-
+                            return;
                         console.log('sprawdzana data:  '+vm.actualSearchDate.toJSON().slice(0,10).replace(/-/g,'/')+'  sprawdzana godzina : '+hour+':'+minute);
                      }
-                vm.searchNextDate();
+                await vm.searchNextDate();
             }
 
                 // await vm.checkDateAvailability(visit);
@@ -139,6 +141,7 @@ angular.module('app')
              console.log('ustawiam inne wartosci visit: '+visit);
              await vm.setVisitBeginAndVisitEnd(visit,visit.date);
               console.log('ustawiam visitbegin i end: '+visit);
+             vm.dateSummary = 1;
              await vm.checkDateAvailability(visit);
              console.log('vm.dataSummary: '+vm.dateSummary);
               console.log('sprawdzilem czy moge zarezerwowac');
@@ -163,12 +166,11 @@ angular.module('app')
                     if(!((visit.visitEnd <= element.visitBegin && visit.visitBegin < element.visitBegin) || (visit.visitEnd > element.visitEnd && visit.visitBegin >= element.visitEnd))) {
                         vm.dateSummary = -1;
                         break;
-                    }else
-                        vm.dateSummary = 1;
+                    }
             })
             console.log('ilosc wizyt: '+anyValue.length);
-            if(anyValue.length === 0) // gdy nie ma wizyt w tym dniu, a wizyta mieści się między godzinami gdy salon jest otwarty, dodajemy ją
-                vm.dateSummary = 1;
+            // if(anyValue.length === 0) // gdy nie ma wizyt w tym dniu, a wizyta mieści się między godzinami gdy salon jest otwarty, dodajemy ją
+            //     vm.dateSummary = 1;
             await console.log('vm.dateSummary: '+vm.dateSummary);
         }
 

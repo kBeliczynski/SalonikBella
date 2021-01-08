@@ -32,7 +32,7 @@
                 <div class="col-12 my-2">
                     <h2 class="architect-font my-1 col-12 d-flex justify-content-center">Wybierz usługę:</h2>
                     <select ng-model='Ctrl.visit.haircut'>
-                        <option value="{{haircut.duration}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
+                        <option value="{{haircut.id}}" ng-repeat="haircut in Ctrl.haircuts" required>{{haircut.name}}</option>
                     </select>
                 </div>
 
@@ -48,8 +48,9 @@
                 </div>
 
                 <div class="col-10 row d-flex justify-content-center align-items-center my-4">
-                    <div class="col-3 btn btn-primary mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div>
+                    <div class="col-3 btn btn-danger mx-4" ng-click="Ctrl.changeToMain()">Cofnij</div>
                     <button class="col-3 btn btn-primary btn-block mx-4" ng-click="Ctrl.findDate(Ctrl.visit)">Szukaj</button>
+
                 </div>
 
             </form>
@@ -59,9 +60,13 @@
 			    <div class="error-message ml-5">Wprowadzono niepoprawne dane!</div>
 		    </div>
 
-            <div class="col-12">
-                TU PODSUMOWANIE
+            <div ng-if="Ctrl.dateSummary == 1" class="col-10 row alert alert-success d-flex justify-content-center align-items-center">
+                <p class="col-12">{{Ctrl.visit.haircutType.name}}</p>
+                <p class="col-12">{{Ctrl.visit.visitBegin.toString().substring(0,10)}} {{Ctrl.visit.visitBegin.toString().substring(11,16)}} - {{Ctrl.visit.visitEnd.toString().substring(0,10)}} {{Ctrl.visit.visitEnd.toString().substring(11,16)}}</p>
+                <button class="col-3 btn btn-success btn-block m-3" ng-show="Ctrl.dateSummary == 1" ng-click="Ctrl.saveVisit(Ctrl.visit)">Akceptuj</button>
             </div>
+
+
 
         </div>
 
