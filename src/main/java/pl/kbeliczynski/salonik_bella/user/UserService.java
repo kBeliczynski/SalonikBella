@@ -29,6 +29,10 @@ public class UserService {
 
 	public void addWithDefaultRole(User user) {
 		user.setRole(roleRepository.findByRole(DEFAULT_ROLE));
+		setPasswordEncoder(user);
+	}
+
+	public void setPasswordEncoder(User user){
 		String passwordHash = passwordEncoder.encode(user.getPassword());
 		user.setPassword(passwordHash);
 	}

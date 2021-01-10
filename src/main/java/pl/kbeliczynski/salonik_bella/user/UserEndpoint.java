@@ -62,12 +62,16 @@ public class UserEndpoint {
     @PutMapping("/api/users/{id}")
     public ResponseEntity<User> update(@RequestBody User user, @PathVariable Long id) {
         Optional<User> newUser = userRepository.findById(id);
-        if(user.getPassword() != null){
+        if(user.getPassword() == null){
             userService.addWithDefaultRole(user);
             newUser.get().setPassword(user.getPassword());
-        }else {
+        }else if(user.getPassword().compareTo(newUser.get().getPassword()) != 0){
+            userService.setPasswordEncoder(user);
+            newUser.get().setPassword(user.getPassword());
+        } else {
             newUser.get().setPerfumeList(user.getPerfumeList());
             newUser.get().setProductList(user.getProductList());
+            newUser.get().setVisitList(user.getVisitList());
         }
         User saved = userRepository.save(newUser.get());
         URI location = ServletUriComponentsBuilder

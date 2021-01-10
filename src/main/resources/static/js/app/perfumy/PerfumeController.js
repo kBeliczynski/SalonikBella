@@ -26,15 +26,15 @@ angular.module('app')
     vm.duplicate = false;
     vm.perfume = Perfumes.get(perfumeIndex);
 
-    vm.addPerfumeToBucket = function () {
-        vm.user = Users.get($rootScope.loggedUser.id);
-        if(!vm.checkDuplicatePerfumeInBucket(vm.perfume)) {
-            $rootScope.loggedUser.perfumeList.push(vm.perfume);
-            vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
-            vm.user.productList = $rootScope.loggedUser.productList;
-            vm.user.id = $rootScope.loggedUser.id;
-            Users.update(vm.user);
-        }
+    vm.addPerfumeToBucket = function (perfume) {
+        Users.get($rootScope.loggedUser.id).$promise.then( user => {
+            if(!vm.checkDuplicatePerfumeInBucket(perfume)) {
+                $rootScope.loggedUser.perfumeList.push(perfume);
+                user.perfumeList = $rootScope.loggedUser.perfumeList;
+                Users.update(user);
+            }
+        }).catch( err => console.log( err ))
+
     }
 
     vm.checkDuplicatePerfumeInBucket = function ( perfume ) {

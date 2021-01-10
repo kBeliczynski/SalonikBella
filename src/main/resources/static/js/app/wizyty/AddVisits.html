@@ -55,10 +55,11 @@
 
             </form>
 
-            <div ng-show="Ctrl.incorrectData" class="col-10 error-background d-flex justify-content-center align-items-center my-3">
-			    <i class="far fa-2x fa-times-circle error-message "></i>
-			    <div class="error-message ml-5">Wprowadzono niepoprawne dane!</div>
+            <div ng-show="Ctrl.incorrectData" class="col-10 alert alert-danger d-flex justify-content-center align-items-center my-3">
+			    <i class="far fa-2x fa-times-circle"></i>
+			    <div class="ml-5">Wprowadzono niepoprawne dane!</div>
 		    </div>
+
 
             <div ng-if="Ctrl.dateSummary == 1" class="col-10 row alert alert-success d-flex justify-content-center align-items-center">
                 <p class="col-12">{{Ctrl.visit.haircutType.name}}</p>

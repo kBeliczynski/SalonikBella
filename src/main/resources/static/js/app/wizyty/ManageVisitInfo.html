@@ -12,9 +12,9 @@
             <div class="row visit-detail d-flex justify-content-center align-items-center my-5">
 
                 <div class="col-12 architect-font my-2">Imie: {{userVisitInfo.firstName}} | Nazwisko: {{userVisitInfo.lastName}}</div>
-                <div class="col-12 architect-font my-2">Telefon: {{visitInfo.phone}} | Email: {{visitInfo.email}}</div>
+                <div class="col-12 architect-font my-2">Telefon: {{visitInfo.phone}} | Email: {{userVisitInfo.email}}</div>
                 <div class="col-12 architect-font my-2">Data wizyty: {{visitInfo.visitBegin.toString().substring(0,10)}} | Godzina wizyty: {{visitInfo.visitBegin.toString().substring(11,16)}} </div>
-                <div class="col-12 architect-font my-2">Usługa: {{visitInfo.haircutType.name}} | Średni czas trwania: {{visitInfo.haircutType.duration}}</div>
+                <div class="col-12 architect-font my-2">Usługa: {{visitInfo.haircutType.name}} | Średni czas trwania: {{visitInfo.haircutType.duration}} min</div>
                 <div class="col-12 architect-font my-2">Opis: {{visitInfo.haircutType.description}}</div>
                 <div class="col-12 architect-font my-2">Cena : {{visitInfo.haircutType.price}}<void class="architect-font" ng-if="visitInfo.haircutType.maxPrice"> - {{visitInfo.haircutType.maxPrice}} </void> zł</div>
                 <div class="col-12 architect-font my-2">wiadomość od użytkownika: {{visitInfo.userInfo}}</div>

@@ -28,21 +28,21 @@ angular.module('app')
         }
 
         vm.deletePerfume = function (data) {
-            vm.user = Users.get($rootScope.loggedUser.id);
-            const found = $rootScope.loggedUser.perfumeList.findIndex(element => element.name == data.name);
-            $rootScope.loggedUser.perfumeList.splice(found,1);
-            vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
-            vm.user.productList = $rootScope.loggedUser.productList;
-            vm.user.id = $rootScope.loggedUser.id;
-            Users.update(vm.user);
+            Users.get($rootScope.loggedUser.id).$promise.then( user => {
+                const found = $rootScope.loggedUser.perfumeList.findIndex(element => element.name == data.name);
+                $rootScope.loggedUser.perfumeList.splice(found,1);
+                user.perfumeList = $rootScope.loggedUser.perfumeList;
+                Users.update(user);
+            }).catch( err => console.log( err ))
         }
+
         vm.deleteProduct = function (data) {
-            vm.user = Users.get($rootScope.loggedUser.id);
-            const found = $rootScope.loggedUser.productList.findIndex(element => element.name == data.name);
-            $rootScope.loggedUser.productList.splice(found,1);
-            vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
-            vm.user.productList = $rootScope.loggedUser.productList;
-            vm.user.id = $rootScope.loggedUser.id;
-            Users.update(vm.user);
+            Users.get($rootScope.loggedUser.id).$promise.then( user => {
+                const found = $rootScope.loggedUser.productList.findIndex(element => element.name == data.name);
+                $rootScope.loggedUser.productList.splice(found,1);
+                user.productList = $rootScope.loggedUser.productList;
+                Users.update(user);
+            }).catch( err => console.log( err ))
         }
+
     });

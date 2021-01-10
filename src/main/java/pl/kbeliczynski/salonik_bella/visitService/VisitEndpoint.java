@@ -41,7 +41,6 @@ public class VisitEndpoint {
 
     @PostMapping(value = "/api/visits")
     public ResponseEntity<Visit> save(@RequestBody Visit visit) {
-        System.out.println(visit);
         if(visit.getId() == null) {
             Visit saved = visitRepository.save(visit);
             URI location = ServletUriComponentsBuilder

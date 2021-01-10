@@ -39,15 +39,14 @@ angular.module('app')
  			console.log(response.status); //np. 404
      });
 
-    vm.addProductToBucket = function () {
-        vm.user = Users.get($rootScope.loggedUser.id);
-        if(!vm.checkDuplicateProductInBucket(vm.product)) {
-            $rootScope.loggedUser.productList.push(vm.product);
-            vm.user.perfumeList = $rootScope.loggedUser.perfumeList;
-            vm.user.productList = $rootScope.loggedUser.productList;
-            vm.user.id = $rootScope.loggedUser.id;
-            Users.update(vm.user);
-        }
+    vm.addProductToBucket = function (product) {
+        Users.get($rootScope.loggedUser.id).$promise.then( user => {
+            if(!vm.checkDuplicateProductInBucket(product)) {
+                $rootScope.loggedUser.productList.push(vm.product);
+                user.productList = $rootScope.loggedUser.productList;
+                Users.update(user);
+            }
+        }).catch( err => console.log( err ))
     }
 
     vm.checkDuplicateProductInBucket = function ( product ) {

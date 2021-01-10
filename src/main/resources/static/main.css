@@ -6,6 +6,10 @@ body {
     font-size: 17px;
 }
 
+.container{
+	min-height: 740px;
+}
+
 h1 {
 	font-size: 36px;
 	font-weight: 400;
@@ -650,4 +654,15 @@ footer{
 		.to-own-date.ng-leave.ng-leave-active {
 			transform: translateY(-100%);
 			opacity:0;
+		}
+
+		.alert-success.ng-enter {
+			transition-delay: 0.5s, 250ms;
+			transition: 0.5s linear all;
+			opacity:0;
+		}
+
+		.alert-success.ng-enter.active {
+			transition-delay: 0.5s, 250ms;
+			opacity:1;
 		}
