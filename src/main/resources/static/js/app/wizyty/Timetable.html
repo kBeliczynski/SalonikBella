@@ -7,24 +7,43 @@
         <a class="col-6 btn btn-primary btn-block m-3" ng-href="/rejestracja">Rejestracja</a>
     </div>
 
-    <div ng-show="authenticated" class="row d-flex justify-content-center align-items-center my-5">
+    <div ng-show="authenticated" class="row my-5 d-flex justify-content-center align-items-center">
 
-    <div class="col-6 row my-3" style="background-color: blue">
-        aaaa
-        <div class="col-6 row my-3" style="background-color: red">
-        bbbb
-            <div class="col-6 row my-3" style="background-color: green">
-                    ccccc
-                    <div class="col-6 row my-3" style="background-color: yellow">
-                    ddddd
-                       <div class="col-6 row my-3" style="background-color: orange">
-                       eeeee
+        <div class="col-8 row timetable" style="background-color: darkslategrey">
 
-                       </div>
-                    </div>
+
+            <div class="col-12 row my-2 d-flex justify-content-center align-items-center">
+
+                <button class="col-4 btn btn-primary">Dzisiaj</button>
+
             </div>
+
+            <div class="col-12 row my-2 d-flex justify-content-center align-items-center">
+
+                <button class="col-1 btn btn-primary d-flex justify-content-end"><</button>
+                <div class="col-6 d-flex justify-content-center align-items-center"> {{Ctrl.getDayByNumber()}}</div>
+                <button class="col-1 btn btn-primary d-flex justify-content-start">></button>
+
+            </div>
+
+            <div class="col-12 row timetable-content">
+
+                 <div class="col-2 row timetable-time my-2 d-flex justify-content-end align-items-center">
+                     <div class="col-12 timetable-col" ng-repeat="hour in Ctrl.hours">{{hour}}:00-</div>
+                </div>
+
+                <div class="col-9 row timetable-visits ml-5 d-flex justify-content-center">
+                    <div class="col-12 move-tile d-flex justify-content-center align-items-center" ng-repeat="visit in Ctrl.visits | filter : { visitBegin : Ctrl.getActualShortDate()}" ng-if="visit.status === 'WAITING' ? Ctrl.check='waiting-background' : Ctrl.check='accept-background'" ng-class="Ctrl.check">
+                        <div class="architect-font">{{visit.haircutType.name}}</div>
+                        <div class="architect-font">{{visit.visitBegin.substring(11,16)}} - {{visit.visitEnd.substring(11,16)}}</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
         </div>
-    </div>
 
     </div>
 

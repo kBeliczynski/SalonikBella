@@ -7,6 +7,7 @@ body {
 }
 
 .container{
+	weight: 1400px;
 	min-height: 740px;
 }
 
@@ -665,4 +666,43 @@ footer{
 		.alert-success.ng-enter.active {
 			transition-delay: 0.5s, 250ms;
 			opacity:1;
+		}
+
+		/* harmonogram */
+
+		.timetable {
+
+		}
+
+		.timetable-content {
+
+		}
+
+		.timetable-time	{
+
+		}
+
+		.timetable-visits{
+			top:20px;
+		}
+
+		.timetable-col{
+			height: 120px;
+		}
+
+		.move-tile {
+			border-radius: 15px;
+			height: 180px;
+		}
+
+		.waiting-background {
+			background: orange;
+			color: black;
+			opacity: 50%;
+		}
+
+		.accept-background {
+			background: forestgreen;
+			color: black;
+			opacity: 50%;
 		}

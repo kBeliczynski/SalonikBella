@@ -109,6 +109,8 @@ angular.module('app')
                 await vm.setOpenTimeByDate(vm.actualSearchDate);
                 for await (var hour of vm.openTimeByDate)
                     for await(var minute of vm.minutes){
+                        if( (vm.actualSearchDate.getDay() === new Date().getDay()) && (vm.actualSearchDate.getHours() > parseInt(hour) || vm.actualSearchDate.getMinutes() > parseInt(minute) || vm.actualSearchDate.getHours() < parseInt(hour) || vm.actualSearchDate.getMinutes() < parseInt(minute))) // odrzuca wizyty ktore są wcześniej niż aktualna data
+                            continue;
                         visit.hour = hour;
                         visit.minute = minute;
                         await vm.setEmptyValueInVisit(visit);
@@ -203,4 +205,34 @@ angular.module('app')
             return Visits.getAll({date});
         }
 
+    })
+ .controller('TimetableController', function($rootScope,$resource, Visits, Users) {
+        var vm = this;
+        vm.hours = ['09','10','11','12','13','14','15','16','17'];
+        vm.actualDate = new Date();
+        vm.visits = Visits.getAll();
+
+        // wyswietla dzień tygodnia w kalendarzu
+        vm.getDayByNumber = function () {
+            let number = vm.actualDate.getDay();
+            switch(number){
+                case 0 : return 'Niedziela';
+                case 1 : return 'Poniedziałek';
+                case 2 : return 'Wtorek';
+                case 3 : return 'Środa';
+                case 4 : return 'Czwartek';
+                case 5 : return 'Piątek';
+                case 6 : return 'Sobota';
+                default : return 'Undefined';
+            }
+        }
+
+        // zwraca datę w formacie : RRRR/MM/DDTGG:mm
+        vm.getActualShortDate = function () {
+            return vm.actualDate.toJSON().slice(0,10).replace(/-/g,'/');
+        }
+
+        vm.getColorStatus = function () {
+
+        }
     });

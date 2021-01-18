@@ -51,7 +51,7 @@ angular.module('app')
         })
         .when('/wizyty/harmonogram', {
             templateUrl: 'js/app/wizyty/Timetable.html',
-            controller: 'VisitsController',
+            controller: 'TimetableController',
             controllerAs: 'Ctrl'
         })
         .when('/wizyty/moje-wizyty', {
