@@ -232,7 +232,12 @@ angular.module('app')
             return vm.actualDate.toJSON().slice(0,10).replace(/-/g,'/');
         }
 
-        vm.getColorStatus = function () {
-
+        // liczy przesuniecie obiektu aby dopasawac ja do harmonogramu i zwraca odleglosc przesuniecia
+        vm.getMoveVisit = function (visit) {
+            let hours = parseInt(visit.visitBegin.substring(11,13));
+            let minutes = parseInt(visit.visitBegin.substring(14,16)) + hours * 60;
+            console.log(minutes - (9 * 60)) // 9*60 ponieważ zaczynamy od godziny 9:00
+            return (minutes - (9 * 60)) * 2;    // mnożę razy 2 ponieważ każda minuta w harmonogramie zajmuje 2px
         }
+
     });

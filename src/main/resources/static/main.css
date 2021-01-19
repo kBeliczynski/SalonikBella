@@ -683,6 +683,7 @@ footer{
 		}
 
 		.timetable-visits{
+			position: absolute;
 			top:20px;
 		}
 
@@ -691,8 +692,9 @@ footer{
 		}
 
 		.move-tile {
+			margin-left: 50%;
+			position: absolute;
 			border-radius: 15px;
-			height: 180px;
 		}
 
 		.waiting-background {
