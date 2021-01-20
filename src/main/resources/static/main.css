@@ -671,7 +671,10 @@ footer{
 		/* harmonogram */
 
 		.timetable {
-
+			border-radius: 5px;
+			background-color: #ffffff;
+			color: black;
+			opacity: 90%;
 		}
 
 		.timetable-content {
@@ -679,7 +682,7 @@ footer{
 		}
 
 		.timetable-time	{
-
+			font-size: 18px;
 		}
 
 		.timetable-visits{
@@ -692,19 +695,19 @@ footer{
 		}
 
 		.move-tile {
+			color: black;
 			margin-left: 50%;
 			position: absolute;
 			border-radius: 15px;
+			overflow-y: hidden;
 		}
 
 		.waiting-background {
-			background: orange;
-			color: black;
-			opacity: 50%;
+			background: rgba(238, 98, 33, 0.8);
+			opacity: 80%;
 		}
 
 		.accept-background {
-			background: forestgreen;
-			color: black;
-			opacity: 50%;
+			background: rgba(22, 139, 22, 0.8);
+			opacity: 80%;
 		}

@@ -9,38 +9,44 @@
 
     <div ng-show="authenticated" class="row my-5 d-flex justify-content-center align-items-center">
 
-        <div class="col-8 row timetable" style="background-color: darkslategrey">
+        <div class="col-8 row timetable">
 
+            <div class="col-12 row m-3 d-flex justify-content-start align-items-center">
 
-            <div class="col-12 row my-2 d-flex justify-content-center align-items-center">
-
-                <button class="col-4 btn btn-primary">Dzisiaj</button>
+                <button class="col-4 btn btn-dark" ng-click="Ctrl.today()">Dzisiaj</button>
+                <input class="mx-3" type="date" ng-model="Ctrl.ownDate" ng-mouseleave="Ctrl.setViewDay(Ctrl.ownDate)">
 
             </div>
 
-            <div class="col-12 row my-2 d-flex justify-content-center align-items-center">
+            <div class="col-12 row m-1 d-flex justify-content-center align-items-center">
 
-                <button class="col-1 btn btn-primary d-flex justify-content-end"><</button>
-                <div class="col-6 d-flex justify-content-center align-items-center"> {{Ctrl.getDayByNumber()}}</div>
-                <button class="col-1 btn btn-primary d-flex justify-content-start">></button>
+                <i class="far fa-arrow-alt-circle-left fa-2x" ng-click="Ctrl.prevDay()" ></i>
+                <div class="col-6 d-flex justify-content-center align-items-center" style="font-size: 40px"> <b>{{Ctrl.getDayByNumber()}} </b></div>
+                <i class="far fa-arrow-alt-circle-right fa-2x" ng-click="Ctrl.nextDay()" ></i>
+
+            </div>
+
+            <div class="col-12 row m-1 d-flex justify-content-center align-items-center">
+
+                <div class="col-6 d-flex justify-content-center align-items-center" style="font-size: 16px"> {{Ctrl.getActualShortDate()}} </div>
 
             </div>
 
             <div class="col-12 row timetable-content">
 
-                 <div class="col-2 row timetable-time my-2 md-flex justify-content-end align-items-center">
-                     <div class="col-12 timetable-col" ng-repeat="hour in Ctrl.hours">{{hour}}:00-</div>
+                 <div class="col-2 row timetable-time my-2 d-flex justify-content-end align-items-center">
+                     <div class="col-12 timetable-col" ng-repeat="hour in Ctrl.hours"> {{hour}}:00- </div>
                 </div>
 
                 <div class="col-9 row timetable-visits ml-2 d-flex justify-content-center">
-                    <div class="col-12 move-tile d-flex justify-content-center align-items-center"
+                    <div class="col-12 move-tile"
                     ng-class="Ctrl.check"
                     ng-if="visit.status === 'WAITING' ? Ctrl.check='waiting-background' : Ctrl.check='accept-background'"
                     ng-repeat="visit in Ctrl.visits | filter : { visitBegin : Ctrl.getActualShortDate()}"
                     ng-style="{height: '{{visit.haircutType.duration*2}}px',top: '{{Ctrl.getMoveVisit(visit)}}px',zIndex: '{{visit.id}}'}">
 
-                        <div class="architect-font">{{ visit.haircutType.name }} </div>
-                        <div class="architect-font"> {{visit.visitBegin.substring(11,16)}} - {{visit.visitEnd.substring(11,16)}}</div>
+                        <div class="architect-font d-flex justify-content-start" style="font-size: 21px">{{ visit.haircutType.name }} </div>
+                        <div class="architect-font d-flex justify-content-start" style="font-size: 21px"> {{visit.visitBegin.substring(11,16)}} - {{visit.visitEnd.substring(11,16)}}</div>
 
                     </div>
 

@@ -211,6 +211,7 @@ angular.module('app')
         vm.hours = ['09','10','11','12','13','14','15','16','17'];
         vm.actualDate = new Date();
         vm.visits = Visits.getAll();
+        vm.ownDate = new Date();
 
         // wyswietla dzień tygodnia w kalendarzu
         vm.getDayByNumber = function () {
@@ -236,8 +237,23 @@ angular.module('app')
         vm.getMoveVisit = function (visit) {
             let hours = parseInt(visit.visitBegin.substring(11,13));
             let minutes = parseInt(visit.visitBegin.substring(14,16)) + hours * 60;
-            console.log(minutes - (9 * 60)) // 9*60 ponieważ zaczynamy od godziny 9:00
             return (minutes - (9 * 60)) * 2;    // mnożę razy 2 ponieważ każda minuta w harmonogramie zajmuje 2px
+        }
+
+        vm.nextDay = function () {
+            vm.actualDate.setDate(vm.actualDate.getDate()+1);
+        }
+
+        vm.prevDay = function () {
+            vm.actualDate.setDate(vm.actualDate.getDate()-1);
+        }
+
+        vm.today = function () {
+            vm.actualDate = new Date();
+        }
+
+        vm.setViewDay = function (ownDate){
+            vm.actualDate = ownDate;
         }
 
     });
