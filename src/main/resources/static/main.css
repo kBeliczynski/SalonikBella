@@ -696,6 +696,7 @@ footer{
 
 		.move-tile {
 			color: black;
+			box-shadow:0 0 5px black;
 			margin-left: 50%;
 			position: absolute;
 			border-radius: 15px;

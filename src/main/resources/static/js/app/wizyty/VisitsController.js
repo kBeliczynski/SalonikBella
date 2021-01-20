@@ -109,7 +109,7 @@ angular.module('app')
                 await vm.setOpenTimeByDate(vm.actualSearchDate);
                 for await (var hour of vm.openTimeByDate)
                     for await(var minute of vm.minutes){
-                        if( (vm.actualSearchDate.getDay() === new Date().getDay()) && (vm.actualSearchDate.getHours() > parseInt(hour) || vm.actualSearchDate.getMinutes() > parseInt(minute) || vm.actualSearchDate.getHours() < parseInt(hour) || vm.actualSearchDate.getMinutes() < parseInt(minute))) // odrzuca wizyty ktore są wcześniej niż aktualna data
+                        if( (vm.actualSearchDate.getDay() === new Date().getDay()) && (vm.actualSearchDate.getHours() > 17 && vm.actualSearchDate.getMinutes() > 0)) // odrzuca wizyty ktore są wcześniej niż aktualna data
                             continue;
                         visit.hour = hour;
                         visit.minute = minute;

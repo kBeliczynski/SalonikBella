@@ -14,15 +14,15 @@
             <div class="col-12 row m-3 d-flex justify-content-start align-items-center">
 
                 <button class="col-4 btn btn-dark" ng-click="Ctrl.today()">Dzisiaj</button>
-                <input class="mx-3" type="date" ng-model="Ctrl.ownDate" ng-mouseleave="Ctrl.setViewDay(Ctrl.ownDate)">
+                <input class="col-4 m-3" type="date" ng-model="Ctrl.ownDate" ng-mouseleave="Ctrl.setViewDay(Ctrl.ownDate)">
 
             </div>
 
             <div class="col-12 row m-1 d-flex justify-content-center align-items-center">
 
-                <i class="far fa-arrow-alt-circle-left fa-2x" ng-click="Ctrl.prevDay()" ></i>
-                <div class="col-6 d-flex justify-content-center align-items-center" style="font-size: 40px"> <b>{{Ctrl.getDayByNumber()}} </b></div>
-                <i class="far fa-arrow-alt-circle-right fa-2x" ng-click="Ctrl.nextDay()" ></i>
+                <i class="far fa-arrow-alt-circle-left fa-1x" ng-click="Ctrl.prevDay()" ></i>
+                <div class="col-10 col-md-6 col-lg-5 col d-flex justify-content-center align-items-center" style="font-size: 34px"> <b>{{Ctrl.getDayByNumber()}} </b></div>
+                <i class="far fa-arrow-alt-circle-right fa-1x" ng-click="Ctrl.nextDay()" ></i>
 
             </div>
 
