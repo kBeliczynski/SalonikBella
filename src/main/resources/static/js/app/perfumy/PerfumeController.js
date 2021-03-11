@@ -24,11 +24,13 @@ angular.module('app')
     var vm = this;
     var perfumeIndex = $routeParams.id;
     vm.duplicate = false;
+    vm.addedToBucket = false;
     vm.perfume = Perfumes.get(perfumeIndex);
 
     vm.addPerfumeToBucket = function (perfume) {
         Users.get($rootScope.loggedUser.id).$promise.then( user => {
             if(!vm.checkDuplicatePerfumeInBucket(perfume)) {
+                vm.addedToBucket = true;
                 $rootScope.loggedUser.perfumeList.push(perfume);
                 user.perfumeList = $rootScope.loggedUser.perfumeList;
                 Users.update(user);

@@ -27,6 +27,7 @@ angular.module('app')
     vm.productIndex = $routeParams.id;
     vm.productCategory = $routeParams.category;
     vm.duplicate = false;
+    vm.addedToBucket = false;
     var Product = $resource('api/products/'+vm.productCategory+'/'+vm.productIndex);
 
 
@@ -42,6 +43,7 @@ angular.module('app')
     vm.addProductToBucket = function (product) {
         Users.get($rootScope.loggedUser.id).$promise.then( user => {
             if(!vm.checkDuplicateProductInBucket(product)) {
+                vm.addedToBucket = true;
                 $rootScope.loggedUser.productList.push(vm.product);
                 user.productList = $rootScope.loggedUser.productList;
                 Users.update(user);
