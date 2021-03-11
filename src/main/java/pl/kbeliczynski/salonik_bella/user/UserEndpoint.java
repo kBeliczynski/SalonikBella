@@ -45,7 +45,9 @@ public class UserEndpoint {
 
     @PostMapping(value = "/api/users", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> save(@RequestBody User user) {
-        if(user.getId() == null) {
+        if(isLoginAvailable(user.getEmail())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } else if(user.getId() == null) {
             userService.addWithDefaultRole(user);
             User saved = userRepository.save(user);
             URI location = ServletUriComponentsBuilder
@@ -81,5 +83,10 @@ public class UserEndpoint {
                     .toUri();
             return ResponseEntity.created(location).body(user);
     }
+
+    Boolean isLoginAvailable(String email){
+        return userRepository.existsByEmail(email);
+    }
+
 
 }

@@ -107,22 +107,26 @@ angular.module('app')
 
             while(1) {
                 await vm.setOpenTimeByDate(vm.actualSearchDate);
-                for await (var hour of vm.openTimeByDate)
-                    for await(var minute of vm.minutes){
-                        if( (vm.actualSearchDate.getDay() === new Date().getDay()) && (vm.actualSearchDate.getHours() > 17 && vm.actualSearchDate.getMinutes() > 0)) // odrzuca wizyty ktore są wcześniej niż aktualna data
+                for await (var hour of vm.openTimeByDate) {
+                    if((vm.actualSearchDate.getDay() === new Date().getDay()) && (vm.actualSearchDate.getHours() > hour))
+                        continue
+                    for await(var minute of vm.minutes) {
+                        if ((vm.actualSearchDate.getDay() === new Date().getDay()) && (vm.actualSearchDate.getMinutes() > minute)) // odrzuca wizyty ktore są wcześniej niż aktualna data
                             continue;
                         visit.hour = hour;
                         visit.minute = minute;
+                        console.log(vm.actualSearchDate,visit.hour, visit.minute);
                         await vm.setEmptyValueInVisit(visit);
                         await vm.setVisitBeginAndVisitEnd(visit, vm.actualSearchDate);
-                        if(visit.visitEnd.substring(11,16) > vm.openTimeByDate[vm.openTimeByDate.length-1]+':00')
+                        if (visit.visitEnd.substring(11, 16) > vm.openTimeByDate[vm.openTimeByDate.length - 1] + ':00')
                             break;
                         vm.dateSummary = 1;
                         await vm.checkDateAvailability(visit);
-                        if(vm.dateSummary === 1)
+                        if (vm.dateSummary === 1)
                             return;
-                     }
-                await vm.searchNextDate();
+                    }
+                    await vm.searchNextDate();
+                }
             }
         }
 

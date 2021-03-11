@@ -325,7 +325,11 @@ footer{
 	}
 
 	.main-home-description .architect-font{
-		font-size: 3vmin;
+		font-size: 1.2vmax;
+	}
+
+	.main-home-description .main-font{
+		font-size: 1.8vmax;
 	}
 
 	/* GALERIA */

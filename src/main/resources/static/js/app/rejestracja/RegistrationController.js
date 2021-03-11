@@ -3,13 +3,17 @@ angular.module('app')
     var vm = this;
 	var User = $resource('api/users');
     vm.user = new User();
+	vm.emailIsAlreadyTaken = false;
 
 	vm.register = function(user) {
 		if(vm.invalidFormValue(user))
 			return;
-		user.$save(function(data) {
+		user.$save().then( data => {
 			$location.path('/zarejestrowano');
 			vm.user = new User();
+		}).catch( err => {
+			console.log(err);
+			vm.emailIsAlreadyTaken = true;
 		});
 	}
 
