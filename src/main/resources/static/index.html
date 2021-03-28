@@ -80,6 +80,10 @@
 		<script src="js/app/koszyk/BucketController.js"></script>
 		<script src="js/app/koszyk/BucketService.js"></script>
 
+		<!-- Zamówienia -->
+		<script src="js/app/zamowienie/OrdersController.js"></script>
+		<script src="js/app/zamowienie/OrdersService.js"></script>
+
 		<base ng-href="/" />
 
 
@@ -132,6 +136,17 @@
 							<a class="dropdown-item d-flex justify-content-center" ng-href="/wizyty/moje-wizyty"> Moje wizyty </a>
 							<a class="dropdown-item d-flex justify-content-center" ng-href="/wizyty/zapisz-sie"> Zapisz się </i></a>
 							<a class="dropdown-item d-flex justify-content-center" ng-show="loggedUser.role.role === 'ADMIN'" ng-href="/wizyty/zarzadzaj"> Zarządzaj </a>
+						</div>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" ng-href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu3" aria-haspopup="true">
+							Zamowienia <i class="fas fa-truck"></i>
+						</a>
+
+						<div class="dropdown-menu" aria-labelledby="submenu3" ng-controller="OrdersController">
+							<a class="dropdown-item d-flex justify-content-center" ng-href="/zamowienia/moje-zamowienia"> Moje zamówienia </a>
+							<a class="dropdown-item d-flex justify-content-center" ng-show="loggedUser.role.role === 'ADMIN'" ng-href="/zamowienia/zarzadzaj"> Zarządzaj </a>
 						</div>
 					</li>
 

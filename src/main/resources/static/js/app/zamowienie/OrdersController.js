@@ -9,4 +9,9 @@ angular.module('app')
             else
                 return true;
         }
+
+        vm.realizeOrder = function( order ){
+
+        }
+
     });

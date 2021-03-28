@@ -84,6 +84,26 @@ angular.module('app')
             controller: 'BucketController',
  	        controllerAs: 'Ctrl'
         })
+        .when('/koszyk/zamowienie', {
+            templateUrl: 'js/app/zamowienie/AddOrder.html',
+            controller: 'OrdersController',
+ 	        controllerAs: 'Ctrl'
+        })
+        .when('/zamowienia/moje-zamowienia', {
+            templateUrl: 'js/app/zamowienie/Orders.html',
+            controller: 'OrdersController',
+ 	        controllerAs: 'Ctrl'
+        })
+        .when('/zamowienia/zarzadzaj', {
+            templateUrl: 'js/app/zamowienie/ManageOrders.html',
+            controller: 'OrdersController',
+ 	        controllerAs: 'Ctrl'
+        })
+        .when('/zamowienia/szczegoly', {
+            templateUrl: 'js/app/zamowienie/ManageOrderInfo.html',
+            controller: 'OrdersController',
+ 	        controllerAs: 'Ctrl'
+        })
         .when('/login', {
  	        templateUrl: 'js/app/logowanie/login.html',
  	        controller: 'LoginController',
