@@ -164,11 +164,12 @@ INSERT INTO `SalonikBella`.`user_visit_list` (`user_id`,`visit_list_id`) VALUES 
 INSERT INTO `SalonikBella`.`user_visit_list` (`user_id`,`visit_list_id`) VALUES (2,4);
 INSERT INTO `SalonikBella`.`user_visit_list` (`user_id`,`visit_list_id`) VALUES (2,5);
 
+/* Zamówienia */
+INSERT INTO `SalonikBella`.`orders` (`phone_number`,`city`,`zip_code`,`street`,`delivery_details`,`shipping_details`,`price`,`status`,`order_date`,`end_date`,`order_products`) VALUES ('123123123','Lublin','21-520','Lubelska 12',2,0,150,2,'2021/03/30T13:14','','szmpon jakis, perfum jakis, perfum jakis, odżywka jakas');
+/*INSERT INTO `SalonikBella`.`orders` (`phone_number`,`city`,`zip_code`,`street`,`delivery_details`,`shipping_details`,`price`,`status`,`order_date`,`end_date`,`order_products`) VALUES ('','','','',,,,,'','',''); */
 
-
-
-
-
+/* Lista zamowien klientow */
+INSERT INTO `SalonikBella`.`user_order_list` (`user_id`,`order_list_id`) VALUES (1,1);
 
 
 

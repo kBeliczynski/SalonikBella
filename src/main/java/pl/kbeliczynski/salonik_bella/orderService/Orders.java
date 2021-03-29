@@ -8,20 +8,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Order implements Serializable {
+public class Orders implements Serializable {
      private static final long serialVersionUID = 8528936152170847419L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
-     private String firstName;
-     private String lastName;
      @NotEmpty
-     @NumberFormat
      private String phoneNumber;
      @NotEmpty
      private String city;
@@ -33,19 +29,14 @@ public class Order implements Serializable {
      private Double price;
      private delivery deliveryDetails;
      private shipping shippingDetails;
-     private Date orderDate;
-     private Date endDate;
+     private String orderDate;
+     private String endDate;
      private orderStatus status;
-     @ManyToMany
-     private List<Perfume> perfumeList = new ArrayList<>();
-     @ManyToMany
-     private List<Product> productList = new ArrayList<>();
+     private String orderProducts;
 
-    Order() {}
+    Orders() {}
 
-    public Order(String firstName, String lastName, String phoneNumber, String city, String zipCode, String street, Double price, delivery deliveryDetails, shipping shippingDetails, Date orderDate, Date endDate, orderStatus status) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Orders(@NotEmpty String phoneNumber, @NotEmpty String city, @NotEmpty String zipCode, @NotEmpty String street, @NotEmpty Double price, delivery deliveryDetails, shipping shippingDetails, String orderDate, String endDate, orderStatus status, String orderProducts) {
         this.phoneNumber = phoneNumber;
         this.city = city;
         this.zipCode = zipCode;
@@ -56,6 +47,7 @@ public class Order implements Serializable {
         this.orderDate = orderDate;
         this.endDate = endDate;
         this.status = status;
+        this.orderProducts = orderProducts;
     }
 
     public Long getId() {
@@ -66,21 +58,6 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -138,19 +115,19 @@ public class Order implements Serializable {
         this.shippingDetails = shippingDetails;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -166,8 +143,6 @@ public class Order implements Serializable {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", city='" + city + '\'' +
                 ", zipCode='" + zipCode + '\'' +

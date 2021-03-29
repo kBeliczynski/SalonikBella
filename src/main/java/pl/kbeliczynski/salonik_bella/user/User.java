@@ -1,6 +1,7 @@
 package pl.kbeliczynski.salonik_bella.user;
 
 import pl.kbeliczynski.salonik_bella.PerfumeServices.Perfume;
+import pl.kbeliczynski.salonik_bella.orderService.Orders;
 import pl.kbeliczynski.salonik_bella.productServices.Product;
 import pl.kbeliczynski.salonik_bella.visitService.Visit;
 
@@ -33,10 +34,12 @@ public class User implements Serializable {
     private List<Product> productList = new ArrayList<>();
     @OneToMany
     private List<Visit> visitList = new ArrayList<>();
+    @OneToMany
+    private List<Orders> orderList = new ArrayList<>();
 
     User() {}
 
-    public User(String firstName, String lastName, @Email @NotEmpty String email, @NotEmpty String password, UserRole role, List<Perfume> perfumeList, List<Product> productList, List<Visit> visitList) {
+    public User(String firstName, String lastName, @Email @NotEmpty String email, @NotEmpty String password, UserRole role, List<Perfume> perfumeList, List<Product> productList, List<Visit> visitList, List<Orders> orderList) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -45,6 +48,7 @@ public class User implements Serializable {
         this.perfumeList = perfumeList;
         this.productList = productList;
         this.visitList = visitList;
+        this.orderList = orderList;
     }
 
     public Long getId() {
@@ -85,6 +89,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Orders> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Orders> orderList) {
+        this.orderList = orderList;
     }
 
     public UserRole getRole() {

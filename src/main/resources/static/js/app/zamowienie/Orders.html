@@ -10,7 +10,7 @@
     <div ng-show="authenticated" class="my-5">
 
 
-        <div ng-show="(Ctrl.visits | filter: {userId: loggedUser.id})[0]" class="row d-flex justify-content-center align-items-center my-5">
+        <div ng-show="loggedUser.orderList[0]" class="row d-flex justify-content-center align-items-center my-5">
 
             <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Moje zamówienia</div>
 
@@ -22,24 +22,24 @@
                 <div class="col-2  my-visit-tile architect-font"><b> Status </b></div>
             </div>
 
-            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="visit in Ctrl.visits | filter: {userId: loggedUser.id}">
-<!--                <div class="col-3 my-visit-tile architect-font "> {{visit.visitBegin.toString().substring(0,10)}} </div>-->
-<!--                <div class="col-3 my-visit-tile architect-font"> {{visit.visitBegin.toString().substring(11,16)}} </div>-->
-<!--                <div class="col-2 my-visit-tile architect-font"> {{visit.haircutType.name}} </div>-->
-<!--                <div class="col-2 my-visit-tile architect-font delete" > <i class="fas fa-info-circle fa-3x" ng-click="Ctrl.showVisitInfo(visit)"></i> </div>-->
-<!--                <div class="col-2 my-visit-tile architect-font" ng-if="visit.status === 'WAITING' ? Ctrl.check='waiting' : Ctrl.check='accept'" ng-class="Ctrl.check"> {{visit.status}} </div>-->
+            <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="orders in loggedUser.orderList">
+                <div class="col-3 my-visit-tile architect-font "> {{orders.orderDate.toString().substring(0,10)}} {{orders.orderDate.toString().substring(11,16)}} </div>
+                <div class="col-3 my-visit-tile architect-font"> {{orders.endDate.toString().substring(0,10)}} {{orders.endDate.toString().substring(11,16)}} </div>
+                <div class="col-2 my-visit-tile architect-font"> {{orders.price}} zł </div>
+                <div class="col-2 my-visit-tile architect-font "> {{orders.deliveryDetails}} </div>
+                <div class="col-2 my-visit-tile architect-font"> {{orders.status}} </div>
             </div>
 
         </div>
 
-<!--        <div ng-show="!(Ctrl.visits | filter: {userId: loggedUser.id})[0]" class="row empty-visits d-flex justify-content-center align-items-center my-5">-->
+        <div ng-show="!loggedUser.orderList[0]" class="row empty-visits d-flex justify-content-center align-items-center my-5">
 
-<!--            <i class="far fa-calendar fa-7x my-5 col-10 d-flex justify-content-center" ng-></i>-->
-<!--            <h2 class="architect-font my-4 col-10 d-flex justify-content-center">Nie posiadasz żadnych zamówień.</h2>-->
-<!--            <p class="architect-font my-4 col-10 d-flex justify-content-center">Dodaj produkty do koszyka i złóż zamówienie!</p>-->
-<!--            <a class="btn btn-primary col-6 mx-1"  ng-href="/wizyty/zapisz-sie">Koszyk</a>-->
+            <i class="fas fa-truck fa-7x my-5 col-10 d-flex justify-content-center"></i>
+            <h2 class="architect-font my-4 col-10 d-flex justify-content-center">Nie posiadasz żadnych zamówień.</h2>
+            <p class="architect-font my-4 col-10 d-flex justify-content-center">Dodaj produkty do koszyka i złóż zamówienie!</p>
+            <a class="btn btn-primary col-6 mx-1"  ng-href="/koszyk">Koszyk</a>
 
-<!--        </div>-->
+        </div>
 
     </div>
 
