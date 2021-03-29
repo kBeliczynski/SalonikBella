@@ -1,1 +1,78 @@
-zarzadzaj zamowieniami
+<header>
+
+    <div ng-show="!authenticated" class="row d-flex justify-content-center align-items-center my-5">
+        <i class="fas fa-truck fa-9x my-4 col-12"></i>
+        <h2 class="col-8 architect-font d-flex justify-content-center align-items-center my-5" style="font-size: 3vmax;">Zaloguj się lub zarejestruj aby zobaczyć swoje zamówienia !</h2>
+        <a class="col-6 btn btn-success btn-block m-3" ng-href="/login">Logowanie</a>
+        <a class="col-6 btn btn-primary btn-block m-3" ng-href="/rejestracja">Rejestracja</a>
+    </div>
+
+    <div ng-show="authenticated" class="my-5">
+
+        <div ng-if="Ctrl.anyOrders()" class="row d-flex justify-content-center align-items-center my-5">
+
+            <div ng-show="(Ctrl.orders | filter: {status: '!COMPLETED'})[0]" class="row d-flex justify-content-center align-items-center my-5">
+
+                <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Moje zamówienia</div>
+
+                <div class="col-12 row d-flex justify-content-center align-items-center py-4">
+                    <div class="col-3  my-visit-tile architect-font"><b> Data zamówienia </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Do zapłaty </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Sposób dostawy </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Szczegóły </b></div>
+                    <div class="col-3  my-visit-tile architect-font"><b> Zmień status </b></div>
+                    <div class="col-1  my-visit-tile architect-font"><b> Realizuj </b></div>
+                </div>
+
+                <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="orders in Ctrl.orders">
+                    <div class="col-3 my-visit-tile architect-font "> {{orders.orderDate.toString().substring(0,10)}} {{orders.orderDate.toString().substring(11,16)}} </div>
+                    <div class="col-2 my-visit-tile architect-font"> {{orders.price}} zł </div>
+                    <div class="col-2 my-visit-tile architect-font "> {{orders.deliveryDetails}} </div>
+                    <div class="col-1 my-visit-tile architect-font" style="cursor: pointer"><i class="fas fa-info-circle fa-3x" ng-click="Ctrl.showManageOrderInfo(orders, loggedUser.id)"></i></div>
+                    <div class="col-3 my-visit-tile architect-font">
+                        <select ng-model='orders.status'>
+                            <option selected value="{{status}}" ng-repeat="status in Ctrl.orderStatus">{{status}}</option>
+                        </select>
+                         |
+                        <i class="fas fa-sync fa-2x" style="cursor: pointer" ng-click="Ctrl.refresh( orders )"  style="color:slategrey"> </i>
+                    </div>
+                    <div class="col-1 my-visit-tile architect-font" style="cursor: pointer" ng-click="Ctrl.realizeOrder(orders)"> <i class="far fa-check-square fa-3x"></i> </div>
+                </div>
+
+            </div>
+
+            <div ng-show="(Ctrl.orders | filter: {status: 'COMPLETED'})[0]" class="row d-flex justify-content-center align-items-center my-5">
+
+                <div class="col-12 d-flex justify-content-center align-items-center my-5 " style="font-size: 4vmax;">Zrealizowane zamówienia</div>
+
+                <div class="col-12 row d-flex justify-content-center align-items-center py-4">
+                    <div class="col-3  my-visit-tile architect-font"><b> Data zamówienia </b></div>
+                    <div class="col-3  my-visit-tile architect-font"><b> Data realizacji </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Do zapłaty </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> Szczegóły </b></div>
+                    <div class="col-2  my-visit-tile architect-font"><b> status </b></div>
+                </div>
+
+                <div class="my-visits col-12 row d-flex justify-content-center align-items-center py-4" ng-repeat="orders in Ctrl.orders">
+                    <div class="col-3 my-visit-tile architect-font "> {{orders.orderDate.toString().substring(0,10)}} {{orders.orderDate.toString().substring(11,16)}} </div>
+                    <div class="col-3 my-visit-tile architect-font"> {{orders.endDate.toString().substring(0,10)}} {{orders.endDate.toString().substring(11,16)}} </div>
+                    <div class="col-2 my-visit-tile architect-font"> {{orders.price}} zł </div>
+                    <div class="col-2 my-visit-tile architect-font" style="cursor: pointer"> <i class="fas fa-info-circle fa-3x" ng-click="Ctrl.showManageOrderInfo(orders, loggedUser.id)"></i> </div>
+                    <div class="col-2 my-visit-tile architect-font"> {{orders.status}} </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div ng-if="!Ctrl.anyOrders()" class="row empty-visits d-flex justify-content-center align-items-center my-5">
+
+            <i class="far fa-calendar fa-7x my-5 col-10 d-flex justify-content-center"></i>
+            <h2 class="architect-font my-4 col-10 d-flex justify-content-center">Brak zamówień do zarządzania.</h2>
+            <p class="architect-font my-4 col-10 d-flex justify-content-center">Gdy użytkownik doda zamówienie będzie ono dostępne tutaj!</p>
+
+        </div>
+
+    </div>
+
+</header>

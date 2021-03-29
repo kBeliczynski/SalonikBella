@@ -17,16 +17,11 @@ public class Orders implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
-     @NotEmpty
      private String phoneNumber;
-     @NotEmpty
      private String city;
-     @NotEmpty
      private String zipCode;
-     @NotEmpty
      private String street;
-     @NotEmpty
-     private Double price;
+     private Float price;
      private delivery deliveryDetails;
      private shipping shippingDetails;
      private String orderDate;
@@ -36,7 +31,7 @@ public class Orders implements Serializable {
 
     Orders() {}
 
-    public Orders(@NotEmpty String phoneNumber, @NotEmpty String city, @NotEmpty String zipCode, @NotEmpty String street, @NotEmpty Double price, delivery deliveryDetails, shipping shippingDetails, String orderDate, String endDate, orderStatus status, String orderProducts) {
+    public Orders(@NotEmpty String phoneNumber, @NotEmpty String city, @NotEmpty String zipCode, @NotEmpty String street, @NotEmpty Float price, delivery deliveryDetails, shipping shippingDetails, String orderDate, String endDate, orderStatus status, String orderProducts) {
         this.phoneNumber = phoneNumber;
         this.city = city;
         this.zipCode = zipCode;
@@ -57,7 +52,6 @@ public class Orders implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -91,11 +85,11 @@ public class Orders implements Serializable {
         this.street = street;
     }
 
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
@@ -139,9 +133,17 @@ public class Orders implements Serializable {
         this.status = status;
     }
 
+    public String getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(String orderProducts) {
+        this.orderProducts = orderProducts;
+    }
+
     @Override
     public String toString() {
-        return "Order{" +
+        return "Orders{" +
                 "id=" + id +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", city='" + city + '\'' +
@@ -150,9 +152,10 @@ public class Orders implements Serializable {
                 ", price=" + price +
                 ", deliveryDetails=" + deliveryDetails +
                 ", shippingDetails=" + shippingDetails +
-                ", orderDate=" + orderDate +
-                ", endDate=" + endDate +
+                ", orderDate='" + orderDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 ", status=" + status +
+                ", orderProducts='" + orderProducts + '\'' +
                 '}';
     }
 }
