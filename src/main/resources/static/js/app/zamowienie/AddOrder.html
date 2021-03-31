@@ -23,7 +23,7 @@
 
                 <div class="form-group d-flex justify-content-center">
 					<select ng-model='Ctrl.order.deliveryDetails'>
-                        <option value=0 selected>UPS</option>
+                        <option selected value=0>UPS</option>
                         <option value=1>DPD</option>
                         <option value=2>Poczta Polska</option>
                     </select>
@@ -31,19 +31,20 @@
 
                 <div class="form-group d-flex justify-content-center">
 					<select ng-model='Ctrl.order.shippingDetails' require >
-                        <option value=0 selected>Przesyłka kurierska pobraniowa</option>
+                        <option selected value=0>Przesyłka kurierska pobraniowa</option>
                     </select>
 				</div>
 
-                <div class="form-group d-flex justify-content-center">
-					<h2 class="architect-font my-4" style="font-size: 2vmax;">CENA Z WYSYŁKĄ:</h2>
-				</div>
-
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" ng-click="Ctrl.realizeOrder(Ctrl.order)">Zamawiam</button>
+					<button class="btn btn-primary btn-block" ng-click="Ctrl.submitOrder(Ctrl.order, loggedUser)">Zamawiam</button>
 				</div>
 
  	    	</form>
+
+			<div ng-show="Ctrl.incorrectData" class="col-10 alert alert-danger d-flex justify-content-center align-items-center m-3">
+			    <i class="far fa-2x fa-times-circle"></i>
+			    <div class="ml-5">Wprowadzono niepoprawne dane!</div>
+		    </div>
 
     	</div>
 

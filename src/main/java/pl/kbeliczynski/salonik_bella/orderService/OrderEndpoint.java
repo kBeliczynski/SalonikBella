@@ -1,6 +1,7 @@
 package pl.kbeliczynski.salonik_bella.orderService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -31,6 +32,21 @@ public class OrderEndpoint {
         return orderRepository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping(value = "/api/orders")
+    public ResponseEntity<Orders> save(@RequestBody Orders order) {
+        if(order.getId() == null) {
+            Orders saved = orderRepository.save(order);
+            URI location = ServletUriComponentsBuilder
+                    .fromCurrentRequest()
+                    .path("/{id}")
+                    .buildAndExpand(saved.getId())
+                    .toUri();
+            return ResponseEntity.created(location).body(order);
+        } else {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
     }
 
     @PutMapping("/api/orders/{id}")
