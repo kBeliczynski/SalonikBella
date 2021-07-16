@@ -1,3 +1,5 @@
+[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/kBeliczynski/SalonikBella/blob/licencjat/LICENSE)
+
 # SalonikBella
 
 ## General info
@@ -43,6 +45,7 @@ Project is created with:
 ## Additional libraries
 * [Fontawesome](https://fontawesome.com/)
 * [Animate On Scroll](https://michalsnik.github.io/aos/)
+
 
 
 
